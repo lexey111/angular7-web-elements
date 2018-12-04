@@ -4,7 +4,7 @@ import { App } from './app';
 
 import '../styles/app.less';
 
-console.log('[React app start]');
+console.log('[React app starts]');
 
 const runApp = () => {
 	ReactDOM.render(

@@ -17,9 +17,9 @@ export class App extends React.Component {
 				<p>
 					This is <code>custom-button</code> web element from angular:
 				</p>
-				<custom-button label='First Value' hidden='true'></custom-button>
+				<custom-button label='First Value' hidden></custom-button>
 				<p>
-					Click handling atatched to the button works from VanillaJS.
+					Click handling attached to the button works from VanillaJS.
 				</p>
 			</div>
 		</div>;
