@@ -15,23 +15,9 @@
 <body>
 	<h1>Angular 7 Web Elements Demo page</h1>
 
-	<custom-button label="First Value"></custom-button>
+	<custom-button label="First Value" hidden="true"></custom-button>
 
-	<script>
-		const button = document.querySelector('custom-button');
-		button.addEventListener('action', (event) => {
-			console.log(`"action" emitted: ${event.detail}`);
-			if (event.detail === 1) {
-				button.label = 'Second Value'
-			}
-			if (event.detail === 2) {
-				button.label = 'Third Value'
-			}
-			if (event.detail === 3) {
-				button.label = 'Other Value'
-			}
-		});
-	</script>
+	<script src="assets/vanilla.js"></script>
 </body>
 
 </html>
