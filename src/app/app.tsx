@@ -2,20 +2,25 @@ import React from 'react';
 
 export class App extends React.Component {
 	componentDidMount() {
-		if (window.doVanilla) {
-			window.doVanilla();
+		if (window['doVanilla']) {
+			window['doVanilla']();
 		}
 	}
 
 	render() {
-		// @ts-ignore for the line
 		return <div id='app-container'>
-			<header>
-				Angular 7 Web Elements Demo page
-			</header>
+			<div className='app-header'>
+				Angular 7 Web Elements Demo page. This is React application.
+			</div>
 
-			<div class='main-content'>
+			<div className='app-content'>
+				<p>
+					This is <code>custom-button</code> web element from angular:
+				</p>
 				<custom-button label='First Value' hidden='true'></custom-button>
+				<p>
+					Click handling atatched to the button works from VanillaJS.
+				</p>
 			</div>
 		</div>;
 	}

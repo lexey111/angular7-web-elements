@@ -7,7 +7,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
 	entry: {
 		app: path.resolve(__dirname, './src/app/index.tsx'),
-		elements: path.resolve(__dirname, './src/components/index.ts'),
+		elements: path.resolve(__dirname, './src/elements/index.ts'),
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -20,7 +20,6 @@ module.exports = {
 	},
 	optimization: {
 		splitChunks: {
-			// always create vendor.js
 			cacheGroups: {
 				react: {
 					test: /[\\/]\S*react/,
@@ -29,7 +28,14 @@ module.exports = {
 					priority: 0,
 					enforce: true,
 				},
-			},
+				vendor: {
+					test: /[\\/]node_modules/,
+					name: 'scripts/vendor',
+					chunks: 'all',
+					priority: -1,
+					enforce: true,
+				},
+		},
 		},
 	},
 
@@ -80,7 +86,7 @@ module.exports = {
 	plugins: [
 		new NgCompilerPlugin.AngularCompilerPlugin({
 			tsConfigPath: './tsconfig.json',
-			mainPath: './src/components/index.ts'
+			mainPath: './src/elements/index.ts'
 		}),
 		new CopyWebpackPlugin([
 			// static files to the site root folder (index and robots)

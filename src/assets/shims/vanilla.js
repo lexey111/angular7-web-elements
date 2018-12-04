@@ -1,7 +1,16 @@
 window.doVanilla = function () {
-	console.log('Attach to button....');
+	console.log('[Vanilla loaded]');
+
 
 	const button = document.querySelector('custom-button');
+	if (!button) {
+		console.log('Trying to attach to the button...Error: button not found!');
+		return;
+	}
+	console.log('Trying to attach to the button... done.');
+	console.log('Click to the button to see evemt handling.');
+
+
 	button.hidden = false;
 
 

@@ -4,12 +4,16 @@ import { Input, Component, ViewEncapsulation, EventEmitter, Output } from '@angu
 	selector: 'custom-button',
 	template: `<button (click)="handleClick()">{{label}}</button>`,
 	styles: [`
-    button {
-      border: solid 3px;
-      padding: 8px 10px;
-      background: #bada55;
-      font-size: 20px;
-    }
+	button {
+		border: 1px solid green;
+		padding: 8px 16px;
+		background: #bada55;
+		font-size: 14px;
+	}
+	button:hover {
+		cursor: pointer;
+		background: #caea65;
+	}
   `],
 	encapsulation: ViewEncapsulation.None
 })

@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './app';
 
-import '../assets/app.less';
+import '../styles/app.less';
 
-console.log('app main file');
+console.log('[React app start]');
 
 const runApp = () => {
 	ReactDOM.render(
