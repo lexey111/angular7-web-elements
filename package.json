@@ -1,0 +1,43 @@
+{
+	"name": "angular7-web-elements",
+	"version": "1.0.0",
+	"description": "Demo app for Angular Elements",
+	"main": "index.js",
+	"scripts": {
+		"clean": "rimraf ./dist",
+		"build": "webpack --config ./webpack.config.js --mode production",
+		"build:dev": "webpack --config ./webpack.config.js --mode development",
+		"start": "npm run clean && npm run build:dev && webpack-dev-server --config ./webpack.config.js --mode development"
+	},
+	"author": "lexey111",
+	"license": "ISC",
+	"dependencies": {
+		"@angular/common": "^7.1.1",
+		"@angular/compiler": "^7.1.1",
+		"@angular/core": "^7.1.1",
+		"@angular/elements": "^7.1.1",
+		"@angular/platform-browser": "^7.1.1",
+		"@angular/platform-browser-dynamic": "^7.1.1",
+		"@webcomponents/custom-elements": "^1.2.1",
+		"@webcomponents/webcomponentsjs": "^2.2.1",
+		"core-js": "^2.5.7",
+		"rxjs": "^6.3.3",
+		"zone.js": "^0.8.26"
+	},
+	"devDependencies": {
+		"@angular/compiler-cli": "^7.1.1",
+		"@ngtools/webpack": "^7.1.1",
+		"copy-webpack-plugin": "^4.6.0",
+		"file-loader": "^2.0.0",
+		"eslint": "^5.9.0",
+		"less-loader": "^4.1.0",
+		"less": "^3.9.0",
+		"rimraf": "^2.6.2",
+		"raw-loader": "^0.5.1",
+		"tslint": "^5.11.0",
+		"typescript": "3.1.1",
+		"webpack": "^4.26.1",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.10"
+	}
+}

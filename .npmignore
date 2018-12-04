@@ -1,0 +1,6 @@
+dist
+demo
+build
+.npmignore
+.idea
+*.bat

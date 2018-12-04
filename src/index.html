@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CustomElements Demo Page</title>
+	<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="assets/app.css">
+
+	<script src="assets/webcomponents-bundle.js"></script>
+	<script src="app.js"></script>
+</head>
+
+<body>
+	<h1>Angular 7 Web Elements Demo page</h1>
+
+	<custom-button label="First Value"></custom-button>
+
+	<script>
+		const button = document.querySelector('custom-button');
+		button.addEventListener('action', (event) => {
+			console.log(`"action" emitted: ${event.detail}`);
+			if (event.detail === 1) {
+				button.label = 'Second Value'
+			}
+			if (event.detail === 2) {
+				button.label = 'Third Value'
+			}
+			if (event.detail === 3) {
+				button.label = 'Other Value'
+			}
+		});
+	</script>
+</body>
+
+</html>
