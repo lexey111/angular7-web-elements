@@ -9,19 +9,16 @@
 	<link rel="stylesheet" href="assets/app.css">
 
 	<script src="assets/webcomponents-bundle.js"></script>
-	<script src="app.js"></script>
+	<script src="elements.js"></script>
+	<script src="scripts/react.js"></script>
+	<script src="scripts/vendor.js"></script>
 </head>
 
 <body>
-	<header>
-		Angular 7 Web Elements Demo page
-	</header>
+	<div id="app-mount-point"></div>
 
-	<section class="main-content">
-		<custom-button label="First Value" hidden="true"></custom-button>
-	</section>
-
-	<script src="assets/vanilla.js"></script>
+	<script src="assets/vanilla.js" defer></script>
+	<script src="app.js" defer></script>
 </body>
 
 </html>

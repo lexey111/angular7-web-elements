@@ -6,7 +6,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	entry: {
-		app: path.resolve(__dirname, './src/index.ts'),
+		app: path.resolve(__dirname, './src/app/index.tsx'),
+		elements: path.resolve(__dirname, './src/components/index.ts'),
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -14,10 +15,37 @@ module.exports = {
 	target: 'web',
 	devtool: isProduction ? false : 'source-map',
 	resolve: {
-		extensions: ['.ts', '.js', '.html']
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.html', '.txt'],
+		mainFields: ['module', 'browser', 'main'],
 	},
+	optimization: {
+		splitChunks: {
+			// always create vendor.js
+			cacheGroups: {
+				react: {
+					test: /[\\/]\S*react/,
+					name: 'scripts/react',
+					chunks: 'all',
+					priority: 0,
+					enforce: true,
+				},
+			},
+		},
+	},
+
 	module: {
 		rules: [{
+				test: /\.tsx$/,
+				exclude: /node_modules/,
+				use: [{
+					loader: 'ts-loader',
+					options: {
+						transpileOnly: true,
+						silent: true
+					},
+				}],
+			},
+			{
 				test: /.js$/,
 				parser: {
 					system: true
@@ -30,22 +58,6 @@ module.exports = {
 					loader: '@ngtools/webpack',
 					options: {
 						sourceMap: !isProduction
-					}
-				}]
-			},
-			{
-				test: /\.html$/,
-				exclude: /index.html$/i,
-				use: [{
-					loader: 'raw-loader'
-				}]
-			},
-			{
-				test: /index.html$/i,
-				use: [{
-					loader: 'file-loader',
-					options: {
-						name: '[name].[ext]'
 					}
 				}]
 			},
@@ -68,9 +80,16 @@ module.exports = {
 	plugins: [
 		new NgCompilerPlugin.AngularCompilerPlugin({
 			tsConfigPath: './tsconfig.json',
-			mainPath: './src/index.ts'
+			mainPath: './src/components/index.ts'
 		}),
 		new CopyWebpackPlugin([
+			// static files to the site root folder (index and robots)
+			{
+				from: './src/assets/static/**/*',
+				to: path.resolve('./dist/'),
+				toType: 'dir',
+				flatten: true
+			},
 			{
 				from: './src/assets/images',
 				to: './assets/images',

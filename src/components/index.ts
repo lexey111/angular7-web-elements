@@ -2,10 +2,7 @@ import 'zone.js/dist/zone';
 
 import '@webcomponents/custom-elements/src/native-shim';
 
-import './assets/app.less';
-import './index.html';
-
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ButtonModule } from './components/@button.module';
+import { ButtonModule } from './button/@button.module';
 
 platformBrowserDynamic().bootstrapModule(ButtonModule);

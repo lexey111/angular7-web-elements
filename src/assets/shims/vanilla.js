@@ -1,5 +1,5 @@
-~ function () {
-	console.log('Attached to button');
+window.doVanilla = function () {
+	console.log('Attach to button....');
 
 	const button = document.querySelector('custom-button');
 	button.hidden = false;
@@ -18,4 +18,4 @@
 			button.label = `Other Value: ${event.detail}`;
 		}
 	});
-}();
+};
