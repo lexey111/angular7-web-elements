@@ -12,6 +12,7 @@ export class AppRoutes extends React.Component {
 			<div id='app-page-container'>
 				<Switch>
 					<Route exact path='/' component={HomePage}/>
+					<Route exact path='/index' component={HomePage}/>
 					<Route component={NotFoundComponent}/>
 				</Switch>
 			</div>
