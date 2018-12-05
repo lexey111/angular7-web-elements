@@ -19,7 +19,7 @@ Interesting: application uses one build script to process all the parts simultan
 
 Browsers support
 --
-* Chrome (tested in v.70)
-* Firefox (v.63)
+* Chrome (tested in v70)
+* Firefox (63)
 * Edge (44)
 * IE (11)
