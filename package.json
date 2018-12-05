@@ -24,6 +24,8 @@
 		"core-js": "^2.5.7",
 		"react": "^16.6.3",
 		"react-dom": "^16.6.3",
+		"react-router": "^4.3.1",
+		"react-router-dom": "^4.3.1",
 		"rxjs": "^6.3.3",
 		"zone.js": "^0.8.26"
 	},
