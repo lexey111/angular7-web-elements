@@ -1,0 +1,48 @@
+@import '../@general.variables.less';
+
+@tc-control-font-family: 'Verdana', 'Arial', sans-serif;
+@tc-control-font-size-base: 12px;
+@tc-control-gap: 8px;
+@tc-control-margin-top: .5rem;
+@tc-control-padding: 6px;
+@tc-control-with-label-margin-top: 1rem;
+@tc-control-border-radius: @tc-border-radius;
+@tc-control-padding-base-vertical: 4px;
+@tc-control-line-height-base: 1.5; // 18/12
+@tc-control-line-height-computed: floor(@tc-control-font-size-base * @tc-control-line-height-base); // ~18px
+// label
+@tc-control-label-font-size: @tc-control-font-size-base;
+@tc-control-label-line-height: @tc-control-input-height-base;
+@tc-control-label-font: normal @tc-control-label-font-size/@tc-control-label-line-height  @tc-control-font-family;
+@tc-control-label-color: @tc-gray-600;
+
+@tc-control-input-height-base: (@tc-control-line-height-computed + (@tc-control-padding-base-vertical * 2) + 2);
+@tc-control-input-height: 28px;
+@tc-control-input-font: normal @tc-control-font-size-base/1.3 @tc-control-font-family;
+// colors
+@tc-control-color: @tc-gray-900;
+@tc-control-border-color: @tc-gray-400;
+@tc-control-background-color: @tc-gray-100;
+// - hover
+@tc-control-hover-color: @tc-gray-900;
+@tc-control-hover-border-color: lighten(@tc-blue-100, 10);
+@tc-control-hover-background-color: darken(@tc-control-background-color, 5);
+// - disabled
+@tc-control-disabled-color: @tc-gray-500;
+@tc-control-disabled-border-color: darken(@tc-gray-200, 10);
+@tc-control-disabled-background-color: @tc-gray-200;
+// - active
+@tc-control-active-color: @tc-black;
+@tc-control-active-border-color: @tc-blue-100;
+@tc-control-active-background-color: @tc-white;
+// - focused
+@tc-control-focused-color: @tc-control-active-color;
+@tc-control-focused-border-color: @tc-control-active-border-color;
+@tc-control-focused-background-color: @tc-control-active-background-color;
+@tc-control-focus-width: .2rem;
+// addon
+@tc-addon-padding-horizontal: .5rem;
+@tc-addon-background-color: @tc-gray-200;
+// - required-mark
+@tc-control-required-mark-color: @tc-orange;
+@tc-control-required-mark-font-size: floor(@tc-control-font-size-base * 1.7);

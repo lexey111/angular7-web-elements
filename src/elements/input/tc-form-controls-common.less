@@ -1,0 +1,149 @@
+@import './@tc-form-controls-common.variables.less';
+@import './@tc-form-controls-common-transitions.less';
+@import './@tc-form-controls-common.mixins.less';
+
+.tc-control {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-start;
+
+	&.has-label {
+		.tc-control-label {
+			display: flex;
+		}
+	}
+
+	&.focused {
+		.addon-control.append {
+			> SPAN, DIV, BUTTON {
+				border-left-color: @tc-control-active-border-color;
+			}
+		}
+	}
+
+
+	&:not(:first-child) {
+		margin-top: @tc-control-margin-top;
+
+		&.has-label {
+			margin-top: @tc-control-with-label-margin-top;
+		}
+	}
+
+	.tc-control-input-group {
+		display: flex;
+		flex-flow: column nowrap;
+		width: 100%;
+
+		&.with-addon-append {
+			.tc-control-input {
+				border-right: none;
+				.tc-border-right-radius(0);
+			}
+		}
+	}
+
+	INPUT {
+		width: 100%;
+
+		&[disabled] {
+			background-color: @tc-control-disabled-background-color;
+			border-color: @tc-control-disabled-border-color;
+			color: @tc-control-disabled-color;
+		}
+	}
+
+	.tc-control-label {
+		display: none;
+		font: @tc-control-label-font;
+		color: @tc-control-label-color;
+		align-self: flex-start;
+		align-items: center;
+	}
+
+	.tc-control-input {
+		padding: 0 @tc-control-padding;
+		.tc-control-common();
+		.tc-control-transition();
+
+		&:active,
+		&:focus {
+			.tc-control-focused();
+		}
+
+		&:hover {
+			.tc-control-hover();
+		}
+	}
+
+	.tc-control-input-container {
+		display: flex;
+		flex-flow: row nowrap;
+		flex-grow: 2;
+	}
+
+	.tc-control-input-area {
+		display: flex;
+		flex-flow: row nowrap;
+	}
+
+	.tc-control-input-addon-append,
+	.tc-control-input-inline {
+		display: flex;
+		flex-flow: row nowrap;
+		align-self: flex-start;
+		align-items: center;
+	}
+
+	.inline-control,
+	.addon-control {
+		display: flex;
+		height: @tc-control-input-height-base;
+		align-items: center;
+	}
+
+	.inline-control {
+		BUTTON {
+			margin: 0 0 0 @tc-control-gap / 2;
+		}
+
+		A {
+			margin: 0 @tc-control-font-size-base;
+		}
+	}
+
+	.addon-control {
+		&.append {
+			> SPAN, DIV, BUTTON {
+				padding: 0 @tc-addon-padding-horizontal;
+			}
+
+			> SPAN, DIV {
+				display: flex;
+				align-items: center;
+				white-space: nowrap;
+				font-family: monospace, monospace;
+				font-size: 12px;
+				height: 100%;
+				line-height: 1;
+				margin-top: 2px;
+				border: solid 1px @tc-control-border-color;
+				background-color: @tc-addon-background-color;
+				.tc-border-right-radius(@tc-control-border-radius);
+			}
+
+			> BUTTON {
+				.tc-border-left-radius(0);
+			}
+		}
+	}
+
+	BUTTON {
+		height: 100%;
+		line-height: 1;
+	}
+}
+

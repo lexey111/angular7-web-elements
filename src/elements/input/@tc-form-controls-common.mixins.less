@@ -1,0 +1,37 @@
+@import './@tc-form-controls-common.variables.less';
+
+.tc-control-common() {
+	border: 1px solid @tc-control-border-color;
+	color: @tc-control-color;
+	background-color: @tc-control-background-color;
+	border-radius: @tc-control-border-radius;
+	height: @tc-control-input-height-base;
+	font: @tc-control-input-font;
+}
+
+.tc-control-focused() {
+	color: @tc-control-focused-color;
+	border-color: @tc-control-focused-border-color;
+	background-color: @tc-control-focused-background-color;
+	box-shadow: 0 0 0 @tc-control-focus-width rgba(
+		red(@tc-control-focused-border-color),
+		green(@tc-control-focused-border-color),
+		blue(@tc-control-focused-border-color), .3);
+	outline: none;
+
+	&:hover {
+		color: @tc-control-active-color;
+		border-color: @tc-control-active-border-color;
+		background-color: @tc-control-active-background-color;
+		box-shadow: 0 0 0 @tc-control-focus-width rgba(
+			red(@tc-control-focused-border-color),
+			green(@tc-control-focused-border-color),
+			blue(@tc-control-focused-border-color), .3);
+	}
+}
+
+.tc-control-hover() {
+	color: @tc-control-hover-color;
+	border-color: @tc-control-hover-border-color;
+	background-color: @tc-control-hover-background-color;
+}

@@ -1,0 +1,168 @@
+@import "@general.variables.less";
+
+.tc-appearance (@value) {
+	-webkit-appearance: @value;
+	-moz-appearance: @value;
+	-o-appearance: @value;
+	appearance: @value;
+}
+
+.tc-reset-text() {
+	font-family: @tc-font-family-base;
+	// We deliberately do NOT reset font-size or word-wrap.
+	font-style: normal;
+	font-weight: @tc-font-weight-normal;
+	line-height: @tc-line-height-base;
+	text-align: left; // Fallback for where `start` is not supported
+	text-align: start; // stylelint-disable-line declaration-block-no-duplicate-properties
+	text-decoration: none;
+	text-shadow: none;
+	text-transform: none;
+	letter-spacing: normal;
+	word-break: normal;
+	word-spacing: normal;
+	white-space: normal;
+	line-break: auto;
+}
+
+//
+// Transition
+//
+.tc-transition(@transition) when (@tc-enable-transitions = true) {
+	transition: @transition;
+}
+
+//
+// Box-shadow
+//
+.tc-box-shadow(...) {
+	& when (@tc-enable-shadows = true) {
+		box-shadow: @arguments;
+	}
+}
+
+//
+// Gradients
+//
+.tc-gradient-bg(@color) {
+	& when (@tc-enable-gradients = true) {
+		background: @color linear-gradient(180deg, mix(@tc-body-bg, @color, 15%), @color) repeat-x;
+	}
+
+	& when (@tc-enable-gradients = false) {
+		background-color: @color;
+	}
+}
+
+//
+// Horizontal dividers (basically an hr) within dropdowns and nav lists
+//
+.tc-nav-divider(@color: @tc-nav-divider-color, @margin-y: @tc-nav-divider-margin-y) {
+	height: 0;
+	margin: @margin-y 0;
+	overflow: hidden;
+	border-top: 1px solid @color;
+}
+
+//
+// Border-radius
+//
+.tc-border-radius(@radius) when (@tc-enable-rounded) {
+	border-radius: @radius;
+}
+
+.tc-border-top-radius(@radius) when (@tc-enable-rounded) {
+	border-top-left-radius: @radius;
+	border-top-right-radius: @radius;
+}
+
+.tc-border-right-radius(@radius) when (@tc-enable-rounded) {
+	border-top-right-radius: @radius;
+	border-bottom-right-radius: @radius;
+}
+
+.tc-border-bottom-radius(@radius) when (@tc-enable-rounded) {
+	border-bottom-right-radius: @radius;
+	border-bottom-left-radius: @radius;
+}
+
+.tc-border-left-radius(@radius) when (@tc-enable-rounded) {
+	border-top-left-radius: @radius;
+	border-bottom-left-radius: @radius;
+}
+
+//
+// Caret
+//
+.tc-caret-up {
+	border-top: 0;
+	border-right: @tc-caret-width solid transparent;
+	border-bottom: @tc-caret-width solid;
+	border-left: @tc-caret-width solid transparent;
+}
+
+.tc-caret-down {
+	border-top: @tc-caret-width solid;
+	border-right: @tc-caret-width solid transparent;
+	border-bottom: 0;
+	border-left: @tc-caret-width solid transparent;
+}
+
+.tc-caret-right {
+	border-top: @tc-caret-width solid transparent;
+	border-right: 0;
+	border-bottom: @tc-caret-width solid transparent;
+	border-left: @tc-caret-width solid;
+}
+
+.tc-caret-left {
+	border-top: @tc-caret-width solid transparent;
+	border-right: @tc-caret-width solid;
+	border-bottom: @tc-caret-width solid transparent;
+}
+
+.tc-caret(@direction: down) {
+	& when (@tc-enable-caret = true) {
+		&::after {
+			display: inline-block;
+			width: 0;
+			height: 0;
+			margin-left: @tc-caret-width * .85;
+			vertical-align: @tc-caret-width * .85;
+			content: "";
+
+			& when (@direction = down) {
+				.tc-caret-down();
+			}
+
+			& when (@direction = up) {
+				.tc-caret-up();
+			}
+
+			& when (@direction = right) {
+				.tc-caret-right();
+			}
+		}
+
+		& when (@direction = left) {
+			&::after {
+				display: none;
+			}
+
+			&::before {
+				display: inline-block;
+				width: 0;
+				height: 0;
+				margin-right: @tc-caret-width * .85;
+				vertical-align: @tc-caret-width * .85;
+				content: "";
+
+				.tc-caret-left();
+			}
+		}
+
+		&:empty::after {
+			margin-left: 0;
+		}
+	}
+}

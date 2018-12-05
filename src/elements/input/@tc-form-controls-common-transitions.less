@@ -1,0 +1,32 @@
+@tc-control-transition-time: .15s;
+
+.tc-control-transition() {
+	transition: color @tc-control-transition-time ease-in-out,
+	background-color @tc-control-transition-time ease-in-out,
+	border-color @tc-control-transition-time ease-in-out,
+	box-shadow @tc-control-transition-time ease-in-out;
+}
+
+.tc-control-transition-opacity(@time : @tc-control-transition-time) {
+	transition: opacity @time ease-in-out;
+}
+
+.tc-control-transition-transform(@time : @tc-control-transition-time) {
+	transition: transform @time ease-in-out;
+}
+
+.tc-control-transition-property(@property, @time : @tc-control-transition-time) {
+	transition: @property @time ease-in-out;
+}
+
+.tc-control-transition-all(@time : @tc-control-transition-time) {
+	transition: all @time ease-in-out;
+}
+
+.tc-control-transition-inline(@time : @tc-control-transition-time) {
+	transition: transform @time ease-in-out,
+	opacity @time ease-in-out,
+	color @tc-control-transition-time ease-in-out,
+	background-color @tc-control-transition-time ease-in-out,
+	width @time ease-in-out;
+}

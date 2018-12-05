@@ -27,6 +27,18 @@ class TCInputPageComponent extends React.Component {
 					               disabled={true}
 					               value='Some text'></tc-input-text>
 				</div>
+
+				<h3 className='form-section'>With text add-on</h3>
+				<div className='input-element'>
+					<tc-input-text label='Text label'
+					               placeholder='Placeholder text'>
+
+						<div className='addon-control append'>
+							<span>42</span>
+						</div>
+					</tc-input-text>
+				</div>
+
 			</div>
 		</React.Fragment>;
 	}

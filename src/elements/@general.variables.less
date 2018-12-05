@@ -1,0 +1,154 @@
+@import '@general.mixins.less';
+//
+// System colors
+//
+@tc-white: #FFF;
+@tc-gray-100: #f8f9fa;
+@tc-gray-200: #e9ecef;
+@tc-gray-300: #dee2e6;
+@tc-gray-400: #CCC;
+@tc-gray-500: #AAA;
+@tc-gray-600: #838788;
+@tc-gray-700: #495057;
+@tc-gray-800: #343a40;
+@tc-gray-900: #222;
+@tc-black: #000;
+//
+@tc-blue-100: #66AFE9;
+@tc-blue-200: #409BD2;
+@tc-blue: #007bff;
+@tc-indigo: #6610f2;
+@tc-purple: #6f42c1;
+@tc-pink: #e83e8c;
+@tc-red: #dc3545;
+@tc-orange: #fd7e14;
+@tc-yellow: #ffc107;
+@tc-green: #28a745;
+@tc-teal: #20c997;
+@tc-cyan: #17a2b8;
+//
+@tc-primary: @tc-blue;
+@tc-secondary: @tc-gray-600;
+@tc-success: @tc-green;
+@tc-info: @tc-cyan;
+@tc-warning: @tc-yellow;
+@tc-danger: @tc-red;
+@tc-light: @tc-gray-100;
+@tc-dark: @tc-gray-800;
+@tc-default: @tc-white;
+//
+// Theme
+//
+@tc-theme-colors: @tc-primary, @tc-secondary, @tc-success, @tc-info, @tc-warning, @tc-danger, @tc-light, @tc-dark;
+@tc-theme-names: primary, secondary, success, info, warning, danger, light, dark;
+@tc-theme-colors-length: length(@tc-theme-colors);
+//
+// Body
+//
+@tc-body-bg: @tc-white;
+@tc-body-color: @tc-gray-900;
+//
+// Component
+//
+@tc-component-active-color: @tc-white;
+@tc-component-active-bg: extract(@tc-theme-colors, 1);
+//
+// System fonts
+//
+@tc-font-family-base: -apple-system, BlinkMacSystemFont, "Verdana", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+@tc-font-size-base: 1rem; // Assumes the browser default, typically `16px`
+@tc-font-size-lg: (@tc-font-size-base * 1.25);
+@tc-font-size-sm: (@tc-font-size-base * .875);
+//
+@tc-font-weight-light: 300;
+@tc-font-weight-normal: 400;
+@tc-font-weight-bold: 700;
+//
+@tc-font-weight-base: @tc-font-weight-normal;
+@tc-line-height-base: 1.5;
+@tc-line-height-lg: 2;
+@tc-line-height-sm: 1;
+//
+@tc-text-disabled: @tc-gray-600;
+//
+// Border
+//
+@tc-border-width: 1px;
+@tc-border-color: @tc-gray-300;
+@tc-border-radius-sm: .2rem;
+@tc-border-radius: .25rem;
+@tc-border-radius-lg: .3rem;
+//
+// Box shadow
+//
+@tc-box-shadow-sm: 0 .125rem .25rem lighten(@tc-black, 25%);
+@tc-box-shadow: 0 .5rem 1rem lighten(@tc-black, 15%);
+@tc-box-shadow-lg: 0 1rem 3rem lighten(@tc-black, 17, 5%);
+//
+// Options
+//
+@tc-enable-transitions: true;
+@tc-enable-rounded: true;
+@tc-enable-caret: true;
+@tc-enable-shadows: false;
+@tc-enable-gradients: false;
+
+//
+// Breakpoints (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+@tc-breakpoints-list: 0, 576px, 768px, 992px, 1200px;
+//
+// Spacers
+//
+@tc-spacer: 1rem;
+@tc-spacers-list: (@tc-spacer * .25), (@tc-spacer * .5), @tc-spacer, (@tc-spacer * 1.5), (@tc-spacer * 3);
+//
+// Transitions
+//
+@tc-transition-base: all .2s ease-in-out;
+@tc-transition-fade: opacity .15s linear;
+@tc-transition-collapse: height .35s ease;
+//
+// Caret
+//
+@tc-caret-width: .3em;
+//
+// Nav
+//
+@tc-nav-divider-color: @tc-gray-200;
+@tc-nav-divider-margin-y: (@tc-spacer / 2);
+//
+// Text
+//
+@tc-text-dark: @tc-gray-900;
+@tc-text-light: @tc-white;
+//
+// Buttons + Inputs
+// Shared variables that are reassigned to `@tc-input-` and `@tc-btn-` specific variables.
+//
+@tc-input-btn-padding-y: .375rem;
+@tc-input-btn-padding-x: .75rem;
+@tc-input-btn-line-height: @tc-line-height-base;
+
+@tc-input-btn-focus-width: .2rem;
+@tc-input-btn-focus-color: rgba(red(@tc-component-active-bg), green(@tc-component-active-bg), blue(@tc-component-active-bg), .25);
+@tc-input-btn-focus-box-shadow: 0 0 0 @tc-input-btn-focus-width @tc-input-btn-focus-color;
+
+@tc-input-btn-padding-y-sm: .25rem;
+@tc-input-btn-padding-x-sm: .5rem;
+@tc-input-btn-line-height-sm: @tc-line-height-sm;
+
+@tc-input-btn-padding-y-lg: .5rem;
+@tc-input-btn-padding-x-lg: 1rem;
+@tc-input-btn-line-height-lg: @tc-line-height-lg;
+
+@tc-input-btn-border-width: @tc-border-width;
+// Links
+//
+// Style anchor elements.
+@tc-link-color: extract(@tc-theme-colors, 1);
+@tc-link-decoration: none;
+@tc-link-hover-color: darken(@tc-link-color, 15%);
+@tc-link-hover-decoration: underline;
+
+@tc-block-height-sm: 45px;
