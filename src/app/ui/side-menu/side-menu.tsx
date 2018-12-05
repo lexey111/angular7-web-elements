@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 export class SideMenu extends React.Component {
 	render() {
@@ -6,10 +7,10 @@ export class SideMenu extends React.Component {
 			<div className='section-header'>
 				React application
 			</div>
-			<p>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae nobis minima omnis, iste quo placeat deserunt illum, eos nesciunt dicta
-				itaque numquam iure laudantium beatae vel totam reprehenderit, quis sequi.
-			</p>
+			<div className='app-side-menu-items'>
+				<NavLink to='index'>Home</NavLink>
+				<NavLink to='buttons'>Custom button</NavLink>
+			</div>
 		</div>;
 	}
 }
