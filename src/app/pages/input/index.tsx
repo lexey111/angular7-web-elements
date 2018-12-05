@@ -24,10 +24,10 @@ class TCInputPageComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>TC-INPUT-TEXT</div>
+			<div className='section-header'>TC-INPUT-TEXT | TwinfieldUI Components Library</div>
 			<div className='page-content'>
 				<p>
-					This is <code>tc-input-text</code> web element from Angular:
+					This is <code>tc-input-text</code> web element from TwinfieldUI Components (Angular 7):
 				</p>
 
 				<h3 className='form-section'>Just a field</h3>

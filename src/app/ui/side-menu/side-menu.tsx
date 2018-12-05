@@ -5,7 +5,8 @@ export class SideMenu extends React.Component {
 	render() {
 		return <div className='app-side-menu'>
 			<div className='section-header'>
-				React application
+				<img src='assets/images/react.svg' />
+				React host
 			</div>
 			<div className='app-side-menu-items'>
 				<NavLink to='/index' activeClassName='selected'>Home</NavLink>
