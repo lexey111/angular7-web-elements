@@ -28,7 +28,15 @@
 			padding: 0 16px;
 
 			&:hover {
+				color: @app-side-menu-item-hover-color;
 				background-color: rgba(255, 255, 255, .2);
+			}
+
+			&.selected {
+				pointer-events: none;
+				font-weight: 500;
+				color: @app-side-menu-item-active-color;
+				background-color: rgba(255, 255, 255, .3);
 			}
 		}
 	}

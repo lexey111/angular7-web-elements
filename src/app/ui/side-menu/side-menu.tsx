@@ -8,8 +8,8 @@ export class SideMenu extends React.Component {
 				React application
 			</div>
 			<div className='app-side-menu-items'>
-				<NavLink to='index'>Home</NavLink>
-				<NavLink to='buttons'>Custom button</NavLink>
+				<NavLink to='/index' activeClassName='selected'>Home</NavLink>
+				<NavLink to='/buttons' activeClassName='selected'>Custom button</NavLink>
 			</div>
 		</div>;
 	}
