@@ -1,3 +1,17 @@
-.app-content {
-	padding: 16px;
+@import "./variables.less";
+
+#app-page-container {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	left: @app-side-menu-width;
+	width: calc(100% - @app-side-menu-width);
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.page-content {
+	padding: 0 @app-page-container-padding;
 }
