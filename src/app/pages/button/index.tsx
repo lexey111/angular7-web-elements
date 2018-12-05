@@ -13,9 +13,17 @@ class CustomButtonPageComponent extends React.Component {
 			<div className='section-header'>Custom button</div>
 			<div className='page-content'>
 				<p>
-					This is <code>custom-button</code> web element from angular:
+					This is <code>custom-button</code> web element from Angular:
 				</p>
-				<custom-button label='First Value' hidden></custom-button>
+				<p>
+					<custom-button label='First Value' hidden></custom-button>
+				</p>
+
+				<p>These have styles overridden:</p>
+				<p>
+					<custom-button label='First Value' hidden class='themed'></custom-button>
+					<custom-button label='First Value' hidden class='themed-dark'></custom-button>
+				</p>
 				<p>
 					Click handling attached to the button works from VanillaJS.
 				</p>
