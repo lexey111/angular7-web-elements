@@ -20,6 +20,9 @@
 		.addon-control.append {
 			> SPAN, DIV, BUTTON {
 				border-left-color: @tc-control-active-border-color;
+				color: @tc-control-active-border-color;
+				.tc-control-focused();
+				z-index: 0;
 			}
 		}
 	}
@@ -119,6 +122,7 @@
 		&.append {
 			> SPAN, DIV, BUTTON {
 				padding: 0 @tc-addon-padding-horizontal;
+				.tc-control-transition-all();
 			}
 
 			> SPAN, DIV {

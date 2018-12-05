@@ -10,7 +10,7 @@ window.doVanilla = function () {
 	console.log('  Trying to attach to the buttons... done.');
 	console.log('  Click to the button to see event handling.');
 
-	for (var i = 0; i < buttons.length; i++) {
+	for (let i = 0; i < buttons.length; i++) {
 		(function (i) {
 			var button = buttons[i];
 			button.hidden = false;

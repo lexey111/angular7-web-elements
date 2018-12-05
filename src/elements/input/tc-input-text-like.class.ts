@@ -1,3 +1,4 @@
+import {ɵangular_packages_common_common_g} from '@angular/common';
 import {AfterContentChecked, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -28,7 +29,7 @@ export class TCInputTextLikeComponent implements ControlValueAccessor, AfterCont
 	@Output('change') change = new EventEmitter();
 	private _isDisabled = false;
 
-	constructor() {
+	constructor(private elementRef: ElementRef) {
 		//
 	}
 
@@ -122,10 +123,16 @@ export class TCInputTextLikeComponent implements ControlValueAccessor, AfterCont
 
 	onFocus(event: any) {
 		this.isFocused = true;
+		if (this.elementRef.nativeElement.className.indexOf('focused') === -1) {
+			this.elementRef.nativeElement.className += ' focused';
+		}
 	}
 
 	onBlur(event: any) {
 		this.isFocused = false;
+		if (this.elementRef.nativeElement.className.indexOf('focused') !== -1) {
+			this.elementRef.nativeElement.className = this.elementRef.nativeElement.className.replace(/ focused/, '');
+		}
 	}
 
 	ngAfterContentChecked() {

@@ -120,7 +120,7 @@ module.exports = (env, args) => {
 			contentBase: path.resolve('./dist'),
 			historyApiFallback: true,
 			compress: true,
-			port: 3000
+			port: 3030
 		},
 	};
 
