@@ -32,6 +32,17 @@ code {
 	width: 100%;
 }
 
+.page-appear {
+	opacity: 0.01;
+	transform: translateY(-20px);
+}
+
+.page-appear.page-appear-active {
+	opacity: 1;
+	transform: translateY(0);
+	transition: all .2s ease-in;
+}
+
 .section-header {
 	height: @app-header-size;
 	color: @app-header-color;

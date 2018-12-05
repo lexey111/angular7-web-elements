@@ -1,6 +1,7 @@
 import React from 'react';
+import {AnimatedWrapper} from '../AnimatedWrapper';
 
-export class HomePage extends React.Component {
+class HomePageComponent extends React.Component {
 	render() {
 		return <React.Fragment>
 			<div className='section-header'>Home page</div>
@@ -8,6 +9,7 @@ export class HomePage extends React.Component {
 				Home
 			</div>
 		</React.Fragment>;
-
 	}
 }
+
+export const HomePage = AnimatedWrapper(HomePageComponent);

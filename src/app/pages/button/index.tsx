@@ -1,6 +1,7 @@
 import React from 'react';
+import {AnimatedWrapper} from '../AnimatedWrapper';
 
-export class CustomButtonPage extends React.Component {
+class CustomButtonPageComponent extends React.Component {
 	render() {
 		return <React.Fragment>
 			<div className='section-header'>Custom button</div>
@@ -14,6 +15,7 @@ export class CustomButtonPage extends React.Component {
 				</p>
 			</div>
 		</React.Fragment>;
-
 	}
 }
+
+export const CustomButtonPage = AnimatedWrapper(CustomButtonPageComponent);
