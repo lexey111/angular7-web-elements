@@ -12,7 +12,8 @@ class HomePageComponent extends React.Component {
 					elements.
 				</p>
 
-				<p>Original idea was this <a href='https://medium.com/@tomsu/wanna-create-an-angular-element-heres-how-73e2ea85bd28'>Medium Article</a>.</p>
+				<p>Original idea was this <a href='https://medium.com/@tomsu/wanna-create-an-angular-element-heres-how-73e2ea85bd28' target='_blank'>Medium
+					Article</a>.</p>
 
 				<h3>Pure HTML</h3>
 				<p>

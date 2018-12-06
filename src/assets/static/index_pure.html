@@ -1,47 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Web Elements Pure Demo Page</title>
-	<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<meta charset='UTF-8'>
+	<title>Web Elements: Pure Demo Page</title>
+	<link rel='shortcut icon' href='assets/images/favicon.ico' type='image/x-icon'>
+	<link rel='icon' href='assets/images/favicon.ico' type='image/x-icon'>
 
-	<link rel="stylesheet" href="assets/app.css">
+	<link rel='stylesheet' href='assets/app.css'>
 
-	<script src="assets/polyfill.min.js"></script>
-	<script src="assets/webcomponents-bundle.js"></script>
+	<script src='assets/polyfill.min.js'></script>
+	<script src='assets/webcomponents-bundle.js'></script>
 
-	<script src="scripts/vendors.js"></script>
-	<script src="elements.js"></script>
+	<script src='scripts/vendors.js'></script>
+	<script src='elements.js'></script>
 </head>
 
-<body>
-<div id="app-mount-point" class="pure-html-view">
-	<h1>Welcome!</h1>
-	<p>
-		This is demo page: web elements (custom elements) with no-framework page. Just a HTML and a bit of VanillaJS.
-	</p>
+<body class='pure-html-view'>
+<div id='app-mount-point'>
+	<div class='app-side-menu'>
+		<div class='section-header'>
+			HTML
+		</div>
+		<div class='app-side-menu-items'>
+			<a href="#overhead">Overhead</a>
+			<a href="#custom-button">Custom button</a>
+			<a href="#tc-input-text">Text input</a>
+		</div>
+	</div>
+	<div id='app-page-container'>
+		<div class='section-header'>Welcome</div>
+		<div class='page-content'>
+			<p>
+				This is demo page: web elements (custom elements) no-framework page. Just a HTML and a bit of VanillaJS.
+			</p>
 
-	<h2>Custom button</h2>
-	<p>
-		This is <code>custom-button</code> web element from Angular:
-	</p>
-	<p>
-		<custom-button label='First Value' hidden></custom-button>
-	</p>
+			<h2>Overhead</h2>
+			<a name="overhead"></a>
+			<table class='stat-table'>
+				<thead>
+				<tr>
+					<th>Content</th>
+					<th>Size, production</th>
+					<th>Size, development</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Elements</td>
+					<td>10Kb</td>
+					<td>46Kb</td>
+				</tr>
+				<tr>
+					<td>Common polyfill</td>
+					<td>92Kb</td>
+					<td>92Kb</td>
+				</tr>
+				<tr>
+					<td>Web components polyfill</td>
+					<td>104Kb</td>
+					<td>104Kb</td>
+				</tr>
+				<tr>
+					<td>Angular core layer</td>
+					<td>456Kb</td>
+					<td>2.5Mb</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				<tr>
+					<td></td>
+					<td>650Kb</td>
+					<td>3Mb</td>
+				</tr>
+				</tfoot>
+			</table>
 
-	<p>These have styles overridden:</p>
-	<p>
-		<custom-button label='First Value' hidden class='themed'></custom-button>
-		<custom-button label='First Value' hidden class='themed-dark'></custom-button>
-	</p>
-	<p>
-		Click handling attached to the button works from VanillaJS.
-	</p>
+			<h2>Custom button</h2>
+			<a name="custom-button"></a>
+			<p>
+				This is <code>custom-button</code> web element from Angular:
+			</p>
+			<p>
+				<custom-button label='First Value' hidden></custom-button>
+			</p>
+
+			<p>These have styles overridden:</p>
+			<p>
+				<custom-button label='First Value' hidden class='themed'></custom-button>
+				<custom-button label='First Value' hidden class='themed-dark'></custom-button>
+			</p>
+			<p>
+				Click handling attached to the button works from VanillaJS.
+			</p>
+
+			<h2>TC Input Text</h2>
+			<a name="tc-input-text"></a>
+			<p>
+				This is <code>tc-input-text</code> web element from TwinfieldUI Components (Angular 7):
+			</p>
+
+			<h3 class='form-section'>With text add-on</h3>
+			<div class='input-element'>
+				<tc-input-text label='Text label'
+				               placeholder='Placeholder text'>
+
+					<div class='addon-control append'>
+						<span>42</span>
+					</div>
+				</tc-input-text>
+			</div>
+
+			<h3 class='form-section'>With label and placeholder</h3>
+			<div class='input-element'>
+				<tc-input-text label='Text label'
+				               placeholder='Placeholder text'>
+
+					<div class='below-control'>
+						<p>Validation message</p>
+						<p>Additional information message</p>
+					</div>
+				</tc-input-text>
+			</div>
+		</div>
+	</div>
 </div>
 
-<script src="assets/vanilla.js" defer></script>
+<script src='assets/vanilla.js' defer></script>
 <script>
 	window.onload = function () {
 		if (window['doVanilla']) {
