@@ -5,6 +5,13 @@ This is React application which uses Angular 7 Web Element approach as well as P
 
 Original idea was this [Medium Article](https://medium.com/@tomsu/wanna-create-an-angular-element-heres-how-73e2ea85bd28).
 
+Installation
+--
+1. Download repository, open folder.
+2. `npm install`
+3. `start.bat`
+4. Open browser, [http://localhost:3030/index](http://localhost:3030/index)
+
 Under the hood
 ---
 * React 16

@@ -9,23 +9,23 @@ class PerformancePagePolymerComponent extends React.Component {
 	};
 
 	private show10() {
-		this.setState({showData: 10});
+		this.setState({showRecords: 10});
 	}
 
 	private show100() {
-		this.setState({showData: 100});
+		this.setState({showRecords: 100});
 	}
 
 	private show500() {
-		this.setState({showData: 500});
+		this.setState({showRecords: 500});
 	}
 
 	private show1000() {
-		this.setState({showData: 1000});
+		this.setState({showRecords: 1000});
 	}
 
 	private hideAll() {
-		this.setState({showData: 0});
+		this.setState({showRecords: 0});
 	}
 
 	render() {
