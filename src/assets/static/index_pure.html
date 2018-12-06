@@ -13,7 +13,9 @@
 	<script src='assets/webcomponents-bundle.js'></script>
 
 	<script src='scripts/vendors.js'></script>
+	<script src="scripts/polymer.js"></script>
 	<script src='elements.js'></script>
+	<script src='polymer_elements.js'></script>
 </head>
 
 <body class='pure-html-view'>
@@ -24,19 +26,20 @@
 		</div>
 		<div class='app-side-menu-items'>
 			<a href="#overhead">Overhead</a>
-			<a href="#custom-button">Custom button</a>
-			<a href="#tc-input-text">Text input</a>
+			<a href="#custom-button">Custom button (A7)</a>
+			<a href="#tc-input-text">Text input (A7 TWF)</a>
+			<a href="#polymer">User card (Polymer)</a>
 		</div>
 	</div>
 	<div id='app-page-container'>
 		<div class='section-header'>Welcome</div>
 		<div class='page-content'>
+			<a id="overhead"></a>
 			<p>
 				This is demo page: web elements (custom elements) no-framework page. Just a HTML and a bit of VanillaJS.
 			</p>
 
 			<h2>Overhead</h2>
-			<a name="overhead"></a>
 			<table class='stat-table'>
 				<thead>
 				<tr>
@@ -77,7 +80,7 @@
 			</table>
 
 			<h2>Custom button</h2>
-			<a name="custom-button"></a>
+			<a id="custom-button"></a>
 			<p>
 				This is <code>custom-button</code> web element from Angular:
 			</p>
@@ -95,7 +98,7 @@
 			</p>
 
 			<h2>TC Input Text</h2>
-			<a name="tc-input-text"></a>
+			<a id="tc-input-text"></a>
 			<p>
 				This is <code>tc-input-text</code> web element from TwinfieldUI Components (Angular 7):
 			</p>
@@ -122,6 +125,10 @@
 					</div>
 				</tc-input-text>
 			</div>
+
+			<h2>Polymer element</h2>
+			<a id="polymer"></a>
+			<user-card name="First user"></user-card>
 		</div>
 	</div>
 </div>
