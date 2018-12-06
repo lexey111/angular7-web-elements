@@ -27,7 +27,7 @@ class TCInputPageComponent extends React.Component {
 			<div className='section-header'>TC-INPUT-TEXT | TwinfieldUI Components Library</div>
 			<div className='page-content'>
 				<p>
-					This is <code>tc-input-text</code> web element from TwinfieldUI Components (Angular 7):
+					This is <code>tc-input-text</code> web element exported from TwinfieldUI Components Library (Angular 7):
 				</p>
 
 				<h3 className='form-section'>Just a field</h3>

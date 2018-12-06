@@ -12,6 +12,7 @@ export class SideMenu extends React.Component {
 				<NavLink to='/index' activeClassName='selected'>Intro</NavLink>
 				<NavLink to='/buttons' activeClassName='selected'>Custom button</NavLink>
 				<NavLink to='/tc-input' activeClassName='selected'>Text input</NavLink>
+				<NavLink to='/polymer' activeClassName='selected'>Polymer</NavLink>
 			</div>
 		</div>;
 	}

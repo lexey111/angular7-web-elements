@@ -4,9 +4,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, args) => {
 	let isProduction = false;
+	let ENV = 'development';
 
 	if (args && args['mode'] === 'production') {
 		isProduction = true;
+		ENV = 'production';
 		console.log('## Production mode');
 	} else {
 		console.log('## Development mode');
@@ -98,7 +100,7 @@ module.exports = (env, args) => {
 				},
 				{
 					test: /\.ts$/,
-					exclude: [/node_modules/, /angular-elements/],
+					exclude: /(node_modules|angular-elements)/,
 					use: [{
 						loader: 'ts-loader',
 						options: {
@@ -107,15 +109,32 @@ module.exports = (env, args) => {
 						},
 					}],
 				},
+				// {
+				// 	test: /.js$/,
+				// 	parser: {
+				// 		system: true
+				// 	}
+				// },
 				{
-					test: /.js$/,
+					test: /\.js$/,
+					// We need to transpile Polymer,so whitelist packages containing ES modules
+					exclude: /node_modules\/(?!(lit-html|@polymer|angular|@angular)\/).*/,
 					parser: {
 						system: true
-					}
+					},
+					use: [{
+						loader: 'babel-loader',
+						options: {
+							babelrc: true,
+							extends: path.resolve(__dirname, '.babelrc.js'),
+							cacheDirectory: true,
+							envName: ENV
+						}
+					}]
 				},
 				{
 					test: /\.ts$/,
-					exclude: [/node_modules/, /polymer-elements/],
+					exclude: /(node_modules|polymer-elements)/,
 					use: [{
 						loader: '@ngtools/webpack',
 						options: {

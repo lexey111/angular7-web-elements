@@ -13,7 +13,7 @@ class CustomButtonPageComponent extends React.Component {
 			<div className='section-header'>Custom button</div>
 			<div className='page-content'>
 				<p>
-					This is <code>custom-button</code> web element from Angular:
+					This is <code>custom-button</code> web element built with Angular 7:
 				</p>
 				<p>
 					<custom-button label='First Value' hidden></custom-button>
