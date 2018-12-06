@@ -9,14 +9,26 @@
 
 	<link rel='stylesheet' href='assets/app.css'>
 
+	<script src='assets/babel-helpers.min.js'></script>
 	<script src='assets/polyfill.min.js'></script>
+
 	<script src='assets/webcomponents-bundle.js'></script>
-	<script src="assets/babel-helpers.min.js"></script>
 
 	<script src='scripts/vendors.js'></script>
 	<script src="scripts/polymer.js"></script>
+
 	<script src='elements.js'></script>
 	<script src='polymer_elements.js'></script>
+	<dom-module id="shared-styles">
+		<template>
+			<style>
+				.external-card-content {
+					color: #9C27B0;
+				}
+			</style>
+		</template>
+	</dom-module>
+
 </head>
 
 <body class='pure-html-view'>
@@ -129,7 +141,7 @@
 
 			<h2>Polymer element</h2>
 			<a id="polymer"></a>
-			<user-card name="First user"></user-card>
+			<user-card name="New user" icon-color="#fff" icon-background="navy"></user-card>
 		</div>
 	</div>
 </div>

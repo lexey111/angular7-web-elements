@@ -8,8 +8,7 @@ class HomePageComponent extends React.Component {
 			<div className='page-content'>
 				<h1>Angular 7 Web Elements PoC</h1>
 				<p>
-					This is React application which uses Angular 7 Web Element Approach. It's code provides some Components that are projected as custom
-					elements.
+					This is React application which uses Angular 7 Web Element approach as well as Polymer-based components.
 				</p>
 
 				<p>Original idea was this <a href='https://medium.com/@tomsu/wanna-create-an-angular-element-heres-how-73e2ea85bd28' target='_blank'>Medium
@@ -26,10 +25,11 @@ class HomePageComponent extends React.Component {
 				<ul>
 					<li>React 16</li>
 					<li>Angular 7.1</li>
+					<li>Polymer 3</li>
+					<li>Vanilla JS</li>
 					<li>Webpack 4</li>
 					<li>Typescript 3</li>
-					<li>Vanilla JS</li>
-					<li>Babel (for web elements support in IE11)</li>
+					<li>Babel (for IE11)</li>
 				</ul>
 
 				<p>

@@ -9,9 +9,9 @@
 
 	<link rel="stylesheet" href="assets/app.css">
 
+	<script src='assets/babel-helpers.min.js'></script>
 	<script src="assets/polyfill.min.js"></script>
 	<script src="assets/webcomponents-bundle.js"></script>
-	<script src="assets/babel-helpers.min.js"></script>
 
 	<script src="scripts/vendors.js"></script>
 	<script src="scripts/polymer.js"></script>
@@ -19,13 +19,23 @@
 
 	<script src="elements.js"></script>
 	<script src='polymer_elements.js'></script>
+
+	<dom-module id="shared-styles">
+		<template>
+			<style>
+				.external-card-content {
+					color: #1c5e6c;
+				}
+			</style>
+		</template>
+	</dom-module>
 </head>
 
 <body>
-	<div id="app-mount-point"></div>
+<div id="app-mount-point"></div>
 
-	<script src="assets/vanilla.js" defer></script>
-	<script src="app.js" defer></script>
+<script src="assets/vanilla.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 
 </html>
