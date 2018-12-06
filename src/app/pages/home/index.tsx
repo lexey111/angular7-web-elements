@@ -8,10 +8,17 @@ class HomePageComponent extends React.Component {
 			<div className='page-content'>
 				<h1>Angular 7 Web Elements PoC</h1>
 				<p>
-					This is Angular 7 application which uses Web Element Approach. It's code provides some Components that are projected as custom elements.
+					This is React application which uses Angular 7 Web Element Approach. It's code provides some Components that are projected as custom
+					elements.
 				</p>
 
 				<p>Original idea was this <a href='https://medium.com/@tomsu/wanna-create-an-angular-element-heres-how-73e2ea85bd28'>Medium Article</a>.</p>
+
+				<h3>Pure HTML</h3>
+				<p>
+					<a href='./index_pure.html' target='_blank'>This link</a> will open separate page that is just a HTML and VanillaJS, no frameworks, with web
+					elements.
+				</p>
 
 				<h2>Under the hood</h2>
 
