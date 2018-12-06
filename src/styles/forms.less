@@ -8,3 +8,25 @@ h3.form-section {
 .input-element {
 	width: 300px;
 }
+
+.input-element-grid {
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	align-content: flex-start;
+	align-items: flex-start;
+	justify-items: flex-start;
+	justify-content: flex-start;
+
+	.input-element-grid-cell {
+		min-width: 20%;
+		overflow: hidden;
+	}
+
+	tc-input-text {
+		padding: 4px !important;
+		margin: 0 32px 32px 0!important;
+	}
+}

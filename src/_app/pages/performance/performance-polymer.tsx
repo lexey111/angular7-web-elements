@@ -46,7 +46,7 @@ class PerformancePagePolymerComponent extends React.Component {
 				<hr/>
 				}
 				<div className='block-block'>
-					{this.state.showData > 0 && names.map((name, idx) => {
+					{names.map((name, idx) => {
 						return <user-card name={name + ' | ' + (idx + 1)} key={idx}/>;
 					})}
 				</div>
