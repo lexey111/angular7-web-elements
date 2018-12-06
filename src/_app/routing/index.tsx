@@ -5,6 +5,8 @@ import {CustomButtonPage} from '../pages/button';
 import {HomePage} from '../pages/home';
 import {TCInputPage} from '../pages/input';
 import {PerformancePage} from '../pages/performance';
+import {PerformancePageAngular} from '../pages/performance/performance-angular';
+import {PerformancePagePolymer} from '../pages/performance/performance-polymer';
 import {PolymerPage} from '../pages/polymer';
 import {SideMenu} from '../ui/side-menu/side-menu';
 
@@ -21,6 +23,8 @@ export class AppRoutes extends React.Component {
 					<Route exact path='/tc-input' component={TCInputPage}/>
 					<Route exact path='/polymer' component={PolymerPage}/>
 					<Route exact path='/performance' component={PerformancePage }/>
+					<Route exact path='/performance-angular' component={PerformancePageAngular }/>
+					<Route exact path='/performance-polymer' component={PerformancePagePolymer }/>
 					<Route component={NotFoundComponent}/>
 				</Switch>
 			</div>

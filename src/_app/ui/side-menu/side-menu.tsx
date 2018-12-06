@@ -23,8 +23,8 @@ export class SideMenu extends React.Component {
 					<header>Performance</header>
 					<NavLink to='/performance' activeClassName='selected'>Overview</NavLink>
 					<div className='app-side-menu-item-subgroup'>
-						<NavLink to='/index' activeClassName='selected'>Angular</NavLink>
-						<NavLink to='/index' activeClassName='selected'>Polymer</NavLink>
+						<NavLink to='/performance-angular' activeClassName='selected'>Angular</NavLink>
+						<NavLink to='/performance-polymer' activeClassName='selected'>Polymer</NavLink>
 					</div>
 				</div>
 			</div>
