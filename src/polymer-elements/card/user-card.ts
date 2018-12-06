@@ -79,7 +79,7 @@ export class UserCard extends PolymerElement {
 			<span style="color: [[iconColor]]">[[firstLetter]]</span>
 		</div>
 		<div class="user-card-content external-card-content">
-			Hello, [[name]]!
+			Hello, [[name]]
 
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 				A cupiditate doloremque et illo maiores quae tempore voluptate.
