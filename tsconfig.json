@@ -22,9 +22,9 @@
 		"outDir": "./dist",
 		"typeRoots": [
 			"node_modules/@types"
-		],
+		]
 	},
 	"files": [
-		"./src/elements/index.ts"
+		"./src/angular-elements/index.ts"
 	]
 }

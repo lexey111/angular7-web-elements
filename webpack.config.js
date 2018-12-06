@@ -7,14 +7,16 @@ module.exports = (env, args) => {
 
 	if (args && args['mode'] === 'production') {
 		isProduction = true;
-		console.log('== Production mode');
+		console.log('## Production mode');
 	} else {
-		console.log('== Development mode');
+		console.log('## Development mode');
 	}
-	const config = {
+
+	return {
 		entry: {
-			app: path.resolve(__dirname, './src/app/index.tsx'),
-			elements: path.resolve(__dirname, './src/elements/index.ts'),
+			app: path.resolve(__dirname, './src/_app/index.tsx'),
+			elements: path.resolve(__dirname, './src/angular-elements/index.ts'),
+			polymer_elements: path.resolve(__dirname, './src/polymer-elements/index.ts'),
 		},
 		output: {
 			path: path.resolve(__dirname, './dist'),
@@ -31,23 +33,72 @@ module.exports = (env, args) => {
 					react: {
 						test: /[\\/]node_modules[\\/]\S*react/,
 						name: 'scripts/react',
-						chunks: 'initial',
+						enforce: true,
+						chunks: 'all',
 						priority: 1,
 					},
-					vendor: {
-						test: /[\\/]node_modules[\\/]/,
-						name: 'scripts/vendors',
-						chunks: 'initial',
-						priority: -1,
+					polymer: {
+						//test: /[\\/]node_modules[\\/]@polymer/,
+						test(module) {
+							const context = module.context.replace(/\\/g, '/');
+							if (context.indexOf('node_modules') === -1) {
+								return false;
+							}
+							if (context.indexOf('node_modules/@polymer') !== -1) {
+								return true;
+							}
+							return context.indexOf('node_modules/lit-html') !== -1;
+						},
+
+						name: 'scripts/polymer',
+						chunks: 'all',
+						enforce: true,
+						priority: 2,
 					},
+					vendor: {
+						//test: /[\\/]node_modules[\\/]/,
+						test(module) {
+							const context = module.context.replace(/\\/g, '/');
+							if (context.indexOf('node_modules') === -1) {
+								return false;
+							}
+							if (context.indexOf('node_modules/react') !== -1) {
+								return false;
+							}
+							if (context.indexOf('node_modules/@polymer') !== -1) {
+								return false;
+							}
+							return context.indexOf('node_modules/lit-html') === -1;
+						},
+						name: 'scripts/vendors',
+						chunks: 'all',
+						priority: -10,
+					},
+					default: {
+						minChunks: 1,
+						priority: -20,
+						reuseExistingChunk: true
+					}
 				},
 			},
 		},
 
 		module: {
-			rules: [{
+			rules: [
+				{
 					test: /\.tsx$/,
 					exclude: /node_modules/,
+					use: [{
+						loader: 'ts-loader',
+						options: {
+							transpileOnly: true,
+							silent: true
+						},
+					}],
+				},
+				{
+					test: /\.ts$/,
+					exclude: [/node_modules/, /angular-elements/],
 					use: [{
 						loader: 'ts-loader',
 						options: {
@@ -64,7 +115,7 @@ module.exports = (env, args) => {
 				},
 				{
 					test: /\.ts$/,
-					exclude: /node_modules/,
+					exclude: [/node_modules/, /polymer-elements/],
 					use: [{
 						loader: '@ngtools/webpack',
 						options: {
@@ -75,11 +126,11 @@ module.exports = (env, args) => {
 				{
 					test: /app\.less$/i,
 					use: [{
-							loader: 'file-loader',
-							options: {
-								name: 'assets/[name].css'
-							}
-						},
+						loader: 'file-loader',
+						options: {
+							name: 'assets/[name].css'
+						}
+					},
 						{
 							loader: 'less-loader',
 						}
@@ -91,7 +142,7 @@ module.exports = (env, args) => {
 		plugins: [
 			new NgCompilerPlugin.AngularCompilerPlugin({
 				tsConfigPath: './tsconfig.json',
-				mainPath: './src/elements/index.ts'
+				mainPath: './src/angular-elements/index.ts'
 			}),
 			new CopyWebpackPlugin([
 				// static files to the site root folder (index and robots)
@@ -123,6 +174,4 @@ module.exports = (env, args) => {
 			port: 3030
 		},
 	};
-
-	return config;
 };
