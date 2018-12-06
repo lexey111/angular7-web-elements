@@ -24,16 +24,17 @@ class HomePageComponent extends React.Component {
 				<h2>Under the hood</h2>
 
 				<ul>
-					<li>Webpack 4</li>
-					<li>Typescript 3</li>
 					<li>React 16</li>
 					<li>Angular 7.1</li>
+					<li>Webpack 4</li>
+					<li>Typescript 3</li>
 					<li>Vanilla JS</li>
+					<li>Babel (for web elements support in IE11)</li>
 				</ul>
 
 				<p>
 					This is hybrid application. Main page (and whole application) written with React, but it uses custom elements provided by Angular — with all
-					overhead, of course, though it isn't significant for large applications.
+					overhead, of course, though it isn't too significant for large applications.
 				</p>
 
 				<p>
