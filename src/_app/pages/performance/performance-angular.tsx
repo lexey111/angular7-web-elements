@@ -47,7 +47,12 @@ class PerformancePageAngularComponent extends React.Component {
 				}
 				<div className='input-element-grid'>
 					{names.map((name, idx) => {
-						return <tc-input-text class='input-element-grid-cell' label={name} value={idx + 1} key={idx}/>;
+						const firstName = name.split(' ')[0];
+						return <tc-input-text class='input-element-grid-cell' label={name} value={firstName} key={idx}>
+								<div className='addon-control append'>
+									<span>{idx + 1}</span>
+								</div>
+						</tc-input-text>;
 					})}
 				</div>
 			</div>
