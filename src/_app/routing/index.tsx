@@ -4,7 +4,8 @@ import {NotFoundComponent} from '../pages/404';
 import {CustomButtonPage} from '../pages/button';
 import {HomePage} from '../pages/home';
 import {TCInputPage} from '../pages/input';
-import {CustomPolymerPage} from '../pages/polymer';
+import {PerformancePage} from '../pages/performance';
+import {PolymerPage} from '../pages/polymer';
 import {SideMenu} from '../ui/side-menu/side-menu';
 
 export class AppRoutes extends React.Component {
@@ -18,7 +19,8 @@ export class AppRoutes extends React.Component {
 					<Route exact path='/index' component={HomePage}/>
 					<Route exact path='/buttons' component={CustomButtonPage}/>
 					<Route exact path='/tc-input' component={TCInputPage}/>
-					<Route exact path='/polymer' component={CustomPolymerPage}/>
+					<Route exact path='/polymer' component={PolymerPage}/>
+					<Route exact path='/performance' component={PerformancePage }/>
 					<Route component={NotFoundComponent}/>
 				</Switch>
 			</div>

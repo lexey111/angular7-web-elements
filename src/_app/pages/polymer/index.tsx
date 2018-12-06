@@ -40,4 +40,4 @@ class PolymerPageComponent extends React.Component {
 	}
 }
 
-export const CustomPolymerPage = AnimatedWrapper(PolymerPageComponent);
+export const PolymerPage = AnimatedWrapper(PolymerPageComponent);

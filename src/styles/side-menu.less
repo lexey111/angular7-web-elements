@@ -2,7 +2,7 @@
 
 .app-side-menu {
 	display: flex;
-	flex-flow: column wrap;
+	flex-flow: column nowrap;
 	width: @app-side-menu-width;
 	min-height: 100vh;
 	position: fixed;
@@ -10,18 +10,6 @@
 	//left: 0;
 	bottom: 0;
 	background-color: @app-side-menu-background;
-
-	&:before {
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		width: 1px;
-		background-color: rgba(0, 0, 0, 0.1);
-		z-index: 2;
-	}
 
 	.section-header {
 		background-color: darken(@app-header-background, 5);
@@ -37,15 +25,18 @@
 
 	.app-side-menu-items {
 		display: flex;
-		flex-flow: column wrap;
+		flex-flow: column nowrap;
+		margin-top: 8px;
 
 		a {
 			height: @app-side-menu-item-height;
 			line-height: @app-side-menu-item-height;
 			color: @app-side-menu-item-color;
+			font-size: @app-side-menu-item-font-size;
 			text-decoration: none;
 			transition: all .2s ease;
 			padding: 0 16px;
+			margin-left: 8px;
 
 			&:hover {
 				color: @app-side-menu-item-hover-color;
@@ -57,6 +48,33 @@
 				font-weight: 500;
 				color: @app-side-menu-item-active-color;
 				background-color: rgba(255, 255, 255, .3);
+				z-index: 3;
+			}
+		}
+
+		.app-side-menu-item-group {
+			display: flex;
+			flex-flow: column nowrap;
+
+			header {
+				border-bottom: 1px solid @page-background;
+				background-color: darken(@app-side-menu-background, 5);
+				padding: 0 8px 0 24px;
+				font-weight: bold;
+				font-size: @app-side-menu-item-font-size;
+				display: flex;
+				margin: 0 0 8px 0;
+				height: @app-side-menu-item-height;
+				line-height: @app-side-menu-item-height;
+			}
+		}
+
+		.app-side-menu-item-subgroup {
+			display: flex;
+			flex-flow: column nowrap;
+			margin-left: 16px;
+			a {
+				font-size: .9em;
 			}
 		}
 	}
