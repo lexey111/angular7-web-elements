@@ -7,8 +7,21 @@ class PerformancePageComponent extends React.Component {
 		return <React.Fragment>
 			<div className='section-header'>Performance tests</div>
 			<div className='page-content'>
+				<h2>Conclusion</h2>
 
-				<h2>Size overhead</h2>
+				<h3>Overall performance</h3>
+				<p>
+					There are few performance examples available: &nbsp;
+					<NavLink to='/performance-angular' activeClassName='selected'>Angular inputs</NavLink>,&nbsp;
+					<NavLink to='/performance-inputs-native' activeClassName='selected'>React inputs (no web elements)</NavLink>,&nbsp;
+					<NavLink to='/performance-polymer' activeClassName='selected'>Polymer cards</NavLink>,&nbsp;
+					<NavLink to='/performance-cards-native' activeClassName='selected'>React cards (no web elements)</NavLink>.
+				</p>
+				<p>
+					These pages render up to 1000 appropriate web elements on demand.
+				</p>
+
+				<h3>Size overhead</h3>
 
 				<table className='stat-table'>
 					<thead>
@@ -49,17 +62,12 @@ class PerformancePageComponent extends React.Component {
 					</tfoot>
 				</table>
 
-				<h2>Live performance</h2>
-				<p>
-					There are few performance examples available: &nbsp;
-					<NavLink to='/performance-angular' activeClassName='selected'>Angular inputs</NavLink>,&nbsp;
-					<NavLink to='/performance-inputs-native' activeClassName='selected'>React inputs (no web elements)</NavLink>,&nbsp;
-					<NavLink to='/performance-polymer' activeClassName='selected'>Polymer cards</NavLink>,&nbsp;
-					<NavLink to='/performance-cards-native' activeClassName='selected'>React cards (no web elements)</NavLink>.
-				</p>
-				<p>
-					These pages render up to 1000 appropriate web elements on demand.
-				</p>
+				<h3>ShadowDOM versions</h3>
+				<h3>Maturity of toolchain</h3>
+				<h3>Maintainability</h3>
+				<h3>Styling</h3>
+				<h3>Build conveyor</h3>
+				<h3>Summary</h3>
 			</div>
 		</React.Fragment>;
 	}
