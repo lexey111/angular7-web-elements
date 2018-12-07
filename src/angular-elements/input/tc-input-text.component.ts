@@ -31,6 +31,7 @@ import {TCInputTextLikeComponent} from './tc-input-text-like.class';
 					       (change)="onChange($event)"
 					       (focus)="onFocus($event)"
 					       (blur)="onBlur($event)"
+					       (keypress)="onKey($event)"
 					       (input)="onChange($event)">
 				</div>
 

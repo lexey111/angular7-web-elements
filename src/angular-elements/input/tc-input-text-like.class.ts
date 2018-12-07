@@ -1,4 +1,3 @@
-import {ɵangular_packages_common_common_g} from '@angular/common';
 import {AfterContentChecked, Component, ElementRef, EventEmitter, forwardRef, HostBinding, Input, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -27,7 +26,10 @@ export class TCInputTextLikeComponent implements ControlValueAccessor, AfterCont
 	@Input('placeholder') placeholder: string = '';
 	@Input('maxlength') maxlength = null;
 	@Output('change') change = new EventEmitter();
+	@Output('changed') changed = new EventEmitter();
 	private _isDisabled = false;
+	private _oldValue;
+	private _inputInChanging: boolean = false;
 
 	constructor(private elementRef: ElementRef) {
 		//
@@ -75,6 +77,11 @@ export class TCInputTextLikeComponent implements ControlValueAccessor, AfterCont
 	}
 
 	set value(value: number) {
+		if (!this._inputInChanging) {
+			this._inputInChanging = true;
+			this._oldValue = this._value;
+		}
+
 		this._value = value;
 		this.propagateChange(value);
 	}
@@ -121,6 +128,13 @@ export class TCInputTextLikeComponent implements ControlValueAccessor, AfterCont
 		this.propagateTouch(event);
 	}
 
+	onKey(event: any) {
+		if (!event || event.key !== 'Enter') {
+			return;
+		}
+		this.commitChanges();
+	}
+
 	onFocus(event: any) {
 		this.isFocused = true;
 		if (this.elementRef.nativeElement.className.indexOf('focused') === -1) {
@@ -133,10 +147,18 @@ export class TCInputTextLikeComponent implements ControlValueAccessor, AfterCont
 		if (this.elementRef.nativeElement.className.indexOf('focused') !== -1) {
 			this.elementRef.nativeElement.className = this.elementRef.nativeElement.className.replace(/ focused/, '');
 		}
+		this.commitChanges();
 	}
 
 	ngAfterContentChecked() {
 		this.setInputAppearance();
+	}
+
+	private commitChanges() {
+		if (this.value !== this._oldValue) {
+			this._inputInChanging = false;
+			this.changed.emit(this.value);
+		}
 	}
 
 	private setInputAppearance() {
