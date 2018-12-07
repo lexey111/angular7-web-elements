@@ -4,7 +4,7 @@ styleElement.innerHTML = `
 	<dom-module id="rich-ui-shared-styles-module">
 	<template>
 		<style>
-			.app-switcher {
+			.app-switcher, .profile-menu-button {
 				display: flex;
 				align-content: center;
 				justify-content: center;
@@ -25,21 +25,30 @@ styleElement.innerHTML = `
 				 user-select: none;
 			}
 
-			.app-switcher svg {
+			.app-switcher svg, .profile-menu-button svg{
 				width: calc(var(--menu-size, 60px) * .6);
 				height: calc(var(--menu-size, 60px) * .6);
 				fill: var(--app-accent-color, #fff);
 				transition: all .2s ease;
 			}
 
-			.app-switcher:hover {
+			.profile-menu-button svg{
+				width: calc(var(--menu-size, 60px) * .5);
+				height: calc(var(--menu-size, 60px) * .5);
+			}
+
+			.app-switcher:hover, .profile-menu-button:hover {
 				opacity: 1;
 			}
 
 			.app-switcher:active, 
 			.app-switcher:focus, 
 			.app-switcher.focus, 
-			.app-switcher:active:focus {
+			.app-switcher:active:focus,
+			.profile-menu-button:active, 
+			.profile-menu-button:focus, 
+			.profile-menu-button.focus, 
+			.profile-menu-button:active:focus {
 				outline: none;
 				outline-offset: 0;
 				padding: 0;
