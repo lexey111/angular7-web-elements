@@ -41,9 +41,21 @@ body {
 	height: @menu-size;
 	background-color: @app-accent;
 	display: flex;
-	align-items: center;
+	flex-flow: column nowrap;
 	z-index: 2;
+
+	.switcher-content {
+		display: flex;
+		margin-top: auto;
+		justify-self: flex-end;
+	}
+
+	.switcher-comment {
+		font-size: .8em;
+		font-style: italic;
+	}
 }
+
 
 .side-menu-container {
 	position: fixed;

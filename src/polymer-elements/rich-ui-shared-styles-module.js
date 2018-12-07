@@ -31,7 +31,6 @@ styleElement.innerHTML = `
 				outline: none;
 			}
 			
-
 			.logo {
 				padding: 0 0 0 8px;
 				margin: 0;
@@ -44,6 +43,8 @@ styleElement.innerHTML = `
 			}
 
 			.switcher-content {
+				display: flex;
+				flex-flow: column nowrap;
 				position: fixed;
 				top: 0;
 				bottom: 0;
@@ -51,32 +52,69 @@ styleElement.innerHTML = `
 				width: var(--app-switcher-size, 200px);
 				color: var(--app-accent-color, red);
 				background-color: var(--app-accent, red);
-				box-shadow: 0 4px 8px rgba(0, 0, 0, .5);
+				box-shadow: 4px 0 8px rgba(0, 0, 0, .5);
 				opacity: 0;
 				pointer-events: none;
 				transform: translateX( -(var(--app-switcher-size, 200px)));
 				transition: all .2s ease;
 				z-index: 10;
+				padding: var(--menu-size, 20px) 8px 0 8px;
 			}
 			
 			.switcher-content.active {
-				opacity: .9;
+				opacity: .95;
 				pointer-events: all;
 				transform: translateX(0);
 			}
 			
+			.switcher-title {
+				opacity: .8;
+				font-size: 16px;
+				font-weight: bold;
+				position: absolute;
+				display: flex;
+				top: 0;
+				height: var(--menu-size, 60px);
+				right: 0;
+				left: 0;
+				align-items: center;
+				align-content: center;
+				padding: 0 8px;
+				background-color: rgba(0, 0, 0, .2);
+			}
+			
 			.switcher-close {
 				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: var(--menu-size, 60px);
 				right: 8px;
-				top: 4px;
+				top: 0;
 				font-size: 30px;
 				cursor: pointer;
 				opacity: .8;
 				transition: all .2s ease;
+				z-index: 11;
 			}
 
 			.switcher-close:hover {
 				opacity: 1;
+			}
+			
+			.app-switcher-item {
+				display: flex;
+				height: var(--menu-size, 20px);
+				width: 100%;
+				padding: 0 20px;
+				align-content: center;
+				align-items: center;
+				cursor: pointer;
+				transition: all .2s ease;
+			}
+
+			.app-switcher-item:hover {
+				background-color: rgba(255,255,255,.3);
 			}
 		</style>
 	</template>

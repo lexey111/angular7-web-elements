@@ -1,5 +1,6 @@
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@polymer/polymer/lib/elements/dom-repeat.js';
 
 export class TopMenu extends PolymerElement {
 	static get is() {
@@ -9,6 +10,7 @@ export class TopMenu extends PolymerElement {
 	static get properties() {
 		return {
 			title: {type: String, value: 'Super app'},
+			contextItems: {type: Array, value: []},
 			__switcherShown: {type: Boolean, value: false},
 		};
 	}
@@ -44,7 +46,14 @@ export class TopMenu extends PolymerElement {
 	<div class="content">
 		<div class$="{{__getSwitcherClass(__switcherShown)}}">
 			<span class="switcher-close">&times;</span>
+			<span class="switcher-title">[[title]]</span>
+
+			<template is="dom-repeat" items="[[contextItems]]">
+				<context-switcher-item url=[[item.url]] title=[[item.title]]></context-switcher-item>
+			</template>
+
 			<slot name="switcher-content"></slot>
+
 		</div>
 	 </div>
 	<div class="logo">[[title]]</div>
