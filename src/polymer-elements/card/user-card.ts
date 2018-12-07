@@ -8,7 +8,7 @@ export class UserCard extends PolymerElement {
 
 	static get properties() {
 		return {
-			name: {type: String, value: 'AUser'},
+			name: {type: String, value: 'User'},
 			firstLetter: {
 				type: String,
 				readOnly: true,

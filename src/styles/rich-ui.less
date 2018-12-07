@@ -1,0 +1,67 @@
+@import (inline) "./_normalize.css";
+@import (inline) "./_fonts.css";
+@import (inline) "./_buttons.css";
+@import "./typography.less";
+
+@page-background: #fff;
+@app-accent: #801a48;
+@app-accent-color: #fff;
+@menu-size: 60px;
+@app-switcher-size: 200px;
+
+body, html {
+	background-color: @page-background;
+	font-family: system-ui, Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	width: 100%;
+	min-width: 960px;
+	margin: 0 auto;
+	color: @app-color;
+	min-height: 100vh;
+	position: relative;
+	overflow: hidden;
+
+	--menu-size: @menu-size;
+	--app-accent: @app-accent;
+	--app-accent-color: @app-accent-color;
+	--app-switcher-size: @app-switcher-size;
+}
+
+.top-menu-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: @menu-size;
+	background-color: @app-accent;
+	display: flex;
+	align-items: center;
+	z-index: 2;
+}
+
+.side-menu-container {
+	position: fixed;
+	top: @menu-size;
+	left: 0;
+	bottom: 0;
+	width: @menu-size;
+	background-color: @app-accent;
+	z-index: 1;
+}
+
+.content-container {
+	position: fixed;
+	top: @menu-size;
+	left: @menu-size;
+	bottom: 0;
+	right: 0;
+	background-color: @app-background;
+	overflow: auto;
+	z-index: 0;
+}
