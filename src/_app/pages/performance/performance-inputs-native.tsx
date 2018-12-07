@@ -19,7 +19,7 @@ interface IWrappedTCInputProps extends IWrappedTCInputState {
 }
 
 
-class WrappedTCInput extends React.Component<IWrappedTCInputProps, IWrappedTCInputState> {
+class WrappedReactInput extends React.Component<IWrappedTCInputProps, IWrappedTCInputState> {
 	protected setState;
 
 	private state: CInputValue = {...this.props.value};
@@ -28,45 +28,68 @@ class WrappedTCInput extends React.Component<IWrappedTCInputProps, IWrappedTCInp
 		super(props);
 	}
 
-	private inputRef: HTMLInputElement | null = null;
+	valueChange(event) {
+		console.log(`onChange [${this.props.value.idx + 1}]:`, event.target.value);
 
-	private assignRef(ref: HTMLInputElement) {
-		if (this.inputRef) {
+		this.setState({
+			...this.state,
+			firstName: event.target.value,
+			label: event.target.value + ' ' + this.state.secondName
+		});
+	}
+
+	commitChanges() {
+		console.log('do commit!');
+		this.props.onChanged(this.state);
+	}
+
+	onBlur() {
+		this.commitChanges();
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		if (!nextProps || !nextState) {
+			return true;
+		}
+		return nextProps.value.firstName !== nextState.firstName ||
+			nextProps.value.label !== nextState.label;
+	}
+
+	onKey(event) {
+		if (!event || event.key !== 'Enter') {
 			return;
 		}
-		this.inputRef = ref;
-
-		this.inputRef.addEventListener('change', (event: any) => {
-			if (!event.detail) {
-				return;
-			}
-			console.log(`onChange [${this.props.value.idx + 1}]:`, event.detail);
-
-			this.setState({
-				...this.state,
-				firstName: event.detail,
-				label: event.detail + ' ' + this.state.secondName
-			});
-		});
-
-		this.inputRef.addEventListener('changed', (event: any) => {
-			console.log(`value committed ${this.props.value.idx + 1}:`, event.detail);
-
-			this.props.onChanged(this.state);
-		});
+		this.commitChanges();
 	}
 
 	render() {
 		const {idx, label, firstName} = this.state;
 
-		return <tc-input-text class='input-element-grid-cell'
-		                      label={label}
-		                      value={firstName}
-		                      ref={i => this.assignRef(i)}>
-			<div className='addon-control append'>
-				<span>{idx + 1}</span>
+		return <div className='input-element-grid-cell'>
+			<div className='tc-control has-label tc-emulated-control'>
+				<div className='tc-control-label'>
+					{label}
+				</div>
+				<div className='tc-control-input-group with-addon-append'>
+					<div className='tc-control-input-area'>
+						<div className='tc-control-input-container'>
+							<input type='text'
+							       className='tc-control-input'
+							       onChange={this.valueChange.bind(this)}
+							       onBlur={this.onBlur.bind(this)}
+							       onKeyPress={this.onKey.bind(this)}
+							       value={firstName}/>
+						</div>
+
+						<div className='tc-control-input-addon-append'>
+							<div className='addon-control append'>
+								<span>{idx + 1}</span>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</tc-input-text>;
+		</div>;
 	}
 }
 
@@ -169,8 +192,8 @@ class PerformancePageReactInputsComponent extends React.Component {
 					{this.state.data
 						.map((value, idx) => {
 							return <React.Fragment key={idx}>
-								<WrappedTCInput value={value}
-								                onChanged={this.changeValue.bind(this)}
+								<WrappedReactInput value={value}
+								                   onChanged={this.changeValue.bind(this)}
 								/>
 							</React.Fragment>;
 						})}

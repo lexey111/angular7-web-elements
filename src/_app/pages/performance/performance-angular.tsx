@@ -56,6 +56,15 @@ class WrappedTCInput extends React.Component<IWrappedTCInputProps, IWrappedTCInp
 		});
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		if (!nextProps || !nextState) {
+			return true;
+		}
+		return nextProps.value.firstName !== nextState.firstName ||
+			nextProps.value.label !== nextState.label;
+	}
+
+
 	render() {
 		const {idx, label, firstName} = this.state;
 
