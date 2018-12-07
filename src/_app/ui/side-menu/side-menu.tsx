@@ -29,9 +29,10 @@ export class SideMenu extends React.Component {
 					<NavLink to='/performance' activeClassName='selected'>Overview</NavLink>
 
 					<div className='app-side-menu-item-subgroup'>
-						<NavLink to='/performance-angular' activeClassName='selected'>Angular</NavLink>
-						<NavLink to='/performance-polymer' activeClassName='selected'>Polymer</NavLink>
-						<NavLink to='/performance-native' activeClassName='selected'>React</NavLink>
+						<NavLink to='/performance-angular' activeClassName='selected'>Angular: inputs</NavLink>
+						<NavLink to='/performance-inputs-native' activeClassName='selected'>React: inputs</NavLink>
+						<NavLink to='/performance-polymer' activeClassName='selected'>Polymer: cards</NavLink>
+						<NavLink to='/performance-cards-native' activeClassName='selected'>React: cards</NavLink>
 					</div>
 				</div>
 			</div>

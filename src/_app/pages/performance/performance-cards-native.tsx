@@ -78,7 +78,7 @@ class PerformancePageNativeComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>Performance tests: React</div>
+			<div className='section-header'>Performance tests: React Cards</div>
 			<div className='page-content'>
 				<p>
 					{this.state.showRecords > 0 &&

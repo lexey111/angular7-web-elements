@@ -52,9 +52,10 @@ class PerformancePageComponent extends React.Component {
 				<h2>Live performance</h2>
 				<p>
 					There are few performance examples available: &nbsp;
-					<NavLink to='/performance-angular' activeClassName='selected'>Angular</NavLink>,&nbsp;
-					<NavLink to='/performance-polymer' activeClassName='selected'>Polymer</NavLink>,&nbsp;
-					<NavLink to='/performance-native' activeClassName='selected'>React (no web elements)</NavLink>.
+					<NavLink to='/performance-angular' activeClassName='selected'>Angular inputs</NavLink>,&nbsp;
+					<NavLink to='/performance-inputs-native' activeClassName='selected'>React inputs (no web elements)</NavLink>,&nbsp;
+					<NavLink to='/performance-polymer' activeClassName='selected'>Polymer cards</NavLink>,&nbsp;
+					<NavLink to='/performance-cards-native' activeClassName='selected'>React cards (no web elements)</NavLink>.
 				</p>
 				<p>
 					These pages render up to 1000 appropriate web elements on demand.
