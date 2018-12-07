@@ -1,3 +1,5 @@
+@import "variables.less";
+
 h3.form-section {
 	font-size: 1em;
 	margin: 3em 0 1em 0;
@@ -38,18 +40,43 @@ h3.form-section {
 }
 
 .stat-table {
-	width: 80%;
+	width: 90%;
+	max-width: 900px;
+	margin: 0 auto;
+	background-color: lighten(@page-background, 25);
+	border-collapse: collapse;
+	border-radius: 6px 6px 0 0;
+	overflow: hidden;
 
 	thead {
 		background-color: #678695;
 
 		th {
-			height: 40px;
+			height: 48px;
 			color: #fff;
+			font-weight: normal;
+			font-size: .9em;
+			padding: 0 8px;
+		}
+
+		th:nth-of-type(1) {
+			width: 50%;
 		}
 	}
 
 	tbody, tfoot {
+		tr.category {
+			td {
+				background-color: lighten(@page-background, 18);
+				color: #343c42;
+				text-align: left;
+				text-transform: uppercase;
+				font-size: .9em;
+				font-weight: bold;
+				padding-left: 8px;
+			}
+		}
+
 		td {
 			text-align: center;
 			height: 32px;
@@ -57,6 +84,13 @@ h3.form-section {
 
 		td:nth-of-type(1) {
 			text-align: right;
+			padding-right: 8px;
+			border-right: 2px solid lighten(@page-background, 20);
+		}
+
+		td:last-child {
+			text-align: right;
+			padding-right: 8px;
 		}
 	}
 
