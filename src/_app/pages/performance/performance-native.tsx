@@ -2,6 +2,39 @@ import React from 'react';
 import {AnimatedWrapper} from '../AnimatedWrapper';
 import {fakeNames} from './fake-names';
 
+interface IReactUserCardProps {
+	iconBackground: string;
+	iconColor?: string;
+	name: string;
+}
+
+class ReactUserCard extends React.Component<IReactUserCardProps> {
+	constructor(private props: IReactUserCardProps) {
+		super(props);
+	}
+
+	render() {
+		const firstLetter = this.props.name.substr(0, 1);
+		const backgroundStyle = {backgroundColor: this.props.iconBackground || '#888'};
+		const textStyle = {color: this.props.iconColor || '#fff'};
+
+		return <div className='user-card-wrapper'>
+			<div className='user-card-icon' style={backgroundStyle}>
+				<span style={textStyle}>{firstLetter}</span>
+			</div>
+			<div className='user-card-content external-card-content'>
+				Hello, {this.props.name}
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+					A cupiditate doloremque et illo maiores quae tempore voluptate.
+					Consectetur dolore eveniet, harum illum laudantium nulla quam
+					repellat similique, tempore ullam veritatis.
+				</p>
+			</div>
+		</div>;
+	}
+}
+
 class PerformancePageNativeComponent extends React.Component {
 	protected setState;
 	state = {
@@ -61,10 +94,12 @@ class PerformancePageNativeComponent extends React.Component {
 				}
 				<div className='block-block'>
 					{this.state.data.map((name, idx) => {
-						return <user-card
-							name={name + ' | ' + (idx + 1)}
-							icon-background={this.colors[Math.floor(Math.random() * this.colors.length)]}
-							key={idx}/>;
+						return <div className='react-user-card' key={idx}>
+							<ReactUserCard
+								name={name + ' | ' + (idx + 1)}
+								iconBackground={this.colors[Math.floor(Math.random() * this.colors.length)]}
+							/>
+						</div>;
 					})}
 				</div>
 			</div>
