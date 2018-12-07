@@ -37,11 +37,11 @@ export class TopMenu extends PolymerElement {
 		}
 	</style>
 
-	<div class="app-switcher" tabindex=1
+	<button class="app-switcher"
 		on-click=__toggleSwitcher
 		on-blur=__hideSwitcher>
 			${this.logoIcon}
-	</div>
+	</button>
 
 	<div class="content">
 		<div class$="{{__getSwitcherClass(__switcherShown)}}">
@@ -57,6 +57,14 @@ export class TopMenu extends PolymerElement {
 		</div>
 	 </div>
 	<div class="logo">[[title]]</div>
+
+	<div class="middle-content">
+		<slot name="middle-content"></slot>
+	</div>
+
+	<div class="right-content">
+		<slot name="right-content"></slot>
+	</div>
 `;
 	}
 
