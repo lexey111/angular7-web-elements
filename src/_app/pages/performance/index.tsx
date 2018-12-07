@@ -8,7 +8,7 @@ class PerformancePageComponent extends React.Component {
 			<div className='section-header'>Performance tests</div>
 			<div className='page-content'>
 
-				<h2>Overhead</h2>
+				<h2>Size overhead</h2>
 
 				<table className='stat-table'>
 					<thead>
@@ -53,10 +53,11 @@ class PerformancePageComponent extends React.Component {
 				<p>
 					There are few performance examples available: &nbsp;
 					<NavLink to='/performance-angular' activeClassName='selected'>Angular</NavLink>,&nbsp;
-					<NavLink to='/performance-polymer' activeClassName='selected'>Polymer</NavLink>.
+					<NavLink to='/performance-polymer' activeClassName='selected'>Polymer</NavLink>,&nbsp;
+					<NavLink to='/performance-native' activeClassName='selected'>React (no web elements)</NavLink>.
 				</p>
 				<p>
-					Pages render up to 1000 web elements on demand.
+					These pages render up to 1000 appropriate web elements on demand.
 				</p>
 			</div>
 		</React.Fragment>;

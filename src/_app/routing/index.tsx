@@ -6,6 +6,7 @@ import {HomePage} from '../pages/home';
 import {TCInputPage} from '../pages/input';
 import {PerformancePage} from '../pages/performance';
 import {PerformancePageAngular} from '../pages/performance/performance-angular';
+import {PerformancePageNative} from '../pages/performance/performance-native';
 import {PerformancePagePolymer} from '../pages/performance/performance-polymer';
 import {PolymerPage} from '../pages/polymer';
 import {SideMenu} from '../ui/side-menu/side-menu';
@@ -25,6 +26,7 @@ export class AppRoutes extends React.Component {
 					<Route exact path='/performance' component={PerformancePage }/>
 					<Route exact path='/performance-angular' component={PerformancePageAngular }/>
 					<Route exact path='/performance-polymer' component={PerformancePagePolymer }/>
+					<Route exact path='/performance-native' component={PerformancePageNative }/>
 					<Route component={NotFoundComponent}/>
 				</Switch>
 			</div>

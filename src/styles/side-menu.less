@@ -26,7 +26,6 @@
 	.app-side-menu-items {
 		display: flex;
 		flex-flow: column nowrap;
-		margin-top: 8px;
 
 		a {
 			height: @app-side-menu-item-height;
@@ -59,11 +58,11 @@
 			header {
 				border-bottom: 1px solid @page-background;
 				background-color: darken(@app-side-menu-background, 5);
-				padding: 0 8px 0 24px;
+				padding: 0 8px 0 8px;
 				font-weight: bold;
-				font-size: @app-side-menu-item-font-size;
+				font-size: @app-side-menu-item-font-size - 1px;
 				display: flex;
-				margin: 0 0 8px 0;
+				margin: 0 0 4px 0;
 				height: @app-side-menu-item-height;
 				line-height: @app-side-menu-item-height;
 			}

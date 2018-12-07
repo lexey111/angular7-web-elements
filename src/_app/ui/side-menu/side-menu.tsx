@@ -25,12 +25,13 @@ export class SideMenu extends React.Component {
 				</div>
 
 				<div className='app-side-menu-item-group'>
-					<header>Performance</header>
+					<header>Performance &amp; Overhead</header>
 					<NavLink to='/performance' activeClassName='selected'>Overview</NavLink>
 
 					<div className='app-side-menu-item-subgroup'>
 						<NavLink to='/performance-angular' activeClassName='selected'>Angular</NavLink>
 						<NavLink to='/performance-polymer' activeClassName='selected'>Polymer</NavLink>
+						<NavLink to='/performance-native' activeClassName='selected'>React</NavLink>
 					</div>
 				</div>
 			</div>
