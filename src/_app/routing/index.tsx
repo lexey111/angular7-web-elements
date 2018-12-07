@@ -7,6 +7,7 @@ import {TCInputPage} from '../pages/input';
 import {PerformancePage} from '../pages/performance';
 import {PerformancePageAngular} from '../pages/performance/performance-angular';
 import {PerformancePageNative} from '../pages/performance/performance-cards-native';
+import {PerformancePageReactInputs} from '../pages/performance/performance-inputs-native';
 import {PerformancePagePolymer} from '../pages/performance/performance-polymer';
 import {PolymerPage} from '../pages/polymer';
 import {SideMenu} from '../ui/side-menu/side-menu';
@@ -23,10 +24,11 @@ export class AppRoutes extends React.Component {
 					<Route exact path='/buttons' component={CustomButtonPage}/>
 					<Route exact path='/tc-input' component={TCInputPage}/>
 					<Route exact path='/polymer' component={PolymerPage}/>
-					<Route exact path='/performance' component={PerformancePage }/>
-					<Route exact path='/performance-angular' component={PerformancePageAngular }/>
-					<Route exact path='/performance-polymer' component={PerformancePagePolymer }/>
-					<Route exact path='/performance-cards-native' component={PerformancePageNative }/>
+					<Route exact path='/performance' component={PerformancePage}/>
+					<Route exact path='/performance-angular' component={PerformancePageAngular}/>
+					<Route exact path='/performance-polymer' component={PerformancePagePolymer}/>
+					<Route exact path='/performance-cards-native' component={PerformancePageNative}/>
+					<Route exact path='/performance-inputs-native' component={PerformancePageReactInputs}/>
 					<Route component={NotFoundComponent}/>
 				</Switch>
 			</div>

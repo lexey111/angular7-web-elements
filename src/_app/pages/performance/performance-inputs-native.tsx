@@ -70,7 +70,7 @@ class WrappedTCInput extends React.Component<IWrappedTCInputProps, IWrappedTCInp
 	}
 }
 
-class PerformancePageAngularComponent extends React.Component {
+class PerformancePageReactInputsComponent extends React.Component {
 	protected setState;
 	private initialData = fakeNames.map((name, idx) => {
 		const namePair = name.split(' ');
@@ -148,12 +148,11 @@ class PerformancePageAngularComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>Performance tests: Angular 7 TC Inputs web elements</div>
+			<div className='section-header'>Performance tests: React Inputs</div>
 			<div className='page-content'>
 				<p>
-					The page renders up to 1000 Angular 7-based input elements.
+					The page renders up to 1000 React-based input elements.
 				</p>
-
 				<p>
 					{this.state.showRecords > 0 &&
 					<button className='press press-red' onClick={this.hideAll.bind(this)}>Hide all</button>
@@ -195,4 +194,4 @@ class PerformancePageAngularComponent extends React.Component {
 	}
 }
 
-export const PerformancePageAngular = AnimatedWrapper(PerformancePageAngularComponent);
+export const PerformancePageReactInputs = AnimatedWrapper(PerformancePageReactInputsComponent);

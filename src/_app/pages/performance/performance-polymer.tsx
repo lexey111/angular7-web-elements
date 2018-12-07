@@ -45,8 +45,12 @@ class PerformancePagePolymerComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>Performance tests: Polymer</div>
+			<div className='section-header'>Performance tests: Polymer cards</div>
 			<div className='page-content'>
+				<p>
+					The page renders up to 1000 Polymer-based User Cards.
+				</p>
+
 				<p>
 					{this.state.showRecords > 0 &&
 					<button className='press press-red' onClick={this.hideAll.bind(this)}>Hide all</button>

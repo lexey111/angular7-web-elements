@@ -81,6 +81,9 @@ class PerformancePageNativeComponent extends React.Component {
 			<div className='section-header'>Performance tests: React Cards</div>
 			<div className='page-content'>
 				<p>
+					The page renders up to 1000 React-based User Cards.
+				</p>
+				<p>
 					{this.state.showRecords > 0 &&
 					<button className='press press-red' onClick={this.hideAll.bind(this)}>Hide all</button>
 					}
