@@ -20,6 +20,10 @@ class HomePageComponent extends React.Component {
 					elements.
 				</p>
 
+				<p>
+					<a href='./index_rich.html' target='_blank'>This page</a> is a mock of rich ui application.
+				</p>
+
 				<h2>Under the hood</h2>
 
 				<ul>

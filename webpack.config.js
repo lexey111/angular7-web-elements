@@ -154,6 +154,19 @@ module.exports = (env, args) => {
 							loader: 'less-loader',
 						}
 					]
+				},
+				{
+					test: /rich-ui\.less$/i,
+					use: [{
+						loader: 'file-loader',
+						options: {
+							name: 'assets/[name].css'
+						}
+					},
+						{
+							loader: 'less-loader',
+						}
+					]
 				}
 			]
 		},
