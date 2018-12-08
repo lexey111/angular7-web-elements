@@ -17,10 +17,14 @@ const Icons = {
 };
 
 customElements.define('top-icon', class extends LitElement {
+		isOpen = false;
+
 		static get properties() {
 			return {
 				icon: {type: String, value: 'home'},
-				event: {type: String, value: 'home_clicked'}
+				notifications: {type: Array, value: []},
+				event: {type: String, value: 'home_clicked'},
+				isOpen: {type: Boolean, value: false},
 			};
 		}
 
@@ -51,30 +55,143 @@ customElements.define('top-icon', class extends LitElement {
 					-moz-user-select: none;
 					-ms-user-select: none;
 					 user-select: none;
+					 position: relative;
+				}
+				.top-menu-icon:focus {
+					opacity: 1;
 				}
 				.top-menu-icon svg{
-					width: calc(var(--menu-size, 60px) * .6);
-					height: calc(var(--menu-size, 60px) * .6);
+					width: calc(var(--menu-size, 60px) * .7);
+					height: calc(var(--menu-size, 60px) * .7);
 					fill: var(--app-accent-color, #fff);
 					transition: all .2s ease;
 				}
 				.top-menu-icon svg{
-					width: calc(var(--menu-size, 60px) * .5);
-					height: calc(var(--menu-size, 60px) * .5);
+					width: calc(var(--menu-size, 60px) * .6);
+					height: calc(var(--menu-size, 60px) * .6);
 				}
 				.top-menu-icon:hover {
 					opacity: 1;
 				}
+				.top-menu-icon-badge {
+					position: absolute;
+					top: calc(var(--menu-size, 60px) * .4 - 12px);
+					left: calc(var(--menu-size, 60px) * .4 + 12px);
+					font-size: 11px;
+					background-color: #ffc400;
+					border: 2px solid #fff;
+					color: #653b09;
+					padding: 2px 4px;
+					border-radius: 16px;
+					box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+				}
+				.top-icon-dropdown {
+					position: fixed;
+					top: var(--menu-size, 60px);
+					margin-top: -8px;
+					right: 5px;
+					width: 300px;
+					background-color: #fff;
+					color: #333;
+					pointer-events: none;
+					z-index: 11;
+					transition: all .2s ease;
+					opacity: 1;
+				}
+				.top-icon-dropdown.active {
+					pointer-events: all;
+					box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
+					padding: 16px;
+					text-align: left;
+				}
+				.top-icon-dropdown ul {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+				}
+				.top-icon-dropdown ul li {
+					white-space: nowrap;
+					min-height: 32px;
+					padding: 2px 4px 2px 12px;
+					font-size: 13px;
+					border-left: 6px solid transparent;
+					margin: 4px 0;
+				}
+				.top-icon-dropdown ul li div {
+					display: block;
+					float: none;
+					padding: 0;
+					margin: 0;
+					font-weight: bold;
+				}
+				.top-icon-dropdown ul li p {
+					display: block;
+					float: none;
+					font-size: 11px;
+					opacity: .5;
+					padding: 4px 0;
+					line-height: 1em;
+					margin: 0;
+				}
+				.top-icon-dropdown ul li.error {
+					border-color: orangered;
+				}
+				.top-icon-dropdown ul li.warning {
+					border-color: darkorange;
+				}
+				.top-icon-dropdown ul li.info {
+					border-color: dodgerblue;
+				}
 
 			</style>
 
-			<div class="top-menu-icon"
+			<button class="top-menu-icon" tabindex="1"
+				@focus=${this.__openDropdown}
+				@blur=${this.__closeDropdown}
 				@click=${this.__doClick}>
 					${unsafeHTML(svgString)}
-			</div>`;
+					${this.notifications && this.notifications.length ? html`<span class="top-menu-icon-badge">${this.notifications.length}</span>` : ''}
+					${this.renderItems()}
+			</button>`;
+		}
+
+		renderItems() {
+			const itemTemplates = [];
+
+			if (this.notifications && this.notifications.length && this.isOpen) {
+				for (const i of this.notifications) {
+					itemTemplates.push(
+						html`
+							<li class="${i.type}">
+								<div>${i.text}</div>
+								<p>${i.subtext}</p>
+							</li>
+						`);
+				}
+			}
+			const extraClass = this.isOpen ? 'active' : '';
+
+			return html`
+				<div class="top-icon-dropdown ${extraClass}">
+					${itemTemplates.length ? html`<ul>${itemTemplates}</ul>` : ''}
+				</div>
+			`;
+		}
+
+		__closeDropdown() {
+			this.isOpen = false;
+		}
+
+		__openDropdown() {
+			if (this.notifications && this.notifications.length) {
+				this.isOpen = true;
+			}
 		}
 
 		__doClick() {
+			if (this.notifications && this.notifications.length) {
+				return;
+			}
 			console.log('clicked!', this.event);
 			this.dispatchEvent(new CustomEvent(this.event, {detail: {name: event}}));
 		}

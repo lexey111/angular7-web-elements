@@ -45,17 +45,32 @@ const data = {
 			url: '/logout',
 			fake: true
 		},
+	],
+	notifications: [
+		{type: 'warning', text: 'Something going to be wrong...', subtext: 'Please check everything'},
+		{type: 'info', text: 'All right yet, but it is not a time to relax', subtext: 'Please be careful'},
+		{type: 'info', text: 'Nothing changes', subtext: 'Be quiet'},
+		{type: 'info', text: 'Data loaded', subtext: 'Processing age going'},
+		{type: 'error', text: 'Invalid salary', subtext: 'Please increase'},
 	]
 };
 
 window.onload = function () {
-	console.log('Page ready');
+	console.log('- Page ready.');
 
 	document.querySelector('top-menu').contextItems = data.contextSwitchItems;
 	document.querySelector('profile-menu').items = data.profileMenuItems;
-	console.log('assign:', document.querySelector('top-menu'), data.contextSwitchItems);
 
-	document.querySelector('top-icon').addEventListener('home_clicked', function () {
-		console.log('Home icon clicked');
+	console.log('- Data assigned.');
+
+	document.querySelector('#home-icon').addEventListener('home_clicked', function () {
+		alert('Home icon clicked');
 	});
+
+	console.log('- Listeners ready.');
+
+	setTimeout(function () {
+		document.querySelector('#display-icon').notifications = data.notifications;
+		console.log('- Notifications assigned.');
+	}, 200);
 };
