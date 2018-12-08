@@ -151,6 +151,19 @@ class PerformancePageComponent extends React.Component {
 					</tfoot>
 				</table>
 
+				<h3>Usability</h3>
+				<p>
+					The main inconvenience with the components is data propagation and event firing. There are no usual ways like callbacks and dependency
+					injections available, so passing the data to the element is serializing/deserializing procedure, and reacting to element state change
+					involves <code>addEventListener</code> creation.
+				</p>
+				<p>
+					Some common solution could be proposed, like event/data bus, but this is a kind of crutches.
+				</p>
+				<p>
+					However, for simple UIs such tradeoff is bearable even with lightweight host-level frameworks like React of Vue.
+				</p>
+
 				<h3>ShadowDOM</h3>
 				<p>
 					Current version of ShadowDom is v0, and it's already deprecated. Meantime v1 isn't stable yet, and support level in different browsers isn't
@@ -174,12 +187,7 @@ class PerformancePageComponent extends React.Component {
 				</p>
 
 				<h4>Angular</h4>
-				<p>...</p>
-
-				<h3>Maintainability</h3>
-				<p>
-					Due
-				</p>
+				<p>...still need to be tested...</p>
 
 				<h3>Styling</h3>
 				<p>
@@ -190,6 +198,15 @@ class PerformancePageComponent extends React.Component {
 					However, such styles could be resolved during build-time with more complicated builder, which, in its turn, going to be too complex, fragile
 					and exact version dependent.
 				</p>
+				<p>
+					Anyway, there are a lot of different stylish techniques: app-level .LESS, component-level .LESS, embedded CSS, shared modules... and <code>css
+					variables</code> also not available for all the environments (IE11). It adds a lot of complexity to maintaining styles consistence,
+					especially variables propagation, especially styles isolation in IE11.
+				</p>
+				<p>
+					All the problems could be solved, mostly on build stage.
+				</p>
+
 				<h3>Build conveyor</h3>
 				<p>
 					Interesting, but Angular-only build conveyor seems to be the most simple and plain. This application builder configuration (Webpack 4) does
@@ -207,7 +224,27 @@ class PerformancePageComponent extends React.Component {
 					For more complicated application it for sure will require separate builders, especially for component libraries.
 				</p>
 
-				<h3>Summary</h3>
+				<p>
+					Due to such complicated behavior and a lot of aspects and things need to be taken into account, support of build system is going to be
+					the crucial part.
+				</p>
+
+				<h2>Summary</h2>
+				<p>
+					Well, web elements technology is ready to use, but with a lot of things require a lot of attention on dependencies level, build level,
+					styling level etc.
+				</p>
+				<p>
+					It is possible to use them in modern application, though.
+				</p>
+				<p>
+					A lot of items in toolchain, build and runtime, are under active development. It means poor documentation, changing APIs and sometimes
+					incompatibilities.
+				</p>
+				<p>
+					Crucial and mandatory here is: dedicated team is required to keep things aligned and actual. Especially to guarantee stability, performance
+					and same look in different browsers.
+				</p>
 			</div>
 		</React.Fragment>;
 	}
