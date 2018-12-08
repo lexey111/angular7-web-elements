@@ -151,14 +151,18 @@ class PerformancePageComponent extends React.Component {
 					</tfoot>
 				</table>
 
-				<h3>ShadowDOM versions</h3>
+				<h3>ShadowDOM</h3>
+				<p>
+					Current version of ShadowDom is v0, and it's already deprecated. Meantime v1 isn't stable yet, and support level in different browsers isn't
+					too inspiring. It means, with vast probability code will be executed within one or more polyfills.
+				</p>
 
 				<h3>Maturity of toolchain</h3>
 
 				<h4>Polymer</h4>
 				<p>
-					Toolchain for Polymer-based elements is complicated. Due to mandatory ES6 support, the only way to make IE11 works is Babel, and not just a
-					plain Babel but very specific conveyor with a lot of hacks.
+					Toolchain for Polymer-based elements is complicated. Due to ES6, the only way to make IE11 works is Babel, and not just a
+					plain Babel but very specific conveyor with a lot of hacks. Tricky and fragile.
 				</p>
 				<p>
 					However, it is possible to make things works together. It just involves IE11 detection and dynamic feature and polyfill loaders, and, of
@@ -166,19 +170,43 @@ class PerformancePageComponent extends React.Component {
 				</p>
 				<p>
 					Event-handling and interaction with the components, especially passing the data and retrieving the results, is not too convenient. Developer
-					must create specific listeners manually &mdash; or wrap the element into framework-based wrapper.
+					must create specific listeners manually &mdash; or wrap the element into framework-based generic wrapper to provide more standard data flow.
 				</p>
 
 				<h4>Angular</h4>
 				<p>...</p>
 
 				<h3>Maintainability</h3>
+				<p>
+					Due
+				</p>
+
 				<h3>Styling</h3>
 				<p>
 					Polymer itself is rather mature, but sharing styles between the components, especially with <code>lit-html</code>, is a pain. It is very
-					inconvenient and sometimes
+					inconvenient and leads to overhead (repeatable lit-html based components) or to just merely maintainable set of styles.
+				</p>
+				<p>
+					However, such styles could be resolved during build-time with more complicated builder, which, in its turn, going to be too complex, fragile
+					and exact version dependent.
 				</p>
 				<h3>Build conveyor</h3>
+				<p>
+					Interesting, but Angular-only build conveyor seems to be the most simple and plain. This application builder configuration (Webpack 4) does
+					all the work for &mdash;
+				</p>
+
+				<ul>
+					<li>Angular 7 AOT Web Elements: <code>ng-tools</code></li>
+					<li>Polymer 3 Elements: <code>Babel</code></li>
+					<li>React 16 host: <code>TypeScript</code></li>
+					<li>Static pages and assets: <code>copy-webpack-plugin</code></li>
+				</ul>
+
+				<p>
+					For more complicated application it for sure will require separate builders, especially for component libraries.
+				</p>
+
 				<h3>Summary</h3>
 			</div>
 		</React.Fragment>;
