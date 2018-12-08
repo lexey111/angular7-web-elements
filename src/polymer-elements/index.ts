@@ -6,3 +6,5 @@ import './rich/top-menu';
 import './rich/active-icon';
 import './rich/side-menu';
 import './rich/profile-menu';
+
+import '@vaadin/vaadin-grid/vaadin-grid.js';

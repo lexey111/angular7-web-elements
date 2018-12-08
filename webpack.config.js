@@ -39,6 +39,26 @@ module.exports = (env, args) => {
 						chunks: 'all',
 						priority: 1,
 					},
+					vaadin: {
+						test(module) {
+							const context = module.context.replace(/\\/g, '/');
+							if (context.indexOf('node_modules') === -1) {
+								return false;
+							}
+							if (context.indexOf('@vaadin') !== -1) {
+								return true;
+							}
+							if (context.indexOf('vaadin') !== -1) {
+								return true;
+							}
+							return false;
+						},
+
+						name: 'scripts/vaadin',
+						chunks: 'all',
+						enforce: true,
+						priority: 2,
+					},
 					polymer: {
 						//test: /[\\/]node_modules[\\/]@polymer/,
 						test(module) {
@@ -61,7 +81,7 @@ module.exports = (env, args) => {
 						name: 'scripts/polymer',
 						chunks: 'all',
 						enforce: true,
-						priority: 2,
+						priority: 3,
 					},
 					vendor: {
 						//test: /[\\/]node_modules[\\/]/,
