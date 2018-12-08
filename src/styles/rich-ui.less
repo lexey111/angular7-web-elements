@@ -33,42 +33,6 @@ body {
 	--app-switcher-size: @app-switcher-size;
 }
 
-.top-menu-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: @menu-size;
-	background-color: @app-accent;
-	display: flex;
-	flex-flow: column nowrap;
-	z-index: 2;
-
-	.switcher-content {
-		display: flex;
-		margin-top: auto;
-		justify-self: flex-end;
-	}
-
-	.switcher-comment {
-		font-size: .8em;
-		font-style: italic;
-		color: rgba(255, 255, 255, 0.5);
-		padding: 8px;
-	}
-}
-
-
-.side-menu-container {
-	position: fixed;
-	top: @menu-size;
-	left: 0;
-	bottom: 0;
-	width: @menu-size;
-	background-color: @app-accent;
-	z-index: 1;
-}
-
 .content-container {
 	position: fixed;
 	top: @menu-size;

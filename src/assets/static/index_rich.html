@@ -22,30 +22,33 @@
 </head>
 
 <body>
-<div class="top-menu-container">
-	<top-menu title="Rich UI Application">
-		<div slot="switcher-content" class="switcher-content">
-			<p class="switcher-comment">
-				A at commodi consequatur doloribus enim et, explicabo hic impedit itaque iusto magnam quae sed similique
-				sunt suscipit tenetur voluptatibus. Ad autem cum delectus enim illum ipsum magni non voluptas!
-			</p>
-		</div>
+<top-menu title="Rich UI Application">
+	<div slot="app-switcher-comment">
+		A at commodi consequatur doloribus enim et, explicabo hic impedit itaque iusto magnam quae sed similique
+		sunt suscipit tenetur voluptatibus. Ad autem cum delectus enim illum ipsum magni non voluptas!
+	</div>
 
-		<div slot="middle-content">
-			<search-input placeholder="Start typing to search..."></search-input>
-		</div>
+	<div slot="middle-content">
+		<search-input placeholder="Start typing to search..."></search-input>
+	</div>
 
-		<div slot="right-content">
-			<active-icon icon="display" id="display-icon"></active-icon>
-			<active-icon icon="home" event="home_clicked" id="home-icon"></active-icon>
-			<profile-menu></profile-menu>
-		</div>
-	</top-menu>
-</div>
+	<div slot="right-content">
+		<active-icon icon="display" id="display-icon"></active-icon>
+		<active-icon icon="home" event="home_clicked" id="home-icon"></active-icon>
 
-<div class="side-menu-container">
-	Side
-</div>
+		<profile-menu></profile-menu>
+	</div>
+</top-menu>
+
+<side-menu>
+	<active-icon icon="cloud" title="Data sharing"></active-icon>
+	<active-icon icon="sales" title="Sales"></active-icon>
+	<active-icon icon="money" title="Invoices"></active-icon>
+	<active-icon icon="customer" title="Customers"></active-icon>
+	<active-icon icon="document" title="Articles"></active-icon>
+	<active-icon icon="report" title="Reports"></active-icon>
+	<active-icon icon="bank" title="Banks"></active-icon>
+</side-menu>
 
 <div class="content-container">
 	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolor, id illo quam rem repellat. Adipisci

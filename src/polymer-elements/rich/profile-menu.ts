@@ -1,6 +1,7 @@
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
+import './profile-menu-styles-module';
 
 export class ProfileMenu extends PolymerElement {
 	static get is() {
@@ -27,46 +28,9 @@ export class ProfileMenu extends PolymerElement {
 
 	static get template() {
 		return html`
-	<style include="rich-ui-shared-styles-module">
+	<style include="profile-menu-styles-module">
 		:host {
 	        display: flex;
-		}
-		.profile-menu-button {
-			position: relative;
-		}
-		.menu-content {
-			position: fixed;
-			display: flex;
-			flex-flow: column nowrap;
-			right: 0;
-			top: var(--menu-size, 60px);
-			background-color: var(--app-accent, #333);
-			color: var(--app-accent-color, #fff);
-			box-shadow: -4px 0 8px rgba(0, 0, 0, .2);
-			opacity: 0;
-			transform: scaleY(.01) translateY(-20px);
-			transform-origin: top right;
-			transition: all .2s ease;
-			z-index: 10;
-			pointer-events: none;
-			padding: 4px;
-		}
-		.menu-content.active {
-			transform: scaleY(1);
-			opacity: 1;
-			pointer-events: all;
-			border-top: 2px solid rgba(255, 255, 255, .5);
-		}
-		.menu-content.active:after {
-			content: '';
-			position: absolute;
-			top: -12px;
-			right: 40px;
-			width: 0;
-			height: 0;
-			border-style: solid;
-			border-width: 0 6px 10px 6px;
-			border-color: transparent transparent rgba(255, 255, 255, .5) transparent;
 		}
 	</style>
 

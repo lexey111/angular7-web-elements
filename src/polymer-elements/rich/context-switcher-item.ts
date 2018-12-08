@@ -19,6 +19,19 @@ export class ContextSwitcherItem extends PolymerElement {
 		:host {
 	        display: flex;
 		}
+		.app-switcher-item {
+			display: flex;
+			height: var(--menu-size, 60px);
+			width: 100%;
+			padding: 0 20px;
+			align-content: center;
+			align-items: center;
+			cursor: pointer;
+			transition: all .2s ease;
+		}
+		.app-switcher-item:hover {
+			background-color: rgba(255,255,255,.3);
+		}
 	</style>
 
 	<div class="app-switcher-item" tabindex=1 on-click=__gotoUrl>

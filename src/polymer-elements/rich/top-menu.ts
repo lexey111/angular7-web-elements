@@ -1,6 +1,7 @@
 import '@polymer/polymer/lib/elements/dom-repeat.js';
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
+import './top-menu-styles-module';
 
 export class TopMenu extends PolymerElement {
 	static get is() {
@@ -31,12 +32,17 @@ export class TopMenu extends PolymerElement {
 
 	static get template() {
 		return html`
-	<style include="rich-ui-shared-styles-module">
-		:host {
-	        display: flex;
-		}
-	</style>
+<style include="top-menu-styles-module">
+	:host {
+        display: flex;
+	}
+	::slotted(div) {
+		display: flex;
+		align-items: center;
+	}
+</style>
 
+<div class="top-menu-container">
 	<button class="app-switcher"
 		on-click=__toggleSwitcher
 		on-blur=__hideSwitcher>
@@ -52,8 +58,7 @@ export class TopMenu extends PolymerElement {
 				<context-switcher-item url=[[item.url]] title=[[item.title]]></context-switcher-item>
 			</template>
 
-			<slot name="switcher-content"></slot>
-
+			<slot name="app-switcher-comment"></slot>
 		</div>
 	 </div>
 	<div class="logo">[[title]]</div>
@@ -62,6 +67,7 @@ export class TopMenu extends PolymerElement {
 		<slot name="middle-content"></slot>
 	</div>
 	<slot name="right-content"></slot>
+</div>
 `;
 	}
 
