@@ -46,6 +46,11 @@ body {
 	margin: 8px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .3);
 	background-color: #fff;
+	display: flex;
+	p {
+		margin: 8px;
+		padding: 0;
+	}
 }
 
 .content-container {
@@ -56,9 +61,38 @@ body {
 	right: 0;
 	background-color: @app-background;
 	overflow: auto;
+	padding: 8px;
 	z-index: 0;
 
 	.example-grid {
 		.card();
+	}
+
+	.example-top {
+		min-height: 100px;
+		display: flex;
+		width: 100%;
+
+		.example-top-cell1 {
+			width: 30%;
+			.card();
+		}
+
+		.example-top-cell2 {
+			width: 70%;
+			.card();
+		}
+	}
+
+	.example-bottom {
+		min-height: 100px;
+		display: flex;
+		width: 100%;
+
+		.example-bottom-cell1, .example-bottom-cell2, .example-bottom-cell3 {
+			width: 33%;
+			.card();
+		}
+
 	}
 }
