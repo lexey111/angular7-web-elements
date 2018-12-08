@@ -3,5 +3,5 @@ import './rich-ui-shared-styles-module';
 import './rich/context-switcher-item';
 import './rich/search-input';
 import './rich/top-menu';
-import './rich/top-icon';
+import './rich/active-icon';
 import './rich/profile-menu';

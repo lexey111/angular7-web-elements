@@ -16,7 +16,7 @@ const Icons = {
 		`,
 };
 
-customElements.define('top-icon', class extends LitElement {
+customElements.define('active-icon', class extends LitElement {
 		isOpen = false;
 
 		static get properties() {
@@ -36,7 +36,7 @@ customElements.define('top-icon', class extends LitElement {
 				:host {
 			        display: flex;
 				}
-				.top-menu-icon {
+				.active-menu-icon {
 					display: flex;
 					align-content: center;
 					justify-content: center;
@@ -57,23 +57,23 @@ customElements.define('top-icon', class extends LitElement {
 					 user-select: none;
 					 position: relative;
 				}
-				.top-menu-icon:focus {
+				.active-menu-icon:focus {
 					opacity: 1;
 				}
-				.top-menu-icon svg{
+				.active-menu-icon svg{
 					width: calc(var(--menu-size, 60px) * .7);
 					height: calc(var(--menu-size, 60px) * .7);
 					fill: var(--app-accent-color, #fff);
 					transition: all .2s ease;
 				}
-				.top-menu-icon svg{
+				.active-menu-icon svg{
 					width: calc(var(--menu-size, 60px) * .6);
 					height: calc(var(--menu-size, 60px) * .6);
 				}
-				.top-menu-icon:hover {
+				.active-menu-icon:hover {
 					opacity: 1;
 				}
-				.top-menu-icon-badge {
+				.active-menu-icon-badge {
 					position: absolute;
 					top: calc(var(--menu-size, 60px) * .4 - 12px);
 					left: calc(var(--menu-size, 60px) * .4 + 12px);
@@ -85,7 +85,7 @@ customElements.define('top-icon', class extends LitElement {
 					border-radius: 16px;
 					box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 				}
-				.top-icon-dropdown {
+				.active-icon-dropdown {
 					position: fixed;
 					top: var(--menu-size, 60px);
 					margin-top: -8px;
@@ -98,18 +98,18 @@ customElements.define('top-icon', class extends LitElement {
 					transition: all .2s ease;
 					opacity: 1;
 				}
-				.top-icon-dropdown.active {
+				.active-icon-dropdown.active {
 					pointer-events: all;
 					box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
 					padding: 16px;
 					text-align: left;
 				}
-				.top-icon-dropdown ul {
+				.active-icon-dropdown ul {
 					list-style: none;
 					padding: 0;
 					margin: 0;
 				}
-				.top-icon-dropdown ul li {
+				.active-icon-dropdown ul li {
 					white-space: nowrap;
 					min-height: 32px;
 					padding: 2px 4px 2px 12px;
@@ -117,14 +117,14 @@ customElements.define('top-icon', class extends LitElement {
 					border-left: 6px solid transparent;
 					margin: 4px 0;
 				}
-				.top-icon-dropdown ul li div {
+				.active-icon-dropdown ul li div {
 					display: block;
 					float: none;
 					padding: 0;
 					margin: 0;
 					font-weight: bold;
 				}
-				.top-icon-dropdown ul li p {
+				.active-icon-dropdown ul li p {
 					display: block;
 					float: none;
 					font-size: 11px;
@@ -133,24 +133,24 @@ customElements.define('top-icon', class extends LitElement {
 					line-height: 1em;
 					margin: 0;
 				}
-				.top-icon-dropdown ul li.error {
+				.active-icon-dropdown ul li.error {
 					border-color: orangered;
 				}
-				.top-icon-dropdown ul li.warning {
+				.active-icon-dropdown ul li.warning {
 					border-color: darkorange;
 				}
-				.top-icon-dropdown ul li.info {
+				.active-icon-dropdown ul li.info {
 					border-color: dodgerblue;
 				}
 
 			</style>
 
-			<button class="top-menu-icon" tabindex="1"
+			<button class="active-menu-icon" tabindex="1"
 				@focus=${this.__openDropdown}
 				@blur=${this.__closeDropdown}
 				@click=${this.__doClick}>
 					${unsafeHTML(svgString)}
-					${this.notifications && this.notifications.length ? html`<span class="top-menu-icon-badge">${this.notifications.length}</span>` : ''}
+					${this.notifications && this.notifications.length ? html`<span class="active-menu-icon-badge">${this.notifications.length}</span>` : ''}
 					${this.renderItems()}
 			</button>`;
 		}
@@ -172,7 +172,7 @@ customElements.define('top-icon', class extends LitElement {
 			const extraClass = this.isOpen ? 'active' : '';
 
 			return html`
-				<div class="top-icon-dropdown ${extraClass}">
+				<div class="active-icon-dropdown ${extraClass}">
 					${itemTemplates.length ? html`<ul>${itemTemplates}</ul>` : ''}
 				</div>
 			`;
@@ -197,5 +197,3 @@ customElements.define('top-icon', class extends LitElement {
 		}
 	}
 );
-
-window.try = (e) => alert(e);
