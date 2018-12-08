@@ -155,7 +155,12 @@ styleElement.innerHTML = `
 				background-color: rgba(255,255,255,.3);
 			}
 			
-			.middle-content {
+			::slotted(div) {
+				display: flex;
+				align-items: center;
+			}
+
+			.middle-content, slot[name=middle-content], ::slotted(.middle-content) {
 				display: flex;
 				flex-flow: row nowrap;
 				flex-grow: 2;
@@ -165,7 +170,7 @@ styleElement.innerHTML = `
 				color: var(--app-accent-color, #fff);
 			}
 
-			.right-content {
+			.right-content, slot[name=right-content], ::slotted(.right-content) {
 				display: flex;
 				flex-flow: row nowrap;
 				flex-grow: 0;

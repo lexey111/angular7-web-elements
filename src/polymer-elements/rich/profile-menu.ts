@@ -31,6 +31,26 @@ export class ProfileMenu extends PolymerElement {
 		:host {
 	        display: flex;
 		}
+		.profile-menu-button {
+			position: relative;
+		}
+		.profile-menu-button::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			right: 4px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 8px 4px 0 4px;
+			border-color: rgba(255, 255, 255, .5) transparent transparent transparent;
+			transition: all .2s ease;
+		}
+		.profile-menu-button:hover::after {
+			border-color: rgba(255, 255, 255, 1) transparent transparent transparent;
+		}
+
 		.menu-content {
 			position: fixed;
 			display: flex;
@@ -46,10 +66,10 @@ export class ProfileMenu extends PolymerElement {
 			transition: all .2s ease;
 			z-index: 10;
 			pointer-events: none;
-			padding: 0 4px;
+			padding: 4px;
 		}
 		.menu-content.active {
-			transform: scaleY(1) translateY(-5px);
+			transform: scaleY(1);
 			opacity: 1;
 			pointer-events: all;
 			border-top: 2px solid rgba(255, 255, 255, .5);

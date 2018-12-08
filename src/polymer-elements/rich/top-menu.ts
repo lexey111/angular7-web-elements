@@ -1,6 +1,6 @@
+import '@polymer/polymer/lib/elements/dom-repeat.js';
 import {html} from '@polymer/polymer/lib/utils/html-tag.js';
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/polymer/lib/elements/dom-repeat.js';
 
 export class TopMenu extends PolymerElement {
 	static get is() {
@@ -61,10 +61,7 @@ export class TopMenu extends PolymerElement {
 	<div class="middle-content">
 		<slot name="middle-content"></slot>
 	</div>
-
-	<div class="right-content">
-		<slot name="right-content"></slot>
-	</div>
+	<slot name="right-content"></slot>
 `;
 	}
 

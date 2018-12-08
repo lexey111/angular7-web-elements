@@ -29,6 +29,9 @@ export class ContextSwitcherItem extends PolymerElement {
 
 	__gotoUrl() {
 		console.log('Open page', this.url);
+		if (!this.url.fake) {
+			window.location.href = this.url;
+		}
 	}
 }
 

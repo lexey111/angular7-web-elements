@@ -152,9 +152,32 @@ class PerformancePageComponent extends React.Component {
 				</table>
 
 				<h3>ShadowDOM versions</h3>
+
 				<h3>Maturity of toolchain</h3>
+
+				<h4>Polymer</h4>
+				<p>
+					Toolchain for Polymer-based elements is complicated. Due to mandatory ES6 support, the only way to make IE11 works is Babel, and not just a
+					plain Babel but very specific conveyor with a lot of hacks.
+				</p>
+				<p>
+					However, it is possible to make things works together. It just involves IE11 detection and dynamic feature and polyfill loaders, and, of
+					course, IE-specific stylesheets.
+				</p>
+				<p>
+					Event-handling and interaction with the components, especially passing the data and retrieving the results, is not too convenient. Developer
+					must create specific listeners manually &mdash; or wrap the element into framework-based wrapper.
+				</p>
+
+				<h4>Angular</h4>
+				<p>...</p>
+
 				<h3>Maintainability</h3>
 				<h3>Styling</h3>
+				<p>
+					Polymer itself is rather mature, but sharing styles between the components, especially with <code>lit-html</code>, is a pain. It is very
+					inconvenient and sometimes
+				</p>
 				<h3>Build conveyor</h3>
 				<h3>Summary</h3>
 			</div>

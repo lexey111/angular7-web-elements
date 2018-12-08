@@ -46,10 +46,16 @@ module.exports = (env, args) => {
 							if (context.indexOf('node_modules') === -1) {
 								return false;
 							}
-							if (context.indexOf('node_modules/@polymer') !== -1) {
+							if (context.indexOf('@polymer') !== -1) {
 								return true;
 							}
-							return context.indexOf('node_modules/lit-html') !== -1;
+							if (context.indexOf('polymer') !== -1) {
+								return true;
+							}
+							if (context.indexOf('lit-html') !== -1) {
+								return true;
+							}
+							return false;
 						},
 
 						name: 'scripts/polymer',
@@ -67,10 +73,16 @@ module.exports = (env, args) => {
 							if (context.indexOf('node_modules/react') !== -1) {
 								return false;
 							}
-							if (context.indexOf('node_modules/@polymer') !== -1) {
+							if (context.indexOf('@polymer') !== -1) {
 								return false;
 							}
-							return context.indexOf('node_modules/lit-html') === -1;
+							if (context.indexOf('polymer') !== -1) {
+								return false;
+							}
+							if (context.indexOf('lit-html') !== -1) {
+								return false;
+							}
+							return true;
 						},
 						name: 'scripts/vendors',
 						chunks: 'all',
