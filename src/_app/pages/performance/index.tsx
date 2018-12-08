@@ -7,7 +7,10 @@ class PerformancePageComponent extends React.Component {
 		return <React.Fragment>
 			<div className='section-header'>Performance tests</div>
 			<div className='page-content'>
-				<h2>Summary</h2>
+				<h2>Conclusion</h2>
+				<p>
+					<u>Important:</u> all the information is actual for the end of 2018.
+				</p>
 
 				<h3>Overall performance</h3>
 				<p>
@@ -103,7 +106,7 @@ class PerformancePageComponent extends React.Component {
 					performance ratio stills the same, though.
 				</p>
 
-				<h4>Conclusion</h4>
+				<h4>Analysis</h4>
 				<p>
 					Performance overhead is rather significant, especially for IE and Edge and Angular Components, whereas simple Polymer-based components are
 					fast almost as native for framework. However, resulting performance allows to use the approach at least with contemporary browsers.

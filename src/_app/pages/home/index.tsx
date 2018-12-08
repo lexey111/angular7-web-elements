@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import {AnimatedWrapper} from '../AnimatedWrapper';
 
 class HomePageComponent extends React.Component {
@@ -42,7 +43,7 @@ class HomePageComponent extends React.Component {
 				</p>
 
 				<p>
-					Interesting: application uses one build script to process all the parts simultaneously.
+					Application uses one build script to process all the parts simultaneously.
 				</p>
 
 				<h2>Browsers support</h2>
@@ -53,6 +54,11 @@ class HomePageComponent extends React.Component {
 					<li>Edge (44)</li>
 					<li>IE (11)</li>
 				</ul>
+
+				<h2>Conclusion</h2>
+				<p>
+					There is a <NavLink to='/performance' activeClassName='selected'>special page</NavLink> where all the information gathered together.
+				</p>
 
 			</div>
 		</React.Fragment>;
