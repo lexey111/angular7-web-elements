@@ -97,7 +97,7 @@ styleElement.innerHTML = `
 				left: 0;
 				width: var(--app-switcher-size, 300px);
 				color: var(--app-accent-color, #fff);
-				background-color: var(--app-accent, #333);
+				background-color: var(--app-switcher-accent, #333);
 				box-shadow: 4px 0 8px rgba(0, 0, 0, .5);
 				opacity: 0;
 				pointer-events: none;
