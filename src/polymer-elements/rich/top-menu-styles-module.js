@@ -14,6 +14,7 @@ styleElement.innerHTML = `
 				display: flex;
 				flex-flow: row nowrap;
 				align-content: center;
+				padding-right: 16px;
 				z-index: 2;
 			}
 			.switcher-content {
@@ -157,14 +158,14 @@ styleElement.innerHTML = `
 			}
 	
 			.right-content, slot[name=right-content], ::slotted(.right-content) {
+				padding: 0;
+				margin: 0;
 				display: flex;
 				flex-flow: row nowrap;
 				flex-grow: 0;
 				flex-shrink: 0;
 				align-items: center;
 				justify-content: flex-end;
-				padding-right: 16px;
-				margin-left: 16px;
 				color: var(--app-accent-color, #fff);
 			}
 		</style>

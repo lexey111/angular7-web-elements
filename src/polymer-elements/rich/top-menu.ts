@@ -66,7 +66,9 @@ export class TopMenu extends PolymerElement {
 	<div class="middle-content">
 		<slot name="middle-content"></slot>
 	</div>
-	<slot name="right-content"></slot>
+	<div class="right-content">
+		<slot name="right-content"></slot>
+	</div>
 </div>
 `;
 	}

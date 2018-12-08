@@ -52,6 +52,15 @@ const data = {
 		{type: 'info', text: 'Nothing changes', subtext: 'Be quiet'},
 		{type: 'info', text: 'Data loaded', subtext: 'Processing age going'},
 		{type: 'error', text: 'Invalid salary', subtext: 'Please increase'},
+	],
+	sideMenuItems: [
+		{icon: 'cloud', title: 'Data sharing'},
+		{icon: 'sales', title: 'Sales'},
+		{icon: 'money', title: 'Invoices'},
+		{icon: 'customer', title: 'Customers'},
+		{icon: 'document', title: 'Articles'},
+		{icon: 'report', title: 'Reports'},
+		{icon: 'bank', title: 'Banks'}
 	]
 };
 
@@ -60,6 +69,7 @@ window.onload = function () {
 
 	document.querySelector('top-menu').contextItems = data.contextSwitchItems;
 	document.querySelector('profile-menu').items = data.profileMenuItems;
+	document.querySelector('side-menu').items = data.sideMenuItems;
 
 	console.log('- Data assigned.');
 

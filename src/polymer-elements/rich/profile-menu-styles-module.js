@@ -11,7 +11,7 @@ styleElement.innerHTML = `
 				align-items: center;
 				width: var(--menu-size, 60px);
 				height: var(--menu-size, 60px);
-				opacity: .9;
+				opacity: .8;
 				transition: opacity .2s ease;
 				cursor: pointer;
 				border: none;
@@ -70,7 +70,7 @@ styleElement.innerHTML = `
 			}
 			.menu-content.active {
 				transform: scaleY(1);
-				opacity: 1;
+				opacity: .95;
 				pointer-events: all;
 				border-top: 2px solid rgba(255, 255, 255, .5);
 			}

@@ -19,10 +19,33 @@ const Icons = {
 		<path d="M1408 256h-1024v1242l423-406 89-85 89 85 423 406v-1242zm12-128q23 0 44 9 33 13 52.5 41t19.5 62v1289q0 34-19.5 62t-52.5 41q-19 8-44 8-48
 		 0-83-32l-441-424-441 424q-36 33-83 33-23 0-44-9-33-13-52.5-41t-19.5-62v-1289q0-34 19.5-62t52.5-41q21-9 44-9h1048z"/></svg>
 		`,
+	money: `
+		<svg width="2048" height="1792" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
+		<path d="M832 1152h384v-96h-128v-448h-114l-148 137 77 80q42-37 55-57h2v288h-128v96zm512-256q0 70-21 142t-59.5 134-101.5 101-138
+		 39-138-39-101.5-101-59.5-134-21-142 21-142 59.5-134 101.5-101 138-39 138 39 101.5 101 59.5 134 21 142zm512 256v-512q-106 0-181-75t-75-181h-1152q0
+		  106-75 181t-181 75v512q106 0 181 75t75 181h1152q0-106 75-181t181-75zm128-832v1152q0 26-19 45t-45 19h-1792q-26
+		   0-45-19t-19-45v-1152q0-26 19-45t45-19h1792q26 0 45 19t19 45z"/></svg>
+		`,
 	cloud: `
 		<svg width="2048" height="1792" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
 		<path d="M1984 1152q0 159-112.5 271.5t-271.5 112.5h-1088q-185 0-316.5-131.5t-131.5-316.5q0-132 71-241.5t187-163.5q-2-28-2-43 0-212 150-362t362-150q158
 		 0 286.5 88t187.5 230q70-62 166-62 106 0 181 75t75 181q0 75-41 138 129 30 213 134.5t84 239.5z"/></svg>
+		`,
+	report: `
+		<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+		<path d="M448 1536h896v-256h-896v256zm0-640h896v-384h-160q-40 0-68-28t-28-68v-160h-640v640zm1152 64q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19
+		 19-45zm128 0v416q0 13-9.5 22.5t-22.5 9.5h-224v160q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-160h-224q-13 0-22.5-9.5t-9.5-22.5v-416q0-79
+		  56.5-135.5t135.5-56.5h64v-544q0-40 28-68t68-28h672q40 0 88 20t76 48l152 152q28 28 48 76t20 88v256h64q79 0 135.5 56.5t56.5 135.5z"/></svg>
+		`,
+	document: `
+		<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+		<path d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76
+		 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280z"/></svg>
+		`,
+	customer: `
+		<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+		<path d="M896 622l201 306h-402zm365 530h94l-459-691-459 691h94l104-160h522zm403-256q0 209-103 385.5t-279.5 279.5-385.5
+		 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>
 		`,
 	bank: `
 		<svg width="2048" height="1792" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
@@ -38,6 +61,8 @@ customElements.define('active-icon', class extends LitElement {
 		static get properties() {
 			return {
 				icon: {type: String, value: 'home'},
+				small: {type: Boolean, value: false},
+				title: {type: String, value: ''},
 				notifications: {type: Array, value: []},
 				event: {type: String, value: 'home_clicked'},
 				isOpen: {type: Boolean, value: false},
@@ -45,22 +70,21 @@ customElements.define('active-icon', class extends LitElement {
 		}
 
 		render() {
-			const svgString = Icons[this.icon];
+			let svgString = `<div class="active-icon-icon ${this.small ? 'small' : ''}">${Icons[this.icon] || ''}</div>`;
+			if (this.title) {
+				svgString += `<div class="active-icon-title">${this.title}</div>`;
+			}
 
 			return html`
-			<style include="rich-ui-shared-styles-module">
+			<style include="active-icon-styles-module">
 				:host {
 			        display: flex;
 				}
 				.active-menu-icon {
 					display: flex;
-					align-content: center;
-					justify-content: center;
-					align-items: center;
-					width: var(--menu-size, 60px);
 					height: var(--menu-size, 60px);
-					opacity: .9;
-					transition: opacity .2s ease;
+					opacity: .8;
+					transition: all .2s ease;
 					cursor: pointer;
 					border: none;
 					background: none;
@@ -72,22 +96,51 @@ customElements.define('active-icon', class extends LitElement {
 					-ms-user-select: none;
 					 user-select: none;
 					 position: relative;
+					 padding: 0;
+					 margin: 0;
 				}
 				.active-menu-icon:focus {
 					opacity: 1;
 				}
-				.active-menu-icon svg{
-					width: calc(var(--menu-size, 60px) * .7);
-					height: calc(var(--menu-size, 60px) * .7);
+				.active-icon-icon {
+					width: var(--menu-size, 60px);
+					height: var(--menu-size, 60px);
+					display: flex;
+					align-items: center;
+					justify-items: center;
+					justify-content: center;
+				}
+				.active-icon-icon svg{
+					width: calc(var(--menu-size, 60px) * .6);
+					height: calc(var(--menu-size, 60px) * .6);
 					fill: var(--app-accent-color, #fff);
 					transition: all .2s ease;
 				}
-				.active-menu-icon svg{
-					width: calc(var(--menu-size, 60px) * .6);
-					height: calc(var(--menu-size, 60px) * .6);
+				.active-icon-icon.small svg{
+					width: calc(var(--menu-size, 60px) * .5);
+					height: calc(var(--menu-size, 60px) * .5);
+					opacity: .8;
 				}
 				.active-menu-icon:hover {
 					opacity: 1;
+				}
+				.active-menu-icon.with-title {
+					width: 100%;
+					transition: all .2s ease;
+				}
+				.active-menu-icon.with-title:hover {
+					background-color: rgba(255, 255, 255, .3);
+				}
+				.active-icon-title {
+					height: var(--menu-size, 60px);
+					white-space: nowrap;
+					font-size: 16px;
+					display: flex;
+					align-items: center;
+					justify-items: center;
+					justify-content: center;
+					padding: 0 16px 0 0;
+					color: var(--app-accent-color, #fff);
 				}
 				.active-menu-icon-badge {
 					position: absolute;
@@ -161,7 +214,7 @@ customElements.define('active-icon', class extends LitElement {
 
 			</style>
 
-			<button class="active-menu-icon" tabindex="1"
+			<button class="active-menu-icon ${this.title ? 'with-title' : ''}" tabindex="1"
 				@focus=${this.__openDropdown}
 				@blur=${this.__closeDropdown}
 				@click=${this.__doClick}>

@@ -154,7 +154,7 @@ class PerformancePageComponent extends React.Component {
 					</tfoot>
 				</table>
 
-				<h3>Usability</h3>
+				<h3>Usability &amp; Drawbacks</h3>
 				<p>
 					The main inconvenience with the components is data propagation and event firing. There are no usual ways like callbacks and dependency
 					injections available, so passing the data to the element is serializing/deserializing procedure, and reacting to element state change
@@ -165,6 +165,9 @@ class PerformancePageComponent extends React.Component {
 				</p>
 				<p>
 					However, for simple UIs such tradeoff is bearable even with lightweight host-level frameworks like React of Vue.
+				</p>
+				<p>
+					Even with Typescript data type control is inevitable poor, IDE support sin't perfect as well.
 				</p>
 
 				<h3>ShadowDOM</h3>
