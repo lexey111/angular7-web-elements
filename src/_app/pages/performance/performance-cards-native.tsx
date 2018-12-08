@@ -55,6 +55,21 @@ class PerformancePageNativeComponent extends React.Component {
 	}
 
 	private show10() {
+		const nameJson = [];
+		const cities = ['Kyiv', 'Amsterdam', 'Puna', 'Utrecht', 'Odessa', 'New York', 'London', 'Madrid', 'Sidney', 'Berlin', 'Munich', 'Paris', 'Minsk'];
+		fakeNames.forEach(name => {
+			// {name: {first: 'Alex', last: 'Cross'}, location: {city: 'Kyiv'}, visitCount: 42}
+			let namePair = name.split(' ');
+			nameJson.push({
+				name: {
+					first: namePair[0],
+					last: namePair[1],
+				},
+				location: {city: cities[Math.floor(Math.random() * cities.length)]},
+				visitCount: Math.floor(Math.random() * 2500)
+			});
+			console.log(nameJson);
+		});
 		this.setRecordsCount(10);
 	}
 

@@ -83,27 +83,17 @@ window.onload = function () {
 		document.querySelector('#display-icon').notifications = data.notifications;
 		console.log('- Notifications assigned.');
 	}, 200);
-};
 
-window.addEventListener('WebComponentsReady', function () {
+	console.log('- Prepare Vaadin.');
+
 	console.log('- WebComponents ready.');
-	document.querySelector('vaadin-grid').items = [
-		{name: {first: 'Alex', last: 'Cross'}, location: {city: 'Kyiv'}, visitCount: 42}
-	];
-
-	/*
-	 * Each object in the above "users" array follows the same structure:
-	 * {
-	 *   "name": {
-	 *     "first": "Laura",
-	 *     "last": "Arnaud",
-	 *     ...
-	 *   },
-	 *   "location": {
-	 *     "city": "Perpignan"
-	 *     ...
-	 *   }
-	 *   ...
-	 * }
-	 */
-});
+	document.querySelector('vaadin-grid').items = [];
+	fetch('/data.json')
+		.then(function (response) {
+			console.log('- WebComponents data loaded.');
+			return response.json();
+		})
+		.then(function (data) {
+			document.querySelector('vaadin-grid').items = data;
+		});
+};

@@ -17,6 +17,7 @@ styleElement.innerHTML = `
 				margin: 0;
 				transition: all .2s ease;
 				opacity: 1;
+				overflow: hidden;
 			}
 			.side-menu-container.active {
 				width: 250px;
@@ -95,8 +96,11 @@ styleElement.innerHTML = `
 				top: calc(var(--menu-size, 60px) * 1.5);
 				bottom: 0;
 				transition: all .2s ease;
+				width: var(--menu-size, 60px);
 				z-index: 10;
-				width: 100%;
+			}
+			.side-menu-content.active {
+				width: 250px;
 			}
 		</style>
 	</template>
