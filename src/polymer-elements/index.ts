@@ -8,3 +8,6 @@ import './rich/side-menu';
 import './rich/profile-menu';
 
 import '@vaadin/vaadin-grid/vaadin-grid.js';
+import '@vaadin/vaadin-button/vaadin-button.js';
+import '@vaadin/vaadin-tabs/vaadin-tabs.js';
+import '@vaadin/vaadin-dialog/vaadin-dialog.js';

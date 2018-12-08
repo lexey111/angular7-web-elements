@@ -128,10 +128,24 @@ customElements.define('active-icon', class extends LitElement {
 				.active-icon-dropdown ul li {
 					white-space: nowrap;
 					min-height: 32px;
-					padding: 2px 4px 2px 12px;
+					padding: 2px 4px 2px 24px;
 					font-size: 13px;
-					border-left: 6px solid transparent;
-					margin: 4px 0;
+					border-left: 1px dashed transparent;
+					margin: 4px 0 0 8px;
+					position: relative;
+				}
+				.active-icon-dropdown ul li:after {
+					display: block;
+					content: '';
+					position: absolute;
+					left: -7px;
+					top: 7px;
+					width: 9px;
+					height: 9px;
+					border: 2px solid #fff;
+					border-radius: 16px;
+					background-color: white;
+					box-shadow: 0 1px 2px rgba(0,0,0,.5);
 				}
 				.active-icon-dropdown ul li div {
 					display: block;
@@ -150,13 +164,22 @@ customElements.define('active-icon', class extends LitElement {
 					margin: 0;
 				}
 				.active-icon-dropdown ul li.error {
-					border-color: orangered;
+					border-color: #ff153b;
+				}
+				.active-icon-dropdown ul li.error:after {
+					background-color: #ff153b;
 				}
 				.active-icon-dropdown ul li.warning {
 					border-color: darkorange;
 				}
+				.active-icon-dropdown ul li.warning:after {
+					background-color: darkorange;
+				}
 				.active-icon-dropdown ul li.info {
 					border-color: dodgerblue;
+				}
+				.active-icon-dropdown ul li.info:after {
+					background-color: dodgerblue;
 				}
 
 			</style>
