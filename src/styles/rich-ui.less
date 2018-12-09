@@ -79,21 +79,24 @@ body {
 		width: 100%;
 
 		.example-top-cell1 {
-			width: 430px;
+			width: 420px;
 			.card();
 			flex-flow: row nowrap;
-			padding-right: 16px;
+			padding-right: 4px;
 			flex-grow: 0;
 			flex-shrink: 0;
+			align-items: center;
 			.ct-chart {
 				width: 200px;
 				display: flex;
+				align-self: flex-start;
 				flex-shrink: 0;
 			}
 			p {
-				width: 100%;
+				display: block;
 				font-size: 13px;
 				color: #777;
+				margin-bottom: 1.5em;
 			}
 		}
 

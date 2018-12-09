@@ -61,7 +61,8 @@ const globalData = {
 		{icon: 'document', title: 'Articles'},
 		{icon: 'report', title: 'Reports'},
 		{icon: 'bank', title: 'Banks'}
-	]
+	],
+	users: []
 };
 
 function updateNotifications(record) {
@@ -137,6 +138,18 @@ window.onload = function () {
 		window.console.log(e.target.id + ' clicked');
 	});
 
+	document.querySelector('#grid-tabs').addEventListener('selected-changed', function (e) {
+		var tabIdx = e.detail.value;
+		var cities = ['', 'Amsterdam', 'Kyiv', 'London', 'Paris', 'Puna'];
+		window.console.log(tabIdx);
+		document.querySelector('vaadin-grid').items = globalData.users.filter(function (user) {
+			if (tabIdx === 0) {
+				return user;
+			}
+			return user.location.city === cities[tabIdx];
+		});
+	});
+
 	console.log('- Dialog and button assigned.');
 
 	document.querySelector('vaadin-grid').items = [];
@@ -164,13 +177,17 @@ window.onload = function () {
 			})
 		.then(
 			function (users) {
-				document.querySelector('vaadin-grid').items = users;
+				globalData.users = users;
+				document.querySelector('vaadin-grid').items = [].concat(users);
+
 				console.log('- Grid data assigned.');
+
 				updateNotifications({
 					type: 'info',
 					text: 'Loaded ' + users.length + ' records',
 					subtext: 'So much users... who all these people are?'
 				});
+
 				return users;
 			}).then(
 		function (users) {
@@ -197,9 +214,8 @@ window.onload = function () {
 					}
 				});
 			});
+			Chartist.Line('#ct-chart-big', {labels: labels, series: [series]}, options);
 
 			console.log('- Chart 2 is ready. Cities:', labels.join(', '), 'Visits:', series.join(', '));
-
-			Chartist.Line('#ct-chart-big', {labels: labels, series: [series]}, options);
 		});
 };
