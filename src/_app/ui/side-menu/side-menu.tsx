@@ -21,7 +21,7 @@ export class SideMenu extends React.Component {
 
 				<div className='app-side-menu-item-group'>
 					<header>Polymer</header>
-					<NavLink to='/polymer' activeClassName='selected'>Polymer</NavLink>
+					<NavLink to='/polymer' activeClassName='selected'>User cards</NavLink>
 				</div>
 
 				<div className='app-side-menu-item-group'>
@@ -31,8 +31,11 @@ export class SideMenu extends React.Component {
 					<NavLink to='/performance-inputs-native' activeClassName='selected'>Inputs, native</NavLink>
 					<NavLink to='/performance-polymer' activeClassName='selected'>Cards, Polymer</NavLink>
 					<NavLink to='/performance-cards-native' activeClassName='selected'>Cards, native</NavLink>
+				</div>
 
-					<NavLink to='/performance' activeClassName='selected'>Summary</NavLink>
+				<div className='app-side-menu-item-group'>
+					<header>Conclusion</header>
+					<NavLink to='/performance' activeClassName='selected'>Summary page</NavLink>
 				</div>
 			</div>
 		</div>;

@@ -12,17 +12,14 @@ class HomePageComponent extends React.Component {
 					This is React application which uses Angular 7 Web Element approach as well as Polymer-based components.
 				</p>
 
-				<p>Original idea was this <a href='https://medium.com/@tomsu/wanna-create-an-angular-element-heres-how-73e2ea85bd28' target='_blank'>Medium
-					Article</a>.</p>
-
-				<h3>Pure HTML</h3>
+				<h2>Other examples</h2>
 				<p>
-					<a href='./index_pure.html' target='_blank'>This link</a> will open separate page that is just a HTML and VanillaJS, no frameworks, with web
-					elements.
+					<a href='./index_pure.html' target='_blank'>This link</a> will open separate page that is just a HTML and VanillaJS, no frameworks,
+					with web elements, both Angular and Polymer. Just a simple web page with no special styling or behavior.
 				</p>
 
 				<p>
-					<a href='./index_rich.html' target='_blank'>This page</a> is a mock of rich ui application.
+					<a href='./index_rich.html' target='_blank'>This page</a> is a mock of rich ui application based on Polymer elements.
 				</p>
 
 				<h2>Under the hood</h2>
@@ -30,10 +27,16 @@ class HomePageComponent extends React.Component {
 				<ul>
 					<li>React 16</li>
 					<li>Angular 7.1</li>
-					<li>Polymer 3</li>
+					<li>Polymer
+						<ul>
+							<li>Polymer 3</li>
+							<li>LitHtml 0.14</li>
+						</ul>
+					</li>
 					<li>Vanilla JS</li>
 					<li>Webpack 4</li>
 					<li>Typescript 3</li>
+					<li>LESS</li>
 					<li>Babel (for IE11)</li>
 				</ul>
 

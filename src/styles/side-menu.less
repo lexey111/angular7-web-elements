@@ -27,6 +27,7 @@
 	.app-side-menu-items {
 		display: flex;
 		flex-flow: column nowrap;
+		padding-top: 10px;
 
 		a {
 			height: @app-side-menu-item-height;
@@ -46,7 +47,7 @@
 				pointer-events: none;
 				font-weight: 500;
 				color: @app-side-menu-item-active-color;
-				background-color: rgba(255, 255, 255, .3);
+				background-color: rgba(255, 255, 255, .5);
 				z-index: 3;
 			}
 		}
@@ -56,18 +57,12 @@
 			flex-flow: column nowrap;
 
 			header {
-				border-top: 1px solid @page-background;
-				border-bottom: 1px solid @page-background;
-				border-left: 2px solid darken(@page-background, 10);
 				background-color: darken(@app-side-menu-background, 5);
 				color: darken(@app-side-menu-background, 35);
-				padding: 0 8px 0 8px;
-				font-weight: bold;
-				font-size: @app-side-menu-item-font-size - 1px;
+				padding: 8px 4px 4px 8px;
+				font-size: @app-side-menu-item-font-size - 2px;
 				display: flex;
-				margin: 0 0 0 -2px;
-				height: @app-side-menu-item-height;
-				line-height: @app-side-menu-item-height;
+				margin: 10px 0 8px 0;
 			}
 		}
 
