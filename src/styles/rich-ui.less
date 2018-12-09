@@ -74,13 +74,27 @@ body {
 	}
 
 	.example-top {
-		min-height: 100px;
+		height: 220px;
 		display: flex;
 		width: 100%;
 
 		.example-top-cell1 {
-			width: 30%;
+			width: 430px;
 			.card();
+			flex-flow: row nowrap;
+			padding-right: 16px;
+			flex-grow: 0;
+			flex-shrink: 0;
+			.ct-chart {
+				width: 200px;
+				display: flex;
+				flex-shrink: 0;
+			}
+			p {
+				width: 100%;
+				font-size: 13px;
+				color: #777;
+			}
 		}
 
 		.example-top-cell2 {

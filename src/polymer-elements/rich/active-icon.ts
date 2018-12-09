@@ -52,6 +52,10 @@ customElements.define('active-icon', class extends LitElement {
 				.active-icon-icon {
 					width: var(--menu-size, 60px);
 					height: var(--menu-size, 60px);
+					min-width: var(--menu-size, 60px);
+					min-height: var(--menu-size, 60px);
+					flex-grow: 0;
+					flex-shrink: 0;
 					display: flex;
 					align-items: center;
 					justify-items: center;
@@ -107,7 +111,7 @@ customElements.define('active-icon', class extends LitElement {
 					margin-top: -8px;
 					right: 5px;
 					width: 300px;
-					background-color: #fff;
+					background-color: #fffbf0;
 					color: #333;
 					pointer-events: none;
 					z-index: 11;
@@ -128,11 +132,15 @@ customElements.define('active-icon', class extends LitElement {
 				.active-icon-dropdown ul li {
 					white-space: nowrap;
 					min-height: 32px;
-					padding: 2px 4px 2px 24px;
+					padding: 4px 4px 4px 24px;
 					font-size: 13px;
 					border-left: 1px dashed transparent;
 					margin: 4px 0 0 8px;
 					position: relative;
+					transition: all .2s ease;
+				}
+				.active-icon-dropdown ul li:hover {
+					background-color: rgba(114,189,231,0.15);
 				}
 				.active-icon-dropdown ul li:after {
 					display: block;
@@ -201,7 +209,7 @@ customElements.define('active-icon', class extends LitElement {
 				for (const i of this.notifications) {
 					itemTemplates.push(
 						html`
-							<li class="${i.type}">
+							<li class="${i.type}" id="${i}" @click=${this.__notificationClick.bind(this, i)}>
 								<div>${i.text}</div>
 								<p>${i.subtext}</p>
 							</li>
@@ -232,6 +240,13 @@ customElements.define('active-icon', class extends LitElement {
 				return;
 			}
 			this.dispatchEvent(new CustomEvent(this.event, {detail: {name: event}}));
+		}
+
+		__notificationClick(e) {
+			if (!this.notifications || !this.notifications.length) {
+				return;
+			}
+			this.notifications = this.notifications.filter(item => item.text !== e.text);
 		}
 	}
 );

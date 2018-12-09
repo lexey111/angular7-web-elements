@@ -142,18 +142,64 @@ window.onload = function () {
 	document.querySelector('vaadin-grid').items = [];
 	console.log('- Grid initialized.');
 
+	var data = {
+		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+		series:
+			[5, 2, 4, 2, 1]
+
+	};
+	var options = {
+		width: 190,
+		height: 190
+	};
+	Chartist.Pie('#ct-chart', data, options);
+
+	console.log('- Chart 1 is ready.');
+
 	fetch('/data.json')
-		.then(function (response) {
-			console.log('- WebComponents data loaded.');
-			return response.json();
-		})
-		.then(function (users) {
-			document.querySelector('vaadin-grid').items = users;
-			console.log('- Grid data assigned.');
-			updateNotifications({
-				type: 'info',
-				text: 'Loaded ' + users.length + ' records',
-				subtext: 'So much users... who all these people are?'
+		.then(
+			function (response) {
+				console.log('- WebComponents data loaded.');
+				return response.json();
+			})
+		.then(
+			function (users) {
+				document.querySelector('vaadin-grid').items = users;
+				console.log('- Grid data assigned.');
+				updateNotifications({
+					type: 'info',
+					text: 'Loaded ' + users.length + ' records',
+					subtext: 'So much users... who all these people are?'
+				});
+				return users;
+			}).then(
+		function (users) {
+			var labels = users.reduce(function (acc, value) {
+				if (acc.indexOf(value.location.city) === -1) {
+					return acc.concat(value.location.city);
+				}
+				return acc;
+			}, []);
+
+			var options = {
+				width: '100%',
+				height: 200
+			};
+
+			var series = [];
+			labels.forEach(function (city, index) {
+				users.forEach(function (record) {
+					if (record.location.city === city) {
+						if (typeof series[index] === 'undefined') {
+							series[index] = 0;
+						}
+						series[index] += 1; // record.visitCount;
+					}
+				});
 			});
+
+			console.log('- Chart 2 is ready. Cities:', labels.join(', '), 'Visits:', series.join(', '));
+
+			Chartist.Line('#ct-chart-big', {labels: labels, series: [series]}, options);
 		});
 };
