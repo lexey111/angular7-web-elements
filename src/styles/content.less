@@ -5,17 +5,19 @@
 	display: flex;
 	flex-flow: column nowrap;
 	left: @app-side-menu-width;
+	color: @app-color;
 	width: calc(100% - @app-side-menu-width);
 	overflow-x: hidden;
 	overflow-y: auto;
 	padding: 0;
 	margin: 0;
-	//box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
+	box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
 }
 
 .page-content {
 	padding: @app-page-content-padding;
 	p {
+		color: @app-color;
 		.press {
 			margin-right: .4em;
 		}

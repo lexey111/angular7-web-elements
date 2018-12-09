@@ -25,24 +25,25 @@ class HomePageComponent extends React.Component {
 				<h2>Under the hood</h2>
 
 				<ul>
-					<li>React 16</li>
-					<li>Angular 7.1</li>
+					<li><a href='https://reactjs.org/' target='_blank'>React 16</a></li>
+					<li><a href='https://angular.io/' target='_blank'>Angular 7.1</a></li>
 					<li>Polymer
 						<ul>
-							<li>Polymer 3</li>
-							<li>LitHtml 0.14</li>
+							<li><a href='https://www.polymer-project.org/' target='_blank'>Polymer 3</a></li>
+							<li><a href='https://lit-html.polymer-project.org/guide/concepts' target='_blank'>Lit-html</a></li>
 						</ul>
 					</li>
+					<li><a href='https://vaadin.com/' target='_blank'>Vaadin components</a></li>
+					<li><a href='http://gionkunz.github.io/chartist-js/getting-started.html' target='_blank'>Chartist library</a></li>
 					<li>Vanilla JS</li>
-					<li>Webpack 4</li>
-					<li>Typescript 3</li>
-					<li>LESS</li>
-					<li>Babel (for IE11)</li>
+					<li><a href='https://webpack.js.org/' target='_blank'>Webpack 4</a></li>
+					<li><a href='https://www.typescriptlang.org/' target='_blank'>Typescript 3</a></li>
+					<li><a href='http://lesscss.org/' target='_blank'>LESS</a></li>
+					<li><a href='https://babeljs.io/' target='_blank'>Babel (for IE11)</a></li>
 				</ul>
 
 				<p>
-					This is hybrid application. Main page (and whole application) written with React, but it uses custom elements provided by Angular — with all
-					overhead, of course, though it isn't too significant for large applications.
+					This is hybrid application. Main page (and whole application) written with React, but it uses custom elements provided by Angular.
 				</p>
 
 				<p>

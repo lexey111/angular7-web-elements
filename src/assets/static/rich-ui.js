@@ -82,8 +82,9 @@ window.onload = function () {
 	document.querySelector('top-menu').contextItems = globalData.contextSwitchItems;
 	document.querySelector('profile-menu').items = globalData.profileMenuItems;
 	document.querySelector('side-menu').items = globalData.sideMenuItems;
+	document.querySelector('#half-marathon').selected = true;
 
-	console.log('- Data assigned.');
+	console.log('- Data and state assigned.');
 
 	document.querySelector('#home-icon').addEventListener('home_clicked', function () {
 		alert('Home icon clicked');
@@ -141,7 +142,7 @@ window.onload = function () {
 	document.querySelector('#grid-tabs').addEventListener('selected-changed', function (e) {
 		var tabIdx = e.detail.value;
 		var cities = ['', 'Amsterdam', 'Kyiv', 'London', 'Paris', 'Puna'];
-		window.console.log(tabIdx);
+		window.console.log('Set filter: ', tabIdx ? cities[tabIdx] : 'All');
 		document.querySelector('vaadin-grid').items = globalData.users.filter(function (user) {
 			if (tabIdx === 0) {
 				return user;
@@ -152,6 +153,22 @@ window.onload = function () {
 
 	console.log('- Dialog and button assigned.');
 
+	document.querySelector('#report-selector').renderer = function (root) {
+		if (root.firstChild) {
+			return;
+		}
+		// create the <vaadin-list-box>
+		const listBox = window.document.createElement('vaadin-list-box');
+		// append 3 <vaadin-item> elements
+		['Jose', 'Manolo', 'Pedro'].forEach(function (name) {
+			const item = window.document.createElement('vaadin-item');
+			item.textContent = name;
+			listBox.appendChild(item);
+		});
+		// update the content
+		root.appendChild(listBox);
+	};
+
 	document.querySelector('vaadin-grid').items = [];
 	console.log('- Grid initialized.');
 
@@ -159,13 +176,37 @@ window.onload = function () {
 		labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
 		series:
 			[5, 2, 4, 2, 1]
-
 	};
+
 	var options = {
 		width: 190,
-		height: 190
+		height: 190,
+		donut: true,
+		donutWidth: 50,
+		donutSolid: true,
+		startAngle: 270,
+		showLabel: true
 	};
+
 	Chartist.Pie('#ct-chart', data, options);
+
+	var barData = {
+		labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+		series: [
+			[1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+		]
+	};
+
+	var barOptions = {
+		high: 10,
+		low: -10,
+		axisX: {
+			labelInterpolationFnc: function (value, index) {
+				return index % 2 === 0 ? value : null;
+			}
+		}
+	};
+	Chartist.Bar('#ct-bottom-chart', barData, barOptions);
 
 	console.log('- Chart 1 is ready.');
 
@@ -200,7 +241,9 @@ window.onload = function () {
 
 			var options = {
 				width: '100%',
-				height: 200
+				height: 200,
+				low: 50,
+				showArea: true
 			};
 
 			var series = [];

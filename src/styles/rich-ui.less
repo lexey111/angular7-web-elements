@@ -86,16 +86,18 @@ body {
 			flex-grow: 0;
 			flex-shrink: 0;
 			align-items: center;
+
 			.ct-chart {
 				width: 200px;
 				display: flex;
 				align-self: flex-start;
 				flex-shrink: 0;
 			}
+
 			p {
 				display: block;
 				font-size: 13px;
-				color: #777;
+				color: #999;
 				margin-bottom: 1.5em;
 			}
 		}
@@ -112,9 +114,65 @@ body {
 		width: 100%;
 
 		.example-bottom-cell1, .example-bottom-cell2, .example-bottom-cell3 {
-			width: 33%;
+			width: auto;
 			.card();
+
+			p {
+				font-size: 13px;
+				color: #999;
+			}
+
+			h3 {
+				font-size: 14px;
+				padding: 0;
+				margin: 25px 0 0 0;
+			}
 		}
 
+		.example-bottom-cell1 {
+			width: 200px;
+			min-width: 200px;
+			flex-shrink: 0;
+			flex-grow: 0;
+			padding: 32px 16px;
+		}
+
+		.example-bottom-cell2 {
+			width: 200px;
+			min-width: 200px;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.example-bottom-cell3 {
+			flex-flow: row nowrap;
+
+			.filler {
+				margin-left: 16px;
+				padding-top: 34px;
+				font-size: 14px;
+				color: #555;
+				width: 100%;
+				p {
+					padding-left: 0;
+					margin-left: 2px;
+					margin-bottom: 1.5em;
+				}
+			}
+			#ct-bottom-chart {
+				width: 200px;
+				height: 200px;
+				flex-shrink: 0;
+				flex-grow: 0;
+				display: flex;
+				align-self: flex-start;
+				margin-top: 25px;
+				align-items: center;
+				align-content: center;
+				justify-self: center;
+				justify-items: center;
+				justify-content: center;
+			}
+		}
 	}
 }
