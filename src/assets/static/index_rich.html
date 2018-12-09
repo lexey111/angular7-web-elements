@@ -21,9 +21,9 @@
 	<script src="scripts/polymer.js"></script>
 	<script src="scripts/vaadin.js"></script>
 
-	<script src='rich-ui.js'></script>
 	<script src='elements.js'></script>
 	<script src='polymer_elements.js'></script>
+	<script src='rich-ui.js'></script>
 </head>
 
 <body>
@@ -49,6 +49,7 @@
 
 <div class="content-container">
 	<vaadin-dialog no-close-on-esc no-close-on-outside-click></vaadin-dialog>
+	<vaadin-dialog no-close-on-esc no-close-on-outside-click id="vaadin-scrollable-dialog"></vaadin-dialog>
 	<div class="example-top">
 		<div class="example-top-cell1">
 			<div class="ct-chart ct-perfect-fifth" id="ct-chart"></div>
@@ -82,12 +83,15 @@
 			<vaadin-grid-column path="location.city"></vaadin-grid-column>
 			<vaadin-grid-column path="visitCount" text-align="end" width="100px" flex-grow="0"></vaadin-grid-column>
 		</vaadin-grid>
+		<p>
+			Total: <b><span id="total-count">&mdash;</span></b>
+		</p>
 	</div>
 
 	<div class="example-bottom">
 		<div class="example-bottom-cell1">
+			<h3>Choose yor run</h3>
 			<vaadin-list-box>
-				<b>Register to a Run Event</b>
 				<vaadin-item>5k</vaadin-item>
 				<vaadin-item disabled>10k (sold out)</vaadin-item>
 				<vaadin-item id="half-marathon">Half marathon</vaadin-item>
@@ -109,6 +113,7 @@
 			<div>
 				<h3>Reports</h3>
 				<vaadin-select id="report-selector"></vaadin-select>
+				<vaadin-button id="show-scrollable-dialog" theme="success primary">Generate</vaadin-button>
 			</div>
 			<div class="filler">
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto nemo, vitae. Dicta impedit
@@ -125,8 +130,6 @@
 			<div class="ct-chart ct-perfect-fifth" id="ct-bottom-chart"></div>
 		</div>
 	</div>
-
-
 </div>
 </body>
 </html>

@@ -15,7 +15,7 @@ styleElement.innerHTML = `
 				flex-flow: row nowrap;
 				align-content: center;
 				padding-right: 16px;
-				z-index: 2;
+				z-index: 3;
 			}
 			.switcher-content {
 				display: flex;

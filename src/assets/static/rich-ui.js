@@ -143,12 +143,19 @@ window.onload = function () {
 		var tabIdx = e.detail.value;
 		var cities = ['', 'Amsterdam', 'Kyiv', 'London', 'Paris', 'Puna'];
 		window.console.log('Set filter: ', tabIdx ? cities[tabIdx] : 'All');
+
+		var count = 0;
 		document.querySelector('vaadin-grid').items = globalData.users.filter(function (user) {
 			if (tabIdx === 0) {
+				count++;
 				return user;
+			}
+			if (user.location.city === cities[tabIdx]) {
+				count++;
 			}
 			return user.location.city === cities[tabIdx];
 		});
+		document.querySelector('#total-count').innerHTML = count;
 	});
 
 	console.log('- Dialog and button assigned.');
@@ -210,6 +217,62 @@ window.onload = function () {
 
 	console.log('- Chart 1 is ready.');
 
+	const dialog2 = document.querySelector('#vaadin-scrollable-dialog');
+
+	console.log('- Dialog 2 is ready.');
+
+	var content = [];
+	fetch('https://baconipsum.com/api/?type=all-meat&paras=20')
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			content = data;
+		});
+
+	dialog2.renderer = function (root, dialog) {
+		if (!root.firstElementChild) {
+			// Initialize the content structure
+			const section = window.document.createElement('section');
+			section.style.display = 'flex';
+			section.style.flexDirection = 'column';
+
+			const header = window.document.createElement('header');
+			header.textContent = 'Alice in Wonderland';
+
+			const main = window.document.createElement('main');
+			main.style.overflow = 'auto';
+			main.style.maxHeight = '500px';
+
+			const footer = window.document.createElement('footer');
+			const btn = window.document.createElement('vaadin-button');
+			btn.textContent = 'Close';
+			btn.addEventListener('click', function () {
+				dialog.opened = false;
+			});
+			footer.appendChild(btn);
+
+			section.appendChild(header);
+			section.appendChild(main);
+			section.appendChild(footer);
+			root.appendChild(section);
+		}
+
+		// Update the main content
+		const main = root.querySelector('main');
+		main.innerHTML = '';
+		content.forEach(function (paragraph) {
+			const p = window.document.createElement('p');
+			p.textContent = paragraph;
+			main.appendChild(p);
+		});
+
+	};
+
+	document.querySelector('#show-scrollable-dialog').addEventListener('click', function () {
+		dialog2.opened = true;
+	});
+
 	fetch('/data.json')
 		.then(
 			function (response) {
@@ -220,6 +283,7 @@ window.onload = function () {
 			function (users) {
 				globalData.users = users;
 				document.querySelector('vaadin-grid').items = [].concat(users);
+				document.querySelector('#total-count').innerHTML = users.length;
 
 				console.log('- Grid data assigned.');
 

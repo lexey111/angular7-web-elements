@@ -12,7 +12,7 @@ styleElement.innerHTML = `
 				width: var(--menu-size, 60px);
 				background-color: var(--app-accent, #333);
 				color: var(--app-accent-color, #fff);
-				z-index: 1;
+				z-index: 2;
 				padding: 0;
 				margin: 0;
 				transition: all .2s ease;

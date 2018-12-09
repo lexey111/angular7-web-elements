@@ -175,6 +175,10 @@ class PerformancePageComponent extends React.Component {
 					Current version of ShadowDom is v0, and it's already deprecated. Meantime v1 isn't stable yet, and support level in different browsers isn't
 					too inspiring. It means, with vast probability code will be executed within one or more polyfills.
 				</p>
+				<p>
+					ShadowDOM style isolation brings to serious redundancy of embedded styles for repeating components, as well as to some glitches in,
+					e.g., <code>z-index</code> for projected items in different browsers.
+				</p>
 
 				<h3>Maturity of toolchain</h3>
 
@@ -238,7 +242,7 @@ class PerformancePageComponent extends React.Component {
 				<h2>Summary</h2>
 				<p>
 					Well, web elements technology is ready to use, but with a lot of things require a lot of attention on dependencies level, build level,
-					styling level etc.
+					styling level, compatibility etc. Whole solution, especially complicated, is rather fragile and unstable.
 				</p>
 				<p>
 					It is possible to use them in modern application, though.
@@ -248,8 +252,8 @@ class PerformancePageComponent extends React.Component {
 					incompatibilities.
 				</p>
 				<p>
-					Crucial and mandatory here is: dedicated team is required to keep things aligned and actual. Especially to guarantee stability, performance
-					and same look in different browsers.
+					Crucial and mandatory: <b>dedicated team is a must</b> to keep things aligned and actual, to guarantee stability, performance
+					and the same look and behavior in different browsers.
 				</p>
 			</div>
 		</React.Fragment>;

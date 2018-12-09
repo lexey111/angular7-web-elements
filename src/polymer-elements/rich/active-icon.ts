@@ -23,9 +23,10 @@ customElements.define('active-icon', class extends LitElement {
 			}
 
 			return html`
-			<style include="active-icon-styles-module">
+			<style>
 				:host {
 			        display: flex;
+			        z-index: 100;
 				}
 				.active-menu-icon {
 					display: flex;
@@ -45,6 +46,7 @@ customElements.define('active-icon', class extends LitElement {
 					 position: relative;
 					 padding: 0;
 					 margin: 0;
+					 z-index: 100;
 				}
 				.active-menu-icon:focus {
 					opacity: 1;
@@ -106,15 +108,15 @@ customElements.define('active-icon', class extends LitElement {
 					box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 				}
 				.active-icon-dropdown {
-					position: fixed;
+					position: absolute;
 					top: var(--menu-size, 60px);
-					margin-top: -8px;
+					margin-top: -2px;
 					right: 5px;
 					width: 300px;
 					background-color: #fffbf0;
 					color: #333;
 					pointer-events: none;
-					z-index: 11;
+					z-index: 111;
 					transition: all .2s ease;
 					opacity: 1;
 				}
@@ -124,12 +126,23 @@ customElements.define('active-icon', class extends LitElement {
 					padding: 16px;
 					text-align: left;
 				}
-				.active-icon-dropdown ul {
+				.active-icon-dropdown.active:after {
+					content: '';
+					position: absolute;
+					top: -10px;
+					right: 20px;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 6px 10px 6px;
+					border-color: transparent transparent #fffbf0 transparent;
+				}
+				.active-icon-dropdown.active ul {
 					list-style: none;
 					padding: 0;
 					margin: 0;
 				}
-				.active-icon-dropdown ul li {
+				.active-icon-dropdown.active ul li {
 					white-space: nowrap;
 					min-height: 32px;
 					padding: 4px 4px 4px 24px;
@@ -138,11 +151,12 @@ customElements.define('active-icon', class extends LitElement {
 					margin: 4px 0 0 8px;
 					position: relative;
 					transition: all .2s ease;
+					z-index: 111;
 				}
-				.active-icon-dropdown ul li:hover {
+				.active-icon-dropdown.active ul li:hover {
 					background-color: rgba(114,189,231,0.15);
 				}
-				.active-icon-dropdown ul li:after {
+				.active-icon-dropdown.active ul li:after {
 					display: block;
 					content: '';
 					position: absolute;
@@ -218,9 +232,13 @@ customElements.define('active-icon', class extends LitElement {
 			}
 			const extraClass = this.isOpen ? 'active' : '';
 
+			if (!itemTemplates.length) {
+				return '';
+			}
+
 			return html`
 				<div class="active-icon-dropdown ${extraClass}">
-					${itemTemplates.length ? html`<ul>${itemTemplates}</ul>` : ''}
+					${html`<ul>${itemTemplates}</ul>`}
 				</div>
 			`;
 		}
