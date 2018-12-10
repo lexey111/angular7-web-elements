@@ -22,8 +22,9 @@ export class ContextSwitcherItem extends PolymerElement {
 		.app-switcher-item {
 			display: flex;
 			height: var(--menu-size, 60px);
-			width: 100%;
+			width: var(--app-switcher-size, 300px);
 			padding: 0 20px;
+			align-self: flex-start;
 			align-content: center;
 			align-items: center;
 			cursor: pointer;

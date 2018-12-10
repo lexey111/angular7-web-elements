@@ -17,11 +17,6 @@ styleElement.innerHTML = `
 				padding-right: 16px;
 				z-index: 3;
 			}
-			.switcher-content {
-				display: flex;
-				margin-top: auto;
-				justify-self: flex-end;
-			}
 			.app-switcher-comment, slot[name=app-switcher-comment], ::slotted(.app-switcher-comment) {
 				display: flex;
 				margin-top: auto;
@@ -89,9 +84,11 @@ styleElement.innerHTML = `
 				text-transform: uppercase;
 			}
 			.switcher-content {
+				justify-self: flex-end;
 				display: flex;
 				flex-flow: column nowrap;
 				position: fixed;
+				align-content: flex-start;
 				top: 0;
 				bottom: 0;
 				left: 0;
@@ -106,10 +103,20 @@ styleElement.innerHTML = `
 				z-index: 10;
 				padding: var(--menu-size, 60px) 8px 0 8px;
 			}
+			.switcher-comment, slot[name=switcher-comment], ::slotted(.switcher-comment) {
+				display: flex;
+				margin-top: auto;
+				margin-bottom: 16px;
+				align-self: flex-end;
+				width: var(--app-switcher-size, 300px);
+				font-size: 13px;
+				font-style: italic;
+			}
 			.switcher-content.active {
 				opacity: .95;
 				pointer-events: all;
 				transform: translateX(0);
+				z-index: 10;
 			}
 			.switcher-title {
 				opacity: .8;

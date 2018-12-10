@@ -86,7 +86,7 @@ window.onload = function () {
 
 	console.log('- Data and state assigned.');
 
-	document.querySelector('#home-icon').addEventListener('home_clicked', function () {
+	document.querySelector('#home-icon').addEventListener('click', function () {
 		alert('Home icon clicked');
 	});
 

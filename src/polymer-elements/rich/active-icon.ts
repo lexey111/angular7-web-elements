@@ -4,6 +4,7 @@ import {Icons} from './icons';
 
 customElements.define('active-icon', class extends LitElement {
 		isOpen = false;
+		private closeTimer;
 
 		static get properties() {
 			return {
@@ -11,15 +12,14 @@ customElements.define('active-icon', class extends LitElement {
 				small: {type: Boolean, value: false},
 				title: {type: String, value: ''},
 				notifications: {type: Array, value: []},
-				event: {type: String, value: 'home_clicked'},
 				isOpen: {type: Boolean, value: false},
 			};
 		}
 
 		render() {
-			let svgString = `<div class="active-icon-icon ${this.small ? 'small' : ''}">${Icons[this.icon] || ''}</div>`;
+			let svgIconString = `<div class="active-icon-icon ${this.small ? 'small' : ''}">${Icons[this.icon] || ''}</div>`;
 			if (this.title) {
-				svgString += `<div class="active-icon-title">${this.title}</div>`;
+				svgIconString += `<div class="active-icon-title">${this.title}</div>`;
 			}
 
 			return html`
@@ -125,17 +125,7 @@ customElements.define('active-icon', class extends LitElement {
 					box-shadow: 0 4px 8px rgba(0, 0, 0, .4);
 					padding: 16px;
 					text-align: left;
-				}
-				.active-icon-dropdown.active:after {
-					content: '';
-					position: absolute;
-					top: -10px;
-					right: 20px;
-					width: 0;
-					height: 0;
-					border-style: solid;
-					border-width: 0 6px 10px 6px;
-					border-color: transparent transparent #fffbf0 transparent;
+					z-index: 111;
 				}
 				.active-icon-dropdown.active ul {
 					list-style: none;
@@ -206,14 +196,15 @@ customElements.define('active-icon', class extends LitElement {
 
 			</style>
 
-			<button class="active-menu-icon ${this.title ? 'with-title' : ''}" tabindex="1"
+			<button class="active-menu-icon ${this.title ? 'with-title' : ''}" tabindex="1" id="button"
 				@focus=${this.__openDropdown}
 				@blur=${this.__closeDropdown}
 				@click=${this.__doClick}>
-					${unsafeHTML(svgString)}
+					${unsafeHTML(svgIconString)}
 					${this.notifications && this.notifications.length ? html`<span class="active-menu-icon-badge">${this.notifications.length}</span>` : ''}
-					${this.renderItems()}
-			</button>`;
+			</button>
+			${this.renderItems()}
+`;
 		}
 
 		renderItems() {
@@ -223,7 +214,7 @@ customElements.define('active-icon', class extends LitElement {
 				for (const i of this.notifications) {
 					itemTemplates.push(
 						html`
-							<li class="${i.type}" id="${i}" @click=${this.__notificationClick.bind(this, i)}>
+							<li class="${i.type}" id="${i}" @click=${this.__notificationClick.bind(this, i, this)}>
 								<div>${i.text}</div>
 								<p>${i.subtext}</p>
 							</li>
@@ -244,7 +235,10 @@ customElements.define('active-icon', class extends LitElement {
 		}
 
 		__closeDropdown() {
-			this.isOpen = false;
+			clearTimeout(this.closeTimer);
+			this.closeTimer = setTimeout(() => {
+				this.isOpen = false;
+			}, 200);
 		}
 
 		__openDropdown() {
@@ -257,14 +251,20 @@ customElements.define('active-icon', class extends LitElement {
 			if (this.notifications && this.notifications.length) {
 				return;
 			}
-			this.dispatchEvent(new CustomEvent(this.event, {detail: {name: event}}));
+			this.dispatchEvent(new CustomEvent('click', {detail: {name: event}}));
 		}
 
-		__notificationClick(e) {
+		__notificationClick(e, context) {
+			clearTimeout(this.closeTimer);
+
 			if (!this.notifications || !this.notifications.length) {
 				return;
 			}
+
 			this.notifications = this.notifications.filter(item => item.text !== e.text);
+
+			// focus button back
+			this.renderRoot.querySelector('#button').focus();
 		}
 	}
 );

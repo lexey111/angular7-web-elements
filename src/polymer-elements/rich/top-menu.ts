@@ -35,6 +35,7 @@ export class TopMenu extends PolymerElement {
 <style include="top-menu-styles-module">
 	:host {
         display: flex;
+        z-index: 10;
 	}
 	::slotted(div) {
 		display: flex;
@@ -48,19 +49,6 @@ export class TopMenu extends PolymerElement {
 		on-blur=__hideSwitcher>
 			${this.logoIcon}
 	</button>
-
-	<div class="content">
-		<div class$="{{__getSwitcherClass(__switcherShown)}}">
-			<span class="switcher-close">&times;</span>
-			<span class="switcher-title">[[title]]</span>
-
-			<template is="dom-repeat" items="[[contextItems]]">
-				<context-switcher-item url=[[item.url]] title=[[item.title]]></context-switcher-item>
-			</template>
-
-			<slot name="app-switcher-comment"></slot>
-		</div>
-	 </div>
 	<div class="logo">[[title]]</div>
 
 	<div class="middle-content">
@@ -70,6 +58,20 @@ export class TopMenu extends PolymerElement {
 		<slot name="right-content"></slot>
 	</div>
 </div>
+
+<div class$="{{__getSwitcherClass(__switcherShown)}}">
+	<span class="switcher-close">&times;</span>
+	<span class="switcher-title">[[title]]</span>
+
+	<template is="dom-repeat" items="[[contextItems]]">
+		<context-switcher-item url=[[item.url]] title=[[item.title]]></context-switcher-item>
+	</template>
+
+	<div class="switcher-comment">
+		<slot name="switcher-comment"></slot>
+	</div>
+</div>
+
 `;
 	}
 
