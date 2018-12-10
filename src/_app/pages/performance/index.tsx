@@ -3,6 +3,12 @@ import {NavLink} from 'react-router-dom';
 import {AnimatedWrapper} from '../AnimatedWrapper';
 
 class PerformancePageComponent extends React.Component {
+	public renderPre(strArr: Array<string>) {
+		return <div className='pre'>
+			{strArr.map((line, idx) => <p key={idx}>{line}</p>)}
+		</div>;
+	}
+
 	render() {
 		return <React.Fragment>
 			<div className='section-header'>Performance tests</div>
@@ -157,17 +163,25 @@ class PerformancePageComponent extends React.Component {
 				<h3>Usability &amp; Drawbacks</h3>
 				<p>
 					The main inconvenience with the components is data propagation and event firing. There are no usual ways like callbacks and dependency
-					injections available, so passing the data to the element is serializing/deserializing procedure, and reacting to element state change
-					involves <code>addEventListener</code> creation.
+					injections available, so passing the data to the element is an explicit procedure, and reacting to element state change
+					involves <code>addEventListener</code> creation:
+				</p>
+				{this.renderPre([
+					'...',
+					'document.querySelector(\'#top-menu\').contextItems = globalData.contextSwitchItems;',
+					'...',
+					'document.querySelector(\'#home-icon\').addEventListener(\'click\', function () {',
+					'   alert(\'Home icon clicked\');',
+					'});',
+				])}
+				<p>
+					Some common solution could be proposed, though, like event/data bus or wrappers, and some already exists in frameworks.
 				</p>
 				<p>
-					Some common solution could be proposed, like event/data bus, but this is a kind of crutches.
+					Even with Typescript data type control is inevitable poor, IDE support isn't perfect as well yet.
 				</p>
 				<p>
-					However, for simple UIs such tradeoff is bearable even with lightweight host-level frameworks like React of Vue.
-				</p>
-				<p>
-					Even with Typescript data type control is inevitable poor, IDE support sin't perfect as well.
+					However, for simple UIs such trade off is bearable even with lightweight host-level frameworks like React of Vue.
 				</p>
 
 				<h3>ShadowDOM</h3>
@@ -176,7 +190,7 @@ class PerformancePageComponent extends React.Component {
 					too inspiring. It means, with vast probability code will be executed within one or more polyfills.
 				</p>
 				<p>
-					ShadowDOM style isolation brings to serious redundancy of embedded styles for repeating components, as well as to some glitches in,
+					ShadowDOM style isolation brings to serious redundancy of embedded styles for repeating components, as well as to some glitches and bugs in,
 					e.g., <code>z-index</code> for projected items in different browsers.
 				</p>
 

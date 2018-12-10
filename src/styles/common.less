@@ -30,6 +30,27 @@ code {
 	border: 1px solid #eee;
 }
 
+.pre {
+	background-color: lighten(@page-background, 10);
+	border-radius: 6px;
+	border: 1px solid @page-background;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+	white-space: pre;
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+	height: auto;
+	line-height: 1.4em;
+	font-size: 14px;
+	padding: 8px;
+	font-family: monospace, monospace;
+
+	p {
+		padding: 0;
+		margin: 0;
+	}
+}
+
 .block-block {
 	display: block;
 	width: 100%;

@@ -324,5 +324,8 @@ window.onload = function () {
 			Chartist.Line('#ct-chart-big', {labels: labels, series: [series]}, options);
 
 			console.log('- Chart 2 is ready. Cities:', labels.join(', '), 'Visits:', series.join(', '));
+
+			document.querySelector('#busy-curtain').className = 'inactive';
+			console.log('- All right.');
 		});
 };

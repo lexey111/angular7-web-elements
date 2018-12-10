@@ -31,21 +31,19 @@ export class ProfileMenu extends PolymerElement {
 	<style include="profile-menu-styles-module">
 		:host {
 	        display: flex;
+	        z-index: 100;
 		}
 	</style>
 
-	<div class="app-profile-menu">
-		<button class="profile-menu-button"
-				on-click=__toggleMenu
-				on-blur=__hideMenu>
-			${this.userIcon}
-		</button>
-
-		<div class$="{{__getMenuClass(__menuShown)}}">
-			<template is="dom-repeat" items="[[items]]">
-				<context-switcher-item url=[[item.url]] title=[[item.title]]></context-switcher-item>
-			</template>
-		</div>
+	<button class="profile-menu-button"
+			on-click=__toggleMenu
+			on-blur=__hideMenu>
+		${this.userIcon}
+	</button>
+	<div class$="{{__getMenuClass(__menuShown)}}">
+		<template is="dom-repeat" items="[[items]]">
+			<context-switcher-item url=[[item.url]] title=[[item.title]]></context-switcher-item>
+		</template>
 	</div>
 `;
 	}

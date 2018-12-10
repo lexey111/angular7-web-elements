@@ -52,7 +52,7 @@ styleElement.innerHTML = `
 				margin: 0;
 			}
 			.menu-content {
-				position: fixed;
+				position: absolute;
 				display: flex;
 				flex-flow: column nowrap;
 				right: 0;
@@ -61,7 +61,6 @@ styleElement.innerHTML = `
 				color: var(--app-accent-color, #fff);
 				box-shadow: -4px 0 8px rgba(0, 0, 0, .2);
 				opacity: 0;
-				transform: scaleY(.01) translateY(-20px);
 				transform-origin: top right;
 				transition: all .2s ease;
 				z-index: 10;
@@ -69,9 +68,9 @@ styleElement.innerHTML = `
 				padding: 4px;
 			}
 			.menu-content.active {
-				transform: scaleY(1);
 				opacity: .95;
 				pointer-events: all;
+				z-index: 100;
 				border-top: 2px solid rgba(255, 255, 255, .5);
 			}
 			.menu-content.active:after {
