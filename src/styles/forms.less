@@ -42,7 +42,7 @@ h3.form-section {
 .stat-table {
 	width: 90%;
 	max-width: 900px;
-	margin: 0 auto;
+	margin: 2em auto;
 	background-color: lighten(@page-background, 25);
 	border-collapse: collapse;
 	border-radius: 6px 6px 0 0;
@@ -54,14 +54,15 @@ h3.form-section {
 
 		th {
 			height: 48px;
+			padding-right: 16px;
 			color: #fff;
 			font-weight: normal;
 			font-size: .9em;
-			padding: 0 8px;
+			text-align: right;
 		}
 
 		th:nth-of-type(1) {
-			width: 50%;
+			width: 30%;
 		}
 	}
 
@@ -79,19 +80,27 @@ h3.form-section {
 		}
 
 		td {
-			text-align: center;
+			text-align: right;
+			padding-right: 16px;
 			height: 32px;
+			border-right: 1px dashed #d4c9b7;
+
+			span, i {
+				color: #aaa;
+				min-width: 40px;
+				width: 40px;
+				display: inline-block;
+			}
+
+			i {
+				color: maroon;
+			}
 		}
 
 		td:nth-of-type(1) {
 			text-align: right;
 			padding-right: 8px;
 			border-right: 2px solid #ffe6c0;
-		}
-
-		td:last-child {
-			text-align: right;
-			padding-right: 8px;
 		}
 	}
 

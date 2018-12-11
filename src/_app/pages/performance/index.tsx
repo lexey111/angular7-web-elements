@@ -30,75 +30,43 @@ class PerformancePageComponent extends React.Component {
 					These pages render up to 1000 appropriate web elements on demand.
 				</p>
 
+				<h4>Task/Time measurements table</h4>
+				<p>
+					Rendering of 1000 Inputs, seconds / ratio to the native value:
+				</p>
 				<table className='stat-table'>
 					<thead>
 					<tr>
 						<th>Task</th>
-						<th>Time, Web elements (s)</th>
-						<th>Time, React (s)</th>
-						<th>Ratio</th>
+						<th>Native, React</th>
+						<th>Angular</th>
+						<th>Polymer</th>
 					</tr>
 					</thead>
 					<tbody>
-					<tr className='category'>
-						<td colSpan='4'>
-							Rendering of 1000 Inputs: Angular vs Native
-						</td>
-					</tr>
 					<tr>
 						<td>Chrome</td>
-						<td>3.47</td>
-						<td>1.41</td>
-						<td>2.5</td>
+						<td>0.9</td>
+						<td>1.7 <span>1.8</span> <i>52%</i></td>
+						<td>1.05 <span>1.17</span> <i>86%</i></td>
 					</tr>
 					<tr>
 						<td>Firefox</td>
-						<td>1.1</td>
-						<td>0.5</td>
-						<td>2.2</td>
+						<td>1.05</td>
+						<td>2.1 <span>2</span> <i>50%</i></td>
+						<td>1.4 <span>1.3</span> <i>75%</i></td>
 					</tr>
 					<tr>
 						<td>Edge</td>
-						<td>6.9</td>
-						<td>1.4</td>
-						<td>5</td>
+						<td>2.4</td>
+						<td>7.6 <span>3.2</span> <i>32%</i></td>
+						<td>2.6 <span>1.1</span> <i>92%</i></td>
 					</tr>
 					<tr>
 						<td>IE 11</td>
-						<td>11.1</td>
-						<td>2.8</td>
-						<td>4</td>
-					</tr>
-
-					<tr className='category'>
-						<td colSpan='4'>
-							Rendering of 1000 User Cards: Polymer vs Native
-						</td>
-					</tr>
-
-					<tr>
-						<td>Chrome</td>
-						<td>2.65</td>
-						<td>2.0</td>
-						<td>1.3</td>
-					</tr>
-					<tr>
-						<td>Firefox</td>
-						<td>0.3</td>
-						<td>0.15</td>
-						<td>2</td>
-					</tr>
-					<tr>
-						<td>Edge</td>
-						<td>0.98</td>
-						<td>0.92</td>
-						<td>1.06</td>
-					</tr>
-					<tr>
-						<td>IE11</td>
-						<td>2.12</td>
-						<td>1.91</td>
-						<td>1.1</td>
+						<td>4.5</td>
+						<td>16.5 <span>3.6</span> <i>27%</i></td>
+						<td>8.4 <span>1.9</span> <i>54%</i></td>
 					</tr>
 					</tbody>
 				</table>
