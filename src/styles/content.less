@@ -16,10 +16,124 @@
 
 .page-content {
 	padding: @app-page-content-padding;
+
 	p {
 		color: @app-color;
+
 		.press {
 			margin-right: .4em;
+		}
+	}
+}
+
+#ct-chart-1, #ct-chart-2 {
+	position: relative;
+	height: 300px;
+	overflow: hidden;
+
+	.ct-legend {
+		position: relative;
+		z-index: 10;
+		width: 100%;
+		display: flex;
+		align-content: flex-end;
+		align-items: flex-end;
+		justify-items: flex-end;
+		justify-content: flex-end;
+
+		ul {
+			list-style: none;
+			display: flex;
+			align-content: flex-end;
+		}
+
+		li {
+			list-style: none;
+			position: relative;
+			padding-left: 23px;
+			margin-bottom: 3px;
+			display: flex;
+			align-content: center;
+			align-self: flex-end;
+			padding-right: 16px;
+			font-size: 13px;
+			color: #999;
+
+			&:last-of-type {
+				padding-right: 64px;
+			}
+		}
+
+		li:before {
+			width: 12px;
+			height: 12px;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -6px;
+			content: '';
+			border: 1px solid transparent;
+			border-radius: 12px;
+		}
+
+		li.inactive:before {
+			background: transparent;
+		}
+
+		&.ct-legend-inside {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		.ct-series-0:before {
+			background-color: #396aa2;
+			border-color: navy;
+		}
+
+		.ct-series-1:before {
+			background-color: #ff6348;
+			border-color: maroon;
+		}
+
+		.ct-series-2:before {
+			background-color: #4c8019;
+			border-color: darkgreen;
+		}
+
+		.ct-series-3:before {
+			background-color: #c1a404;
+			border-color: #655404;
+		}
+	}
+
+	svg {
+		.ct-series-a {
+			.ct-bar {
+				stroke: #396aa2;
+				stroke-width: 16px;
+			}
+		}
+
+		.ct-series-b {
+			.ct-bar {
+				stroke: #ff6348;
+				stroke-width: 16px;
+			}
+		}
+
+		.ct-series-c {
+			.ct-bar {
+				stroke: #4c8019;
+				stroke-width: 16px;
+			}
+		}
+
+		.ct-series-d {
+			.ct-bar {
+				stroke: #c1a404;
+				stroke-width: 16px;
+			}
 		}
 	}
 }

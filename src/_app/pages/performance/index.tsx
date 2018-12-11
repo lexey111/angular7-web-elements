@@ -2,11 +2,49 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {AnimatedWrapper} from '../AnimatedWrapper';
 
+declare const Chartist: any;
+
 class PerformancePageComponent extends React.Component {
 	public renderPre(strArr: Array<string>) {
 		return <div className='pre'>
 			{strArr.map((line, idx) => <p key={idx}>{line}</p>)}
 		</div>;
+	}
+
+	componentDidMount() {
+		const barData = {
+			labels: ['Chrome', 'Firefox', 'Edge', 'IE 11'],
+			series: [
+				{name: 'Native', data: [0.9, 1.05, 2.4, 4.5]},
+				{name: 'Polymer', data: [1.05, 1.4, 2.6, 8.4]},
+				{name: 'Angular', data: [1.7, 2.1, 7.6, 16.5]}
+			]
+		};
+
+		const barOptions = {
+			fullWidth: true,
+			chartPadding: {
+				right: 20,
+				top: 60
+			},
+			height: 300,
+			plugins: [
+				Chartist.plugins.legend({})
+			]
+		};
+		Chartist.Bar('#ct-chart-1', barData, barOptions);
+
+		const barData2 = {
+			labels: ['Native', 'Polymer', 'Angular'],
+			series: [
+				{name: 'Chrome', data: [1, .857, 0.529]},
+				{name: 'Firefox', data: [.857, .6423, .4285]},
+				{name: 'Edge', data: [.375, .1184, .3461]},
+				{name: 'IE 11', data: [.2, .1071, .0545]},
+			]
+		};
+
+		Chartist.Bar('#ct-chart-2', barData2, barOptions);
 	}
 
 	render() {
@@ -47,34 +85,41 @@ class PerformancePageComponent extends React.Component {
 					<tr>
 						<td>Chrome</td>
 						<td>0.9</td>
-						<td>1.7 <span>1.8</span> <i>52%</i></td>
-						<td>1.05 <span>1.17</span> <i>86%</i></td>
+						<td>1.7 <span>1.8</span> <i>-48%</i></td>
+						<td>1.05 <span>1.17</span> <i>-14%</i></td>
 					</tr>
 					<tr>
 						<td>Firefox</td>
 						<td>1.05</td>
-						<td>2.1 <span>2</span> <i>50%</i></td>
-						<td>1.4 <span>1.3</span> <i>75%</i></td>
+						<td>2.1 <span>2</span> <i>-50%</i></td>
+						<td>1.4 <span>1.3</span> <i>-25%</i></td>
 					</tr>
 					<tr>
 						<td>Edge</td>
 						<td>2.4</td>
-						<td>7.6 <span>3.2</span> <i>32%</i></td>
-						<td>2.6 <span>1.1</span> <i>92%</i></td>
+						<td>7.6 <span>3.2</span> <i>-68%</i></td>
+						<td>2.6 <span>1.1</span> <i>-8%</i></td>
 					</tr>
 					<tr>
 						<td>IE 11</td>
 						<td>4.5</td>
-						<td>16.5 <span>3.6</span> <i>27%</i></td>
-						<td>8.4 <span>1.9</span> <i>54%</i></td>
+						<td>16.5 <span>3.6</span> <i>-63%</i></td>
+						<td>8.4 <span>1.9</span> <i>-46%</i></td>
 					</tr>
 					</tbody>
 				</table>
 
 				<p>
-					<u>Disclaimer 1:</u> all the measurement were gathered for development mode build. Production build has to be significantly faster,
+					<u>Disclaimer:</u> all the measurement were gathered for development mode build. Production build has to be significantly faster,
 					performance ratio stills the same, though.
 				</p>
+
+				<h4>Graphics: browser's speed by platform</h4>
+				<div className='ct-chart ct-perfect-fifth' id='ct-chart-1'></div>
+				<p className='comment right'><i>smaller is better</i></p>
+
+				<h4>Graphics: browser's speed to Chrome</h4>
+				<div className='ct-chart ct-perfect-fifth' id='ct-chart-2'></div>
 
 				<h4>Analysis</h4>
 				<p>
