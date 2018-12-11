@@ -72,11 +72,7 @@ class PerformancePageComponent extends React.Component {
 				</table>
 
 				<p>
-					<u>Disclaimer 1:</u> all the numbers are relative. They are results of using embedded Developer/Performance tools except for IE11 that hangs
-					and has been measured with stopwatch.
-				</p>
-				<p>
-					<u>Disclaimer 2:</u> all the measurement were gathered for development mode build. Production build has to be significantly faster,
+					<u>Disclaimer 1:</u> all the measurement were gathered for development mode build. Production build has to be significantly faster,
 					performance ratio stills the same, though.
 				</p>
 
