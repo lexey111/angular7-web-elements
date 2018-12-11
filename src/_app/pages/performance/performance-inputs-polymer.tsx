@@ -20,6 +20,7 @@ interface IWrappedPMInputProps extends IWrappedPMInputState {
 
 class WrappedPolymerInput extends React.Component<IWrappedPMInputProps, IWrappedPMInputState> {
 	protected setState;
+	private inputRef: HTMLInputElement | null = null;
 
 	private state: CInputValue = {...this.props.value};
 
@@ -27,44 +28,31 @@ class WrappedPolymerInput extends React.Component<IWrappedPMInputProps, IWrapped
 		super(props);
 	}
 
-	valueChange(event) {
-		console.log(`onChange [${this.props.value.idx + 1}]:`, event.target.value);
-
-		this.setState({
-			...this.state,
-			firstName: event.target.value,
-			label: event.target.value + ' ' + this.state.secondName
+	private assignRef(ref: HTMLInputElement) {
+		if (this.inputRef) {
+			return;
+		}
+		this.inputRef = ref;
+		this.inputRef.addEventListener('commit', (event: any) => {
+			console.log('Committed', event.detail);
+			this.setState({
+				...this.state,
+				firstName: event.detail,
+				label: event.detail + ' ' + this.state.secondName
+			}, () => {
+				this.props.onChanged(this.state);
+			});
 		});
 	}
 
-	commitChanges() {
-		console.log('do commit!');
-		this.props.onChanged(this.state);
-	}
-
-	onBlur() {
-		this.commitChanges();
-	}
-
-	shouldComponentUpdate(nextProps, nextState) {
-		if (!nextProps || !nextState) {
-			return true;
-		}
-		return nextProps.value.firstName !== nextState.firstName ||
-			nextProps.value.label !== nextState.label;
-	}
-
-	onKey(event) {
-		if (!event || event.key !== 'Enter') {
-			return;
-		}
-		this.commitChanges();
-	}
-
 	render() {
-		//const {idx, label, firstName} = this.state;
+		const {idx, label, firstName, secondName} = this.state;
 
-		return <pm-input-text></pm-input-text>;
+		return <pm-input-text label={label}
+		                      idx={idx}
+		                      firstName={firstName}
+		                      secondName={secondName}
+		                      ref={i => this.assignRef(i)}></pm-input-text>;
 	}
 }
 
@@ -118,10 +106,6 @@ class PerformancePagePolymerInputsComponent extends React.Component {
 
 	private hideAll() {
 		this.setRecordsCount(0);
-	}
-
-	componentDidMount() {
-		this.show10();
 	}
 
 	private changeValue(value: CInputValue) {
