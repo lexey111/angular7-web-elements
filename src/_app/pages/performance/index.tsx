@@ -114,17 +114,23 @@ class PerformancePageComponent extends React.Component {
 					performance ratio stills the same, though.
 				</p>
 
-				<h4>Graphics: browser's speed by platform</h4>
+				<h4>Graphics: rendering speed by technology</h4>
 				<div className='ct-chart ct-perfect-fifth' id='ct-chart-1'></div>
-				<p className='comment right'><i>smaller is better</i></p>
+				<p className='comment right max-600'><i>smaller is better</i></p>
 
 				<h4>Graphics: browser's speed to Chrome</h4>
 				<div className='ct-chart ct-perfect-fifth' id='ct-chart-2'></div>
 
 				<h4>Analysis</h4>
 				<p>
+					Angular-based web elements are two times slower than Polymer based but a lot simpler (and cozy) during the implementation.
+				</p>
+				<p>
 					Performance overhead is rather significant, especially for IE and Edge and Angular Components, whereas simple Polymer-based components are
 					fast almost as native for framework. However, resulting performance allows to use the approach at least with contemporary browsers.
+				</p>
+				<p>
+					Performance of web element itself is very good even with IE11 (see <a href='./index_rich.html' target='_blank'>this page, grid</a>).
 				</p>
 				<hr/>
 

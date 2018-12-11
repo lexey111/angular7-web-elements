@@ -5,7 +5,7 @@ import './rich/top-menu';
 import './rich/context-switcher-item';
 import './rich/profile-menu';
 import './rich/search-input';
-import './rich/active-icon';
+import './rich/side-menu';
 import './rich/active-icon';
 
 import '@vaadin/vaadin-grid/vaadin-grid.js';
