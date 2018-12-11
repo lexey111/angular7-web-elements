@@ -93,7 +93,7 @@ class PerformancePageNativeComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>Performance tests: React Cards</div>
+			<div className='section-header'>Performance tests: Cards, React</div>
 			<div className='page-content'>
 				<p>
 					The page renders up to 1000 React-based User Cards.

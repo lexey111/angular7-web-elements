@@ -9,22 +9,21 @@ type CInputValue = {
 	secondName: string
 };
 
-interface IWrappedTCInputState {
+interface IWrappedPMInputState {
 	value: CInputValue;
 	onChanged: (value: CInputValue) => void;
 }
 
-interface IWrappedTCInputProps extends IWrappedTCInputState {
+interface IWrappedPMInputProps extends IWrappedPMInputState {
 	onChanged: (value: CInputValue) => void;
 }
 
-
-class WrappedReactInput extends React.Component<IWrappedTCInputProps, IWrappedTCInputState> {
+class WrappedPolymerInput extends React.Component<IWrappedPMInputProps, IWrappedPMInputState> {
 	protected setState;
 
 	private state: CInputValue = {...this.props.value};
 
-	constructor(private props: IWrappedTCInputProps) {
+	constructor(private props: IWrappedPMInputProps) {
 		super(props);
 	}
 
@@ -63,37 +62,13 @@ class WrappedReactInput extends React.Component<IWrappedTCInputProps, IWrappedTC
 	}
 
 	render() {
-		const {idx, label, firstName} = this.state;
+		//const {idx, label, firstName} = this.state;
 
-		return <div className='input-element-grid-cell'>
-			<div className='tc-control has-label tc-emulated-control'>
-				<div className='tc-control-label'>
-					{label}
-				</div>
-				<div className='tc-control-input-group with-addon-append'>
-					<div className='tc-control-input-area'>
-						<div className='tc-control-input-container'>
-							<input type='text'
-							       className='tc-control-input'
-							       onChange={this.valueChange.bind(this)}
-							       onBlur={this.onBlur.bind(this)}
-							       onKeyPress={this.onKey.bind(this)}
-							       value={firstName}/>
-						</div>
-
-						<div className='tc-control-input-addon-append'>
-							<div className='addon-control append'>
-								<span>{idx + 1}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>;
+		return <pm-input-text></pm-input-text>;
 	}
 }
 
-class PerformancePageReactInputsComponent extends React.Component {
+class PerformancePagePolymerInputsComponent extends React.Component {
 	protected setState;
 	private initialData = fakeNames.map((name, idx) => {
 		const namePair = name.split(' ');
@@ -145,6 +120,10 @@ class PerformancePageReactInputsComponent extends React.Component {
 		this.setRecordsCount(0);
 	}
 
+	componentDidMount() {
+		this.show10();
+	}
+
 	private changeValue(value: CInputValue) {
 		console.log('do commit!', value);
 		const recordsChanged = [...this.state.recordsChanged];
@@ -171,10 +150,10 @@ class PerformancePageReactInputsComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>Performance tests: Inputs, React</div>
+			<div className='section-header'>Performance tests: Inputs, Polymer</div>
 			<div className='page-content'>
 				<p>
-					The page renders up to 1000 React-based input elements.
+					The page renders up to 1000 Polymer-based input elements.
 				</p>
 				<p>
 					{this.state.showRecords > 0 &&
@@ -192,8 +171,8 @@ class PerformancePageReactInputsComponent extends React.Component {
 					{this.state.data
 						.map((value, idx) => {
 							return <React.Fragment key={idx}>
-								<WrappedReactInput value={value}
-								                   onChanged={this.changeValue.bind(this)}
+								<WrappedPolymerInput value={value}
+								                     onChanged={this.changeValue.bind(this)}
 								/>
 							</React.Fragment>;
 						})}
@@ -217,4 +196,4 @@ class PerformancePageReactInputsComponent extends React.Component {
 	}
 }
 
-export const PerformancePageReactInputs = AnimatedWrapper(PerformancePageReactInputsComponent);
+export const PerformancePagePolymerInputs = AnimatedWrapper(PerformancePagePolymerInputsComponent);

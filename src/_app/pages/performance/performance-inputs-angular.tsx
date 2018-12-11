@@ -157,7 +157,7 @@ class PerformancePageAngularComponent extends React.Component {
 
 	render() {
 		return <React.Fragment>
-			<div className='section-header'>Performance tests: Angular 7 TC Inputs web elements</div>
+			<div className='section-header'>Performance tests: Inputs, Angular 7 TC web elements</div>
 			<div className='page-content'>
 				<p>
 					The page renders up to 1000 Angular 7-based input elements.

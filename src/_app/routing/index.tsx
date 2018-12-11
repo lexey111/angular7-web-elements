@@ -5,10 +5,11 @@ import {CustomButtonPage} from '../pages/button';
 import {HomePage} from '../pages/home';
 import {TCInputPage} from '../pages/input';
 import {PerformancePage} from '../pages/performance';
-import {PerformancePageAngular} from '../pages/performance/performance-angular';
+import {PerformancePageAngular} from '../pages/performance/performance-inputs-angular';
 import {PerformancePageNative} from '../pages/performance/performance-cards-native';
 import {PerformancePageReactInputs} from '../pages/performance/performance-inputs-native';
-import {PerformancePagePolymer} from '../pages/performance/performance-polymer';
+import {PerformancePagePolymerInputs} from '../pages/performance/performance-inputs-polymer';
+import {PerformancePagePolymer} from '../pages/performance/performance-cards-polymer';
 import {PolymerPage} from '../pages/polymer';
 import {SideMenu} from '../ui/side-menu/side-menu';
 
@@ -20,15 +21,18 @@ export class AppRoutes extends React.Component {
 			<div id='app-page-container'>
 				<Switch>
 					<Route exact path='/' component={HomePage}/>
+
 					<Route exact path='/index' component={HomePage}/>
 					<Route exact path='/buttons' component={CustomButtonPage}/>
 					<Route exact path='/tc-input' component={TCInputPage}/>
 					<Route exact path='/polymer' component={PolymerPage}/>
 					<Route exact path='/performance' component={PerformancePage}/>
-					<Route exact path='/performance-angular' component={PerformancePageAngular}/>
-					<Route exact path='/performance-polymer' component={PerformancePagePolymer}/>
-					<Route exact path='/performance-cards-native' component={PerformancePageNative}/>
+					<Route exact path='/performance-inputs-angular' component={PerformancePageAngular}/>
+					<Route exact path='/performance-inputs-polymer' component={PerformancePagePolymerInputs}/>
 					<Route exact path='/performance-inputs-native' component={PerformancePageReactInputs}/>
+					<Route exact path='/performance-cards-polymer' component={PerformancePagePolymer}/>
+					<Route exact path='/performance-cards-native' component={PerformancePageNative}/>
+
 					<Route component={NotFoundComponent}/>
 				</Switch>
 			</div>

@@ -1,11 +1,12 @@
 import './card/user-card';
+import './card/pm-input-text';
 import './rich-ui-shared-styles-module';
 import './rich/top-menu';
 import './rich/context-switcher-item';
 import './rich/profile-menu';
 import './rich/search-input';
 import './rich/active-icon';
-import './rich/side-menu';
+import './rich/active-icon';
 
 import '@vaadin/vaadin-grid/vaadin-grid.js';
 import '@vaadin/vaadin-button/vaadin-button.js';
