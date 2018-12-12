@@ -50,7 +50,7 @@ class PerformancePageComponent extends React.Component {
 	render() {
 		return <React.Fragment>
 			<div className='section-header'>Performance tests</div>
-			<div className='page-content'>
+			<div className='page-content summary'>
 				<h2>Conclusion</h2>
 				<p>
 					<u>Important:</u> all the information is actual for the end of 2018.
@@ -245,15 +245,15 @@ class PerformancePageComponent extends React.Component {
 
 				<h3>ShadowDOM</h3>
 				<p>
-					Current version of ShadowDom is v0, and it's already deprecated. Meantime v1 isn't stable yet, and support level in different browsers isn't
-					too inspiring. It means, with vast probability code will be executed within one or more polyfills.
+					Current version of ShadowDom is v0, and it is already deprecated. Meantime v1 isn't stable yet, and support level in different browsers
+					isn't too inspiring. It means, with vast probability code will be executed within one or more polyfills.
 				</p>
 				<p>
 					ShadowDOM style isolation brings to serious redundancy of embedded styles for repeating components, as well as to some glitches and bugs in,
 					e.g., <code>z-index</code> for projected items in different browsers.
 				</p>
 
-				<h3>Maturity of toolchain</h3>
+				<h3>Overall maturity of toolchain</h3>
 
 				<h4>Polymer</h4>
 				<p>

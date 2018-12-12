@@ -5,6 +5,7 @@ import {CustomButtonPage} from '../pages/button';
 import {HomePage} from '../pages/home';
 import {TCInputPage} from '../pages/input';
 import {PerformancePage} from '../pages/performance';
+import {PerformancePageCardsAngular} from '../pages/performance/performance-cards-angular';
 import {PerformancePageAngular} from '../pages/performance/performance-inputs-angular';
 import {PerformancePageNative} from '../pages/performance/performance-cards-native';
 import {PerformancePageReactInputs} from '../pages/performance/performance-inputs-native';
@@ -32,6 +33,7 @@ export class AppRoutes extends React.Component {
 					<Route exact path='/performance-inputs-native' component={PerformancePageReactInputs}/>
 					<Route exact path='/performance-cards-polymer' component={PerformancePagePolymer}/>
 					<Route exact path='/performance-cards-native' component={PerformancePageNative}/>
+					<Route exact path='/performance-cards-angular' component={PerformancePageCardsAngular}/>
 
 					<Route component={NotFoundComponent}/>
 				</Switch>
