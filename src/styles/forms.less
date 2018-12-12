@@ -67,6 +67,14 @@ h3.form-section {
 	}
 
 	tbody, tfoot {
+		tr {
+			border-bottom: 1px solid lighten(@page-background, 5);
+		}
+
+		tr.payload {
+			background-color: lighten(@page-background, 10);
+		}
+
 		tr.category {
 			td {
 				background-color: #d4c9b7;
@@ -81,9 +89,17 @@ h3.form-section {
 
 		td {
 			text-align: right;
-			padding-right: 16px;
-			height: 32px;
+			vertical-align: middle;
+			min-height: 32px;
+			padding: 8px 16px 8px;
 			border-right: 1px dashed #d4c9b7;
+
+			p {
+				font-style: italic;
+				color: #574b32;
+				font-size: .8em;
+				margin: 0;
+			}
 
 			span, i {
 				color: #aaa;

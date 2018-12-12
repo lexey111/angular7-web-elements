@@ -39,10 +39,10 @@
 			HTML
 		</div>
 		<div class='app-side-menu-items'>
-			<a href="#overhead">Overhead</a>
 			<a href="#custom-button">Custom button (A7)</a>
-			<a href="#tc-input-text">Text input (A7 TWF)</a>
+			<a href="#tc-input-text">Text input (A7/Polymer)</a>
 			<a href="#polymer">User card (Polymer)</a>
+			<a href="#vaadin">3rd party (Polymer)</a>
 		</div>
 	</div>
 	<div id='app-page-container'>
@@ -50,49 +50,8 @@
 		<div class='page-content'>
 			<a id="overhead"></a>
 			<p>
-				This is demo page: web elements (custom elements) no-framework page. Just a HTML and a bit of VanillaJS.
+				This is demo page: web elements (custom elements) and no framework. Just a HTML and a bit of VanillaJS.
 			</p>
-
-			<h2>Overhead</h2>
-			<table class='stat-table'>
-				<thead>
-				<tr>
-					<th>Content</th>
-					<th>Size, production</th>
-					<th>Size, development</th>
-				</tr>
-				</thead>
-				<tbody>
-				<tr>
-					<td>Elements</td>
-					<td>10Kb</td>
-					<td>46Kb</td>
-				</tr>
-				<tr>
-					<td>Common polyfill</td>
-					<td>92Kb</td>
-					<td>92Kb</td>
-				</tr>
-				<tr>
-					<td>Web components polyfill</td>
-					<td>104Kb</td>
-					<td>104Kb</td>
-				</tr>
-				<tr>
-					<td>Angular core layer</td>
-					<td>456Kb</td>
-					<td>2.5Mb</td>
-				</tr>
-				</tbody>
-				<tfoot>
-				<tr>
-					<td></td>
-					<td>650Kb</td>
-					<td>3Mb</td>
-				</tr>
-				</tfoot>
-			</table>
-
 			<h2>Custom button</h2>
 			<a id="custom-button"></a>
 			<p>
@@ -111,38 +70,66 @@
 				Click handling attached to the button works from VanillaJS.
 			</p>
 
-			<h2>TC Input Text</h2>
+			<h2>Text Input field</h2>
 			<a id="tc-input-text"></a>
 			<p>
 				This is <code>tc-input-text</code> web element from TwinfieldUI Components (Angular 7):
 			</p>
 
-			<h3 class='form-section'>With text add-on</h3>
 			<div class='input-element'>
-				<tc-input-text label='Text label'
-				               placeholder='Placeholder text'>
+				<div class='input-element-grid'>
+					<tc-input-text label='Text label - Angular'
+					               value='Some text'>
+
+						<div class='addon-control append'>
+							<span>42</span>
+						</div>
+					</tc-input-text>
+				</div>
+			</div>
+
+			<p>
+				This is <code>pm-input-text</code> web element from TwinfieldUI Components (Polymer version):
+			</p>
+
+			<div class='input-element'>
+				<pm-input-text firstName='Text label'
+				               secondName='-  Polymer'
+				               Label='Text label - Polymer'
+				               idx=41>
 
 					<div class='addon-control append'>
 						<span>42</span>
 					</div>
-				</tc-input-text>
+				</pm-input-text>
 			</div>
 
-			<h3 class='form-section'>With label and placeholder</h3>
-			<div class='input-element'>
-				<tc-input-text label='Text label'
-				               placeholder='Placeholder text'>
 
-					<div class='below-control'>
-						<p>Validation message</p>
-						<p>Additional information message</p>
-					</div>
-				</tc-input-text>
-			</div>
-
-			<h2>Polymer element</h2>
+			<h2>User Card: Polymer</h2>
 			<a id="polymer"></a>
-			<user-card name="New user" icon-color="#fff" icon-background="navy"></user-card>
+			<div style="display: table-cell">
+				<user-card name="New user" icon-color="#fff" icon-background="navy"></user-card>
+			</div>
+
+			<h2>Vaadin: 3rd party polymer-based elements library</h2>
+			<a id="vaadin"></a>
+			<div>
+				<p>Button</p>
+				<vaadin-button theme="primary">Just a button</vaadin-button>
+			</div>
+			<div>
+				<p>List</p>
+				<vaadin-list-box>
+					<vaadin-item>5k</vaadin-item>
+					<vaadin-item disabled>10k (sold out)</vaadin-item>
+					<vaadin-item id="half-marathon">Half marathon</vaadin-item>
+					<vaadin-item>Marathon</vaadin-item>
+				</vaadin-list-box>
+			</div>
+			<div>
+				<p>Date picker</p>
+				<vaadin-date-picker placeholder="Pick a date"></vaadin-date-picker>
+			</div>
 		</div>
 	</div>
 </div>

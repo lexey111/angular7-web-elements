@@ -142,6 +142,8 @@ customElements.define('active-icon', class extends LitElement {
 					position: relative;
 					transition: all .2s ease;
 					z-index: 111;
+					cursor: pointer;
+					user-select: none;
 				}
 				.active-icon-dropdown.active ul li:hover {
 					background-color: rgba(114,189,231,0.15);

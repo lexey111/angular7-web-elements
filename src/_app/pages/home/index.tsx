@@ -14,12 +14,8 @@ class HomePageComponent extends React.Component {
 
 				<h2>Other examples</h2>
 				<p>
-					<a href='./index_pure.html' target='_blank'>This link</a> will open separate page that is just a HTML and VanillaJS, no frameworks,
-					with web elements, both Angular and Polymer. Just a simple web page with no special styling or behavior.
-				</p>
-
-				<p>
-					<a href='./index_rich.html' target='_blank'>This page</a> is a mock of rich ui application based on Polymer elements.
+					<button className='press press-purple' onClick={() => window.open('./index_pure.html')}>Simple page</button>
+					<button className='press press-green' onClick={() => window.open('./index_rich.html')}>Rich UI page</button>
 				</p>
 
 				<h2>Under the hood</h2>

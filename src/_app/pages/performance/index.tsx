@@ -70,7 +70,7 @@ class PerformancePageComponent extends React.Component {
 
 				<h4>Task/Time measurements table</h4>
 				<p>
-					Rendering of 1000 Inputs, seconds / ratio to the native value:
+					Rendering of 1000 interactive Text Inputs, seconds / ratio to the native value plus performance slowdown percentage:
 				</p>
 				<table className='stat-table'>
 					<thead>
@@ -114,23 +114,24 @@ class PerformancePageComponent extends React.Component {
 					performance ratio stills the same, though.
 				</p>
 
-				<h4>Graphics: rendering speed by technology</h4>
+				<h4>Graphics: rendering time by technology</h4>
 				<div className='ct-chart ct-perfect-fifth' id='ct-chart-1'></div>
 				<p className='comment right max-600'><i>smaller is better</i></p>
 
 				<h4>Graphics: browser's speed to Chrome</h4>
 				<div className='ct-chart ct-perfect-fifth' id='ct-chart-2'></div>
 
-				<h4>Analysis</h4>
+				<h4>Conclusion</h4>
 				<p>
-					Angular-based web elements are two times slower than Polymer based but a lot simpler (and cozy) during the implementation.
+					Angular-based web elements are two times slower than Polymer based but are a lot simpler (and cozy) during the implementation. However,
+					Polymer's complexity could be compensated with work organization and common guides.
 				</p>
 				<p>
-					Performance overhead is rather significant, especially for IE and Edge and Angular Components, whereas simple Polymer-based components are
+					Performance slowdown is rather significant, especially for IE and Edge and Angular Components, whereas simple Polymer-based components are
 					fast almost as native for framework. However, resulting performance allows to use the approach at least with contemporary browsers.
 				</p>
 				<p>
-					Performance of web element itself is very good even with IE11 (see <a href='./index_rich.html' target='_blank'>this page, grid</a>).
+					Performance of web element itself is very good even with IE11 (see <a href='./index_rich.html' target='_blank'>the grid</a> on the page).
 				</p>
 				<hr/>
 
@@ -140,40 +141,83 @@ class PerformancePageComponent extends React.Component {
 					<thead>
 					<tr>
 						<th>Content</th>
-						<th>Size, production (Kb)</th>
-						<th>Size, development (Kb)</th>
+						<th>Size, production</th>
+						<th>Size, development</th>
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>Elements</td>
-						<td>10</td>
-						<td>46</td>
+					<tr className="payload">
+						<td>
+							Elements itself, Angular
+							<p>2 components</p>
+						</td>
+						<td>10Kb</td>
+						<td>48Kb</td>
+					</tr>
+					<tr className="payload">
+						<td>
+							Elements itself, Polymer
+							<p>~12 components</p>
+						</td>
+						<td>87Kb</td>
+						<td>100Kb</td>
 					</tr>
 					<tr>
-						<td>Common polyfill</td>
-						<td>92</td>
-						<td>92</td>
+						<td>
+							Common polyfills
+							<p>IE polyfills + Fetch</p>
+						</td>
+						<td>92Kb</td>
+						<td>92Kb</td>
 					</tr>
 					<tr>
-						<td>Web components polyfill</td>
-						<td>104</td>
-						<td>104</td>
+						<td>
+							Web components polyfill
+							<p>Babel and web components bundle</p>
+						</td>
+						<td>113Kb</td>
+						<td>113Kb</td>
 					</tr>
 					<tr>
-						<td>Angular core layer</td>
-						<td>456</td>
-						<td>2500</td>
+						<td>
+							Vaadin
+							<p>3-rd party polymer-based elements</p>
+						</td>
+						<td>292Kb</td>
+						<td>769Kb</td>
+					</tr>
+					<tr>
+						<td>
+							Polymer core layer
+							<p>polymer.js</p>
+						</td>
+						<td>156Kb</td>
+						<td>731Kb</td>
+					</tr>
+					<tr>
+						<td>
+							Angular core layer
+							<p>vendor.js - Angular, RxJS etc.</p>
+						</td>
+						<td>478Kb</td>
+						<td>2.3Mb</td>
 					</tr>
 					</tbody>
 					<tfoot>
 					<tr>
 						<td></td>
-						<td>650Kb</td>
-						<td>3Mb</td>
+						<td>1.1Mb</td>
+						<td>4Mb</td>
 					</tr>
 					</tfoot>
 				</table>
+
+				<h4>Conclusion</h4>
+				<p>
+					Size overhead is rather significant for stand-alone applications, but for enterprise-level SPAs it's bearable. Especially if platforms of
+					application and elements are the same (Angular + Angular) or where is no massive usage of 3rd party elements in case of Polymer (~300Kb of
+					extra code).
+				</p>
 
 				<h3>Usability &amp; Drawbacks</h3>
 				<p>
@@ -226,7 +270,21 @@ class PerformancePageComponent extends React.Component {
 				</p>
 
 				<h4>Angular</h4>
-				<p>...still need to be tested...</p>
+				<p>
+					Has a lot more convenient development process if the main application is also Angular-based and their version of Angular match or very
+					close. No Babel, pure Typescript, typings etc. But it has a little sense to use Web Elements in such case instead of native Angular
+					components, though.
+				</p>
+				<p>
+					Overall overhead of Angular-based web-elements is two times worse than Polymer's. However, this tradeoff could be bearable for some
+					applications.
+				</p>
+
+				<h4>Conclusion</h4>
+				<p>
+					Both Polymer and Angular approaches are usable. Polymer has a significantly better performance in the end but requires a lot more attention
+					to details during development and weird source code processing for IE11.
+				</p>
 
 				<h3>Styling</h3>
 				<p>
