@@ -1,4 +1,4 @@
-import {html, LitElement} from '@polymer/lit-element';
+import {html, LitElement} from 'lit-element';
 // import {unsafeHTML} from 'lit-html/directives/unsafe-html.js';
 
 customElements.define('pm-input-text', class extends LitElement {
